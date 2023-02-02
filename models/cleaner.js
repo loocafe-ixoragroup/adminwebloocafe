@@ -15,7 +15,10 @@ const cleaner = new Schema({
         images:Array,
         date:String,
         time:String
-    }]
+    }],
+    aadhar:String,
+    pan:String,
+    files:Array
 })
 
 module.exports = mongoose.model("cleaner",cleaner)

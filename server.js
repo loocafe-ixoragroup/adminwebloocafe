@@ -1,6 +1,9 @@
 const express = require("express")
 const app = express()
 
+const bodyParser = require("body-parser")
+app.use(bodyParser.json());
+
 const path = require("path")
 const cors = require("cors")
 const whitelist = ["http://127.0.0.1:3000", "localhost", "http://localhost:3000"];
@@ -19,8 +22,6 @@ var corsOptionsDelegate = function (req, callback) {
 const dotenv = require("dotenv")
 dotenv.config({path:path.join(__dirname,"config.env")})
 
-const bodyParser = require("body-parser")
-app.use(bodyParser.json())
 
 const mongoose = require("mongoose")
 mongoose
@@ -32,8 +33,9 @@ mongoose
 // mongoose.set('strictQuery', true);
 
 
-
+app.use("/api/auth",cors(corsOptionsDelegate),require("./routes/auth"))
 app.use("/api/loocafe",cors(corsOptionsDelegate),require("./routes/loocafe"))
+app.use("/api/kyc",cors(corsOptionsDelegate),require("./routes/kyc"))
 
 
 const PORT = process.env.PORT || 8000

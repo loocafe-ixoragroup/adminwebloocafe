@@ -3,12 +3,19 @@ const Schema = mongoose.Schema
 
 const loocafe = new Schema({
     name:String,
+    type:String,
     coordinates:{
         latitude:String,
         longitude:String
     },
-    city:String,
-    address:String,
+    location:{
+        city:String,
+        address:String,
+        state:String,
+        pincode:String,
+    },
+    electricity_unit_no:String,
+    water_bill_unit_no:String,
     images:Array,
     reviews:[{
         userId:mongoose.SchemaTypes.ObjectID,
@@ -16,7 +23,20 @@ const loocafe = new Schema({
         rating:Number,
         images:Array
     }],
-    avg_rating:Number
+    avg_rating:Number,
+    agreement_start:String,
+    agreement_end:String,
+    unit_start_date:String,
+    functional_status:String,
+
+    expenses:[{
+        reason:String,
+        images:Array,
+        receipts:Array,
+        date:String,
+        amount:Number
+    }],
+    partnerID:mongoose.SchemaTypes.ObjectId
     
 })
 
