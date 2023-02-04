@@ -36,6 +36,7 @@ mongoose
 app.use("/api/auth",cors(corsOptionsDelegate),require("./routes/auth"))
 app.use("/api/loocafe",cors(corsOptionsDelegate),require("./routes/loocafe"))
 app.use("/api/kyc",cors(corsOptionsDelegate),require("./routes/kyc"))
+app.use("/api/supervisor",cors(corsOptionsDelegate),require("./routes/supervisor"))
 
 
 const PORT = process.env.PORT || 8000

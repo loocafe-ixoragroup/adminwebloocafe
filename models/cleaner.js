@@ -5,6 +5,17 @@ const cleaner = new Schema({
     
     name:String,
     phone:String,
+    relative_name:String,
+    email:String,
+    phone:String,
+    alternate_phone:String,
+    address:{
+        street_address:String,
+        state:String,
+        city:String,
+        pincode:String,
+    },
+    dob:String,
     loocafe:mongoose.SchemaTypes.ObjectId,
     rental:mongoose.SchemaTypes.ObjectId,
     rent_paid:{
@@ -18,7 +29,8 @@ const cleaner = new Schema({
     }],
     aadhar:String,
     pan:String,
-    files:Array
+    address_proof:String,
+    photo:String
 })
 
 module.exports = mongoose.model("cleaner",cleaner)

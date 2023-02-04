@@ -24,9 +24,10 @@ const loocafe = new Schema({
         images:Array
     }],
     avg_rating:Number,
-    agreement_start:String,
-    agreement_end:String,
-    unit_start_date:String,
+    timing:{
+        from:String,
+        to:String
+    },
     functional_status:String,
 
     expenses:[{
@@ -36,7 +37,8 @@ const loocafe = new Schema({
         date:String,
         amount:Number
     }],
-    partnerID:mongoose.SchemaTypes.ObjectId
+    partnerID:mongoose.SchemaTypes.ObjectId,
+    supervisorID: mongoose.SchemaTypes.ObjectId
     
 })
 
