@@ -1,0 +1,45 @@
+.upload_container {
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  border: 1.2px solid #7b7b7b;
+  border-radius: 13px;
+  width: 100%;
+  /* padding: 12px 16px; */
+  height: 2.5rem;
+  font-size: 15px;
+}
+
+.upload_container > input {
+  width: 0.1px;
+  opacity: 0;
+}
+
+.upload_container > span {
+  align-self: center;
+}
+
+.upload_container > label {
+  display: flex;
+  cursor: pointer;
+  gap: 1rem;
+  width: 40%;
+  justify-content: center;
+  background-color: #f3f3f3;
+  border-left: 1.2px solid #7b7b7b;
+  align-items: center;
+  border-radius: 0 13px 13px 0;
+}
+
+.upload_container > label > img {
+  width: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .upload_container > label {
+    width: 50%;
+  }
+  .upload_container > label > span {
+    font-size: 12px;
+  }
+}

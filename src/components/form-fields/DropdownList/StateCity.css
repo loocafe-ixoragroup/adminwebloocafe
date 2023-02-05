@@ -1,0 +1,22 @@
+.select > select {
+  /* appearance: none; */
+  outline: 0;
+  width: 340px;
+  border-radius: 13px;
+  padding: 12px 16px;
+  font-size: 15px;
+  background-image: none;
+  border: 1.2px solid #7b7b7b;
+}
+
+.dropdown_container {
+  display: flex;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .dropdown_container {
+    flex-direction: column;
+    gap: 0;
+  }
+}

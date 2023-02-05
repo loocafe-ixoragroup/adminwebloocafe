@@ -1,0 +1,31 @@
+.btn-dark,
+.btn-light {
+  width: 255px;
+  height: 53px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.btn-dark {
+  background-color: #191919;
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-dark:hover {
+  background-color: #424242;
+}
+
+.btn-light {
+  background-color: #e0e0e0;
+  font-weight: 400;
+  color: #252525;
+}
+
+.btn-light:hover {
+  background-color: #b6b6b6;
+}

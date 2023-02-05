@@ -1,0 +1,22 @@
+.main__container {
+  height: 100%;
+  min-height: 850px;
+}
+
+.main__block {
+  margin-left: 245px;
+  /* padding: 30px; */
+}
+
+.content__block {
+  padding: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .main__block {
+    margin-left: 0;
+  }
+  .content__block {
+    padding: 0;
+  }
+}
