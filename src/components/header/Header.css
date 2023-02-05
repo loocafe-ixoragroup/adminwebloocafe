@@ -1,0 +1,58 @@
+.header_block {
+  background-color: #d9d9d9;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_block > span {
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 25px;
+  margin-left: 1rem;
+}
+
+.user__icons {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.icon > img {
+  width: 1.2rem;
+  cursor: pointer;
+}
+
+.icon > span {
+  position: absolute;
+  width: 7px;
+  margin-left: -6px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #252525;
+}
+
+.user__avtar {
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-right: 2rem;
+  background-color: #9e9e9e;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 499px) {
+  .user__icons {
+    gap: 1rem;
+  }
+  .user__avtar {
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header_block > span {
+    margin-left: 4rem;
+  }
+}

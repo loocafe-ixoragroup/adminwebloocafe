@@ -1,0 +1,56 @@
+.tenant_main {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tenant_main > h3 {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 33px;
+  /* identical to box height */
+  color: #252525;
+}
+
+.tenant_form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+}
+
+.mobileno {
+  display: flex;
+  gap: 2rem;
+}
+
+.flex-div {
+  display: flex;
+  gap: 5rem;
+}
+
+.btn-div {
+  margin: 2rem 0;
+}
+
+@media screen and (max-width: 1280px) {
+  .tenant_form {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 3rem;
+  }
+  .tenant_main {
+    align-items: center;
+    /* padding: 0 2rem; */
+  }
+  .formpart1 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mobileno,
+  .flex-div {
+    flex-direction: column;
+    gap: 0;
+  }
+}

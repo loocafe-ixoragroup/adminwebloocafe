@@ -1,0 +1,35 @@
+.buttons {
+  display: flex;
+  gap: 2rem;
+  margin: 3rem auto;
+}
+
+.maintain_main > h3 {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 33px;
+  /* identical to box height */
+  color: #252525;
+}
+
+@media screen and (min-width: 769px) {
+  .maintain_main {
+    margin-left: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .maintain_main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .buttons {
+    flex-direction: column;
+  }
+}
