@@ -23,7 +23,8 @@ try{
             city:req.body.cleaner_city,
             pincode:req.body.cleaner_pincode,
             state:req.body.cleaner_state
-        }
+        },
+        dob:req.body.dob
     })
     await cleaner.save()
 
