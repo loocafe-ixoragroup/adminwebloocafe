@@ -36,7 +36,7 @@ const Tenant = () => {
         <PhotoUpload />
       </div>
       <div className="btn-div">
-        <BlackButton />
+        <BlackButton name={"Submit"} />
       </div>
     </div>
   );

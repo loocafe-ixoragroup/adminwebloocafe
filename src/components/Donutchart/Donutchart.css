@@ -1,0 +1,9 @@
+.Container-2{
+    background: #EAEAEA;
+    width: 28%;
+    border-radius: 1rem;
+    /* margin: 10% 14%; */
+    margin:3% 2%;
+    display: inline-block;
+    justify-self: center;
+}
