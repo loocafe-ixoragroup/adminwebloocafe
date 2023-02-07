@@ -23,6 +23,12 @@ const Header = () => {
     case currentItem === slugs.add_supervisor:
       title = "Add Supervisor";
       break;
+    case currentItem === slugs.track_rentals:
+      title = "Track Rentals";
+      break;
+    case currentItem === slugs.user_details:
+      title = "User Details";
+      break;
     default:
       title = "";
       break;

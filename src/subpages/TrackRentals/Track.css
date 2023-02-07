@@ -1,0 +1,46 @@
+.track_main > h3 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+    /* identical to box height */
+    color: #252525;
+  }
+.date_picker{
+    display: flex;
+    gap: 2rem;
+}
+@media screen and (min-width:769px) {
+    .track_main{
+        margin-left: 2rem;
+    }
+}
+@media screen and (max-width: 768px){
+    .track_main{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .date_picker{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    /* table{
+        width: 80%;
+    } */
+}
+@media screen and (max-width: 601px){
+    table{
+        width: 80%;
+    }
+      td{
+        font-size: 14px;
+      }
+      th{
+        font-size: 16px;
+      }
+}

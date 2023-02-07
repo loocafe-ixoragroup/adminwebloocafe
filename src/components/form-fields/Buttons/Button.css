@@ -46,3 +46,10 @@
 .btn-light:hover {
   background-color: #b6b6b6;
 }
+
+@media screen and (max-width:601px) {
+     .btn-view{
+      width: 80px;
+      height: 28px;
+     }
+}
