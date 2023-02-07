@@ -2,7 +2,7 @@ import React from 'react'
 
 const Trackrentals = () => {
   return (
-    <div>Trackrentals</div>
+    <div>Track</div>
   )
 }
 
