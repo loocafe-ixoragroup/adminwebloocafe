@@ -63,7 +63,7 @@ const Sidebar = () => {
           <div className="separator"></div>
           <div className="sidebar__footer">
             <NavLink
-              to={"/"}
+              to={"/settings"}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }
@@ -72,7 +72,7 @@ const Sidebar = () => {
               <span>Settings</span>
             </NavLink>
             <NavLink
-              to={"/"}
+              to={"/help"}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }

@@ -1,0 +1,32 @@
+.file-input {
+  width: 0.01px;
+  opacity: 0.01;
+  height: 0.01px;
+}
+
+.label-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 auto;
+}
+
+.label-flex > label {
+  border: 1px solid #606060;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  width: 160px;
+  justify-content: center;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+.label-flex > label > span {
+  font-weight: 500;
+  font-size: 17.6327px;
+  line-height: 21px;
+  letter-spacing: -0.01em;
+  color: #353535;
+  margin-left: 1rem;
+}

@@ -1,7 +1,11 @@
 import React from "react";
 import "./Button.css";
-function BlackButton() {
-  return <button className="btn-dark">Submit</button>;
+function BlackButton({ handleClick, name, type }) {
+  return (
+    <button className="btn-dark" onClick={handleClick} type={type}>
+      {name || "Submit"}
+    </button>
+  );
 }
 
 function LightButton() {
