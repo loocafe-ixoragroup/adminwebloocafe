@@ -14,7 +14,8 @@ import Tenant from "../subpages/TenantDetails/Tenant";
 const KYC = () => {
   return (
     <>
-      <Maintain />
+      {/* <Maintain /> */}
+      <Tenant/>
     </>
   );
 };
