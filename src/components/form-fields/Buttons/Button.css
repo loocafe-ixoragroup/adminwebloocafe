@@ -16,7 +16,7 @@
   border: none;
   font-size: 16px;
   border-radius: 12px;
-  background-color: #191919;
+  background-color: #0060D3;
   color: #fff;
   font-weight: 500;
   cursor: pointer;
@@ -24,28 +24,29 @@
 
 }
 .btn-view:hover {
-  background-color: #424242;
+  background-color: #3188f2;
 }
 
 .btn-dark {
-  background-color: #191919;
+  background-color: #0060D3;
   color: #fff;
   font-weight: 500;
 }
 
 .btn-dark:hover {
-  background-color: #424242;
+  background-color: #3188f2;
 }
 
 .btn-light {
-  background-color: #e0e0e0;
+  background-color:white;
   font-weight: 400;
   color: #252525;
+  border:1px solid #7B7B7B;
 }
 
-.btn-light:hover {
+/* .btn-light:hover {
   background-color: #b6b6b6;
-}
+} */
 
 @media screen and (max-width:601px) {
      .btn-view{

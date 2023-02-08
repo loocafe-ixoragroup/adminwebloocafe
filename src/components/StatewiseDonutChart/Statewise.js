@@ -15,7 +15,7 @@ const Statewise = () => {
 
         options={{
             labels:['Madhya Pradesh' , 'Uttar Pradesh' , 'Karnataka', 'Gujarat' , 'Jammu & Kashmir' , 'Telangana' , 'Rajastan' , 'Himachal Pradesh' , 'Maharashatra' , 'Tamil Nadu'],
-            colors: ["#606060", "#252525"],
+            colors: ["#006DEF", "#79C980", "#FF0000" , "#51A358"],
             title:{
                 text:'Total Loocafes',
                 align: 'left',
