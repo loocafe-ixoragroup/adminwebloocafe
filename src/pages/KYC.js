@@ -16,7 +16,8 @@ import Unit from "../subpages/UnitDetails/Unit";
 const KYC = () => {
   return (
     <>
-      <Unit />
+      {/* <Unit /> */}
+      <Tenant />
     </>
   );
 };

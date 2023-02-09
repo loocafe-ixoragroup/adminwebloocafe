@@ -59,6 +59,24 @@ const Sidebar = () => {
               <img src={IconAddSup} alt="" />
               <span>Add Supervisor</span>
             </NavLink>
+            <NavLink
+              to={SLUG.add_supervisor}
+              className={({ isActive }) =>
+                isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
+              }
+            >
+              <img src={IconAddSup} alt="" />
+              <span>Track Rentals</span>
+            </NavLink>
+            <NavLink
+              to={SLUG.add_supervisor}
+              className={({ isActive }) =>
+                isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
+              }
+            >
+              <img src={IconAddSup} alt="" />
+              <span>User Details</span>
+            </NavLink>
           </div>
           <div className="separator"></div>
           <div className="sidebar__footer">

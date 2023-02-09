@@ -1,0 +1,34 @@
+.supervisor_main > h3 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+    /* identical to box height */
+    color: #252525;
+  }
+  .UploadPhoto{
+    position: absolute;
+    margin-left: 58%;
+  }
+  @media screen and (max-width:1280px) {
+    .UploadPhoto{
+      position: relative;
+      margin-left: auto;
+      /* align-items: center;
+      justify-content: center; */
+    }
+  }
+  @media screen and (min-width:769px) {
+    .supervisor_main{
+        margin-left: 2rem;
+    }
+  }
+  @media screen and (max-width:768px) {
+    .supervisor_main{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+    }
+  }

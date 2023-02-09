@@ -3,7 +3,7 @@ export default {
   dashboard: "/dashboard",
   kyc: "/kyc",
   track: "/track",
-  add_supervisor: "add-supervisor",
+  add_supervisor: "/add-supervisor",
   settings: "/settings",
   // auth
   login: "/login",

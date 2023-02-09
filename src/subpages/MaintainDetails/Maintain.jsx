@@ -17,8 +17,8 @@ const Maintain = () => {
         <Phoneinput name={"Alternative Mobile No."} error={""} />
       </div>
       <div className="buttons">
-        <BlackButton />
-        <LightButton />
+        <BlackButton name={"Submit"}/>
+        <LightButton name={"Back"}/>
       </div>
     </div>
   );

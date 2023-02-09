@@ -1,8 +1,5 @@
 import Cookies from "universal-cookie/cjs/Cookies";
-import useWindowSize from "./hooks/useWindowSize";
-
-import PrivateRoutes from "./routes/PrivateRoutes";
-import PublicRoutes from "./routes/PublicRoutes";
+import useWindowSize from "./hooks/useWindowSize"
 
 function App() {
   const [width, height] = useWindowSize();
