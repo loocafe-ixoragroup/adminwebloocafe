@@ -16,7 +16,7 @@ const Dashboard = () => {
 
 ];
   return (
-    <> 
+    <div>
     <Bargraph/>
     <Statewise/>
     {
@@ -26,7 +26,7 @@ const Dashboard = () => {
         );
       })
      }
-    </>
+    </div>
   );
 };
 

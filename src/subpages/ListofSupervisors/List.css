@@ -2,7 +2,6 @@
   font-weight: 600;
   font-size: 28px;
   line-height: 33px;
-  /* identical to box height */
   color: #252525;
 }
 /* .list-table{
@@ -13,7 +12,7 @@
   align-items: center;
 } */
 table {
-  width: 60%;
+  width: 70%;
   box-sizing: border-box;
   border: 2.5px solid #eaeaea;
   border-collapse: collapse;

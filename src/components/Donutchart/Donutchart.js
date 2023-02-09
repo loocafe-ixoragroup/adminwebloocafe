@@ -14,7 +14,7 @@ const Donutchart = () => {
           series={[23, 45]}
           options={{
             labels: ["Pending", "Solved"],
-            colors: ["#606060", "#252525"],
+            colors: ["#E20000", "#51A358"],
             title: {
               text: "Total Issues Reported",
               align: "left",

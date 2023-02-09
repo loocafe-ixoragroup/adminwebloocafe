@@ -10,6 +10,8 @@ import {
   IconKyc,
   IconSettings,
   IconTrack,
+  IconTrackrental,
+  IconUserDetails,
 } from "../../assets/icons";
 import MenuComp from "./MenuComp";
 import Cookies from "universal-cookie";
@@ -68,21 +70,21 @@ const Sidebar = () => {
               <span>Add Supervisor</span>
             </NavLink>
             <NavLink
-              to={SLUG.add_supervisor}
+              to={SLUG.track_rentals}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }
             >
-              <img src={IconAddSup} alt="" />
+              <img src={IconTrackrental} alt="" />
               <span>Track Rentals</span>
             </NavLink>
             <NavLink
-              to={SLUG.add_supervisor}
+              to={SLUG.user_details}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }
             >
-              <img src={IconAddSup} alt="" />
+              <img src={IconUserDetails} alt="" />
               <span>User Details</span>
             </NavLink>
           </div>

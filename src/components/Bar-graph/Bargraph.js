@@ -14,12 +14,12 @@ const Bargraph = () => {
               {
                 name: "By User",
                 data: [44, 55, 57, 56, 61, 58, 63],
-                color:'#252525'
+                color:'#51A358'
               },
               {
                 name: "By Cleaner",
                 data: [76, 85, 101, 98, 87, 105, 91],
-                color:'#606060'
+                color:'#1B5B1A'
               },
             ]}
             options={{
@@ -37,6 +37,19 @@ const Bargraph = () => {
               legend: {
                 show: true,
                 position: "bottom",
+                itemMargin: {
+                  horizontal: 20,
+                  vertical:10
+                },
+                onItemHover: {
+                  highlightDataSeries: false,
+                },
+                onItemClick: {
+                  toggleDataSeries: false,
+                },
+                markers:{
+                  shape:"circle"
+                }
               },
               dataLabels: {
                 enabled: false,
@@ -51,6 +64,7 @@ const Bargraph = () => {
               },
               title: {
                 text: "Issues Reported",
+                margin:50,
                 style: {
                   fontSize: 24,
                 },

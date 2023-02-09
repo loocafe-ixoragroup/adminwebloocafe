@@ -1,0 +1,14 @@
+.Order_main  > h3 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+    color: #252525;
+}
+.Order_date{
+    display: flex;
+    gap: 2rem;
+}
+.order_table{
+    width: 90%;
+    margin: 2%;
+}
