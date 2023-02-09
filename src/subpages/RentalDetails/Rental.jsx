@@ -21,6 +21,7 @@ const schema = yup.object({
   agreement_start: yup.string().required("Required!"),
   agreement_end: yup.string().required("Required!"),
   unit_start_date: yup.string().required("Required!"),
+  rental_start_date: yup.string().required("Required!"),
   rental_electricity: yup.string().required("Required!"),
   rental_water: yup.string().required("Required!"),
   monthly_rent: yup.number("Rent must be a number").required("Required!"),
@@ -129,12 +130,20 @@ const Rental = ({ setPage, setValues, values }) => {
           error={errors.agreement_end?.message}
         />
       </div>
-      <DateInput
-        label={"Unit Start Date"}
-        name={"unit_start_date"}
-        register={{ ...register("unit_start_date") }}
-        error={errors.unit_start_date?.message}
-      />
+      <div className="unitNoFlex">
+        <DateInput
+          label={"Unit Start Date"}
+          name={"unit_start_date"}
+          register={{ ...register("unit_start_date") }}
+          error={errors.unit_start_date?.message}
+        />
+        <DateInput
+          label={"Rental Start Date"}
+          name={"rental_start_date"}
+          register={{ ...register("rental_start_date") }}
+          error={errors.rental_start_date?.message}
+        />
+      </div>
       {/* <MultiImage
         name={"rental_photo"}
         label={"Add Photos"}
