@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../layout/Layout";
-import { AddSupervisor, Dashboard, KYC, Login } from "../pages";
+import { AddSupervisor, Dashboard, KYC,Trackrentals, UserDetails,OrderTracking } from "../pages";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const PrivateRoutes = () => {
