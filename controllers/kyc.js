@@ -6,7 +6,6 @@ const rentalSchema = require("../models/rental")
 const {fileUploader} = require("../utils/fileUploader")
 const qrcode = require("qrcode")
 const loocafe = require("../models/loocafe")
-const qrSchema = require("../models/qr")
 
 module.exports.addKyc = async(req,res)=>{
 try{
@@ -89,7 +88,6 @@ try{
         
 
     })
-    const data = await loocafeSchema.findById(loocafe._id)
 
 
     qrcode.toDataURL(
@@ -105,27 +103,23 @@ Coordinates: ${data.coordinates}
         if(err){
             console.log(err)
         }
-        const all_qrdata = await qrSchema.find({})
-        console.log(all_qrdata, all_qrdata.length)
-        if(all_qrdata != undefined && all_qrdata.length != 0){
-            const len = all_qrdata.length-1
-            const qrdata = new qrSchema({
-                qr:url,
-                id:(all_qrdata[len].id+1),
-                loocafeID:loocafe._id
+
+        const all_loocafes = await loocafeSchema.find({}).sort({_id:-1})
+        if(all_loocafes.length == 1){
+            await loocafeSchema.findByIdAndUpdate(loocafe._id,{
+                $set:{
+                    id:1,
+                    qr:url
+                }
             })
-            await qrdata.save()
         }
-        
         else{
-            const qrdata = new qrSchema({
-                qr:url,
-                id:1,
-                loocafeID:loocafe._id
+            await loocafeSchema.findByIdAndUpdate(loocafe._id,{
+                $set:{
+                    id:(all_loocafes[0].id+1),
+                    qr:url
+                }
             })
-            await qrdata.save()
-
-
         }
         return res.status(200).json({
             success:true,

@@ -40,6 +40,11 @@ app.use("/api/supervisor",cors(corsOptionsDelegate),require("./routes/supervisor
 
 
 const PORT = process.env.PORT || 8000
+const {updateRentalStatus} = require("./controllers/rental");
+setInterval(()=>{
+  updateRentalStatus()
+},1000*60*60*24)
+
 app.listen(PORT,()=>{
   
     console.log("listening at "+PORT)

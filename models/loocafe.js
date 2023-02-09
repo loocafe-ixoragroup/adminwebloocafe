@@ -38,7 +38,9 @@ const loocafe = new Schema({
         amount:Number
     }],
     partnerID:mongoose.SchemaTypes.ObjectId,
-    supervisorID: mongoose.SchemaTypes.ObjectId
+    supervisorID: mongoose.SchemaTypes.ObjectId,
+    id:Number,
+    qr:String
     
 })
 
