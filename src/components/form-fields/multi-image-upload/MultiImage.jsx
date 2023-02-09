@@ -3,64 +3,27 @@ import { IconUpload2 } from "../../../assets/icons";
 import { LabelComp } from "../simple-input/SimpleInput";
 import "./MultiImage.css";
 
-function useTrait(initialValue) {
-  const [trait, updateTrait] = useState(initialValue);
-  let current = trait;
-
-  // console.log("trait", current);
-  const get = () => current;
-
-  const set = (newValue) => {
-    current = newValue;
-    updateTrait(newValue);
-    return current;
-  };
-
-  return {
-    get,
-    set,
-  };
-}
-
-const MultiImage = ({ name, error }) => {
+const MultiImage = ({ label, name, error, previews, onChange, deleteImg }) => {
   // const [imgArr, setImgArr] = useState([]);
-
-  const [imgObj, setImgObj] = useState([]);
-  const imgArr = useTrait([]);
-
-  const imgUpload = (e) => {
-    imgArr.set(e.target.files);
-    console.log(imgArr.get());
-    for (let i = 0; i < imgArr.get().length; i++) {
-      console.log("into for");
-      setImgObj((prev) => [...prev, URL.createObjectURL(imgArr.get()[i])]);
-    }
-  };
-
-  const deleteImg = (i) => {
-    const s = imgObj.filter((item, index) => index !== i);
-    setImgObj(s);
-    // console.log(s);
-  };
-
+  console.log(previews);
   return (
     <div>
-      <LabelComp name={name} error={error} />
+      <LabelComp name={label} error={error} />
       <div className="uploadimg_container">
         <input
           type="file"
-          name=""
-          id="multi-img"
+          name={name}
+          id={name}
           accept="image/*"
-          multiple
-          onChange={imgUpload}
+          // multiple
+          onChange={onChange}
         />
-        <label htmlFor="multi-img">
+        <label htmlFor={name}>
           <img src={IconUpload2} alt="" />
         </label>
-        <div className="previewimg_box">
-          {imgObj.length > 0 ? (
-            imgObj.map((item, index) => {
+        {/* <div className="previewimg_box">
+          {previews.length > 0 ? (
+            previews.map((item, index) => {
               return (
                 <div key={index}>
                   <img src={item} />
@@ -74,7 +37,7 @@ const MultiImage = ({ name, error }) => {
               <div></div>
             </>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import Logo from "../../assets/icons/logo.png";
 import SLUG from "../../resources/slugs";
 import {
@@ -12,9 +12,17 @@ import {
   IconTrack,
 } from "../../assets/icons";
 import MenuComp from "./MenuComp";
+import Cookies from "universal-cookie";
 
 const Sidebar = () => {
   const isMobile = window.innerWidth <= 1000;
+  const cookies = new Cookies();
+
+  const handleLogout = () => {
+    cookies.remove("token", { path: "/" });
+    // Navigate({ to: "/" });
+  };
+
   return (
     <>
       <MenuComp isMobile={isMobile}>
@@ -98,6 +106,11 @@ const Sidebar = () => {
               <img src={IconHelp} alt="" />
               <span>Help</span>
             </NavLink>
+            <div className="separator"></div>
+
+            <button className="btn_logout" onClick={handleLogout}>
+              Logout
+            </button>
           </div>
         </div>
       </MenuComp>

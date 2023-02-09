@@ -10,7 +10,7 @@ const Login = () => {
   const schema = yup.object({
     email: yup
       .string()
-      .email("Please enter valide email")
+      .email("Please enter valid email")
       .required("Email is required"),
     password: yup.string().required("Password is required"),
   });
@@ -21,6 +21,7 @@ const Login = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    mode: "all",
   });
 
   const onSubmit = (data) => {

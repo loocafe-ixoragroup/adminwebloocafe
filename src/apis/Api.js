@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 const BASE_URL = "https://loocafe.herokuapp.com/api";
@@ -11,11 +10,29 @@ const LoginAdmin = async ({ email, password }) => {
       username: email,
       password,
     });
-    cookies.set("token", data.token, { path: "/" });
-    Navigate("/dashboard");
+    console.log(data.data.token);
+    cookies.set("token", data.data.token, { path: "/" });
+    window.location.replace("/dashboard");
   } catch (error) {
     console.log(error.message);
   }
 };
 
-export { LoginAdmin };
+const addKycForm = async (formData) => {
+  try {
+    const response = await axios({
+      method: "post",
+      url: `${BASE_URL}/kyc/add-kyc`,
+      data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    console.log(response);
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+export { LoginAdmin, addKycForm };

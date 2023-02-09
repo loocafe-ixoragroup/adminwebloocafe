@@ -2,28 +2,30 @@ import React, { useState } from "react";
 import "./PhotoUpload.css";
 import { IconUpload1 } from "../../../assets/icons";
 
-const PhotoUpload = () => {
+const PhotoUpload = ({ name, value, error, onChange }) => {
   const [file, setFile] = useState("");
   return (
     <>
-      <div>
+      <div className="photo-upload">
         <input
           className="photo-input"
           type="file"
-          name=""
-          id="photo"
-          onChange={(e) => setFile(e.target.files[0])}
+          // {...register}
+          id={name}
+          accept="image/*"
+          onChange={onChange}
         />
-        <label htmlFor="photo" className="photo-label">
-          {file && (
+        <label htmlFor={name} className="photo-label">
+          {value && (
             <div className="previewImg">
-              <img src={URL.createObjectURL(file)} alt="" />
+              <img src={URL.createObjectURL(value)} alt="" />
               <button onClick={() => setFile("")}>x</button>
             </div>
           )}
           <img src={IconUpload1} alt="" />
           <span>Upload Your Photo</span>
         </label>
+        <span className="error-photo">{error && error}</span>
       </div>
     </>
   );

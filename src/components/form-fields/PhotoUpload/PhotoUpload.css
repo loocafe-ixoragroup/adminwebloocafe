@@ -1,3 +1,7 @@
+.photo-upload{
+  display: flex;
+  flex-direction: column;
+}
 .photo-input {
   opacity: 0;
   width: 0.01px;
@@ -54,4 +58,11 @@
   cursor: pointer;
   background-color: aliceblue;
   position: absolute;
+}
+
+.error-photo{
+  font-size: 12px;
+  margin-top: 1rem;
+  color: red;
+  text-align: center;
 }

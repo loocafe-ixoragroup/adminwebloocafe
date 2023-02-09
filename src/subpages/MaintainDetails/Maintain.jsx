@@ -6,19 +6,69 @@ import {
   SimpleInput,
 } from "../../components/form-fields";
 import "./Maintain.css";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-const Maintain = () => {
+const Maintain = ({ setPage, setValues }) => {
+  const schema = yup.object({
+    partner_name: yup.string().required("Required!"),
+    partner_phone: yup.string().required("Required!"),
+    partner_alternate_phone: yup.string(),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, submitCount },
+    setValue,
+  } = useForm({
+    mode: "all",
+    resolver: yupResolver(schema),
+  });
+
+  const handleNext = (data) => {
+    setValues((prevData) => ({ ...prevData, ...data }));
+    setPage((prev) => prev + 1);
+  };
+  const handlePrev = () => {
+    setPage((prev) => prev - 1);
+  };
   return (
     <div className="maintain_main">
       <h3>LooCafe Maintaining Partner</h3>
-      <SimpleInput name={"Partner Name"} error={""} />
+      <SimpleInput
+        label={"Partner Name"}
+        register={{ ...register("partner_name") }}
+        error={errors.partner_name?.message}
+      />
       <div className="mobileno">
-        <Phoneinput name={"Mobile No."} error={""} />
-        <Phoneinput name={"Alternative Mobile No."} error={""} />
+        <Phoneinput
+          label={"Mobile No."}
+          register={{ ...register("partner_phone") }}
+          error={errors.partner_phone?.message}
+          handlePhoneNumberChange={(value) =>
+            setValue("partner_phone", value, {
+              shouldDirty: true,
+              shouldValidate: submitCount > 0,
+            })
+          }
+        />
+        <Phoneinput
+          label={"Alternative Mobile No."}
+          register={{ ...register("partner_alternate_phone") }}
+          error={errors.partner_alternate_phone?.message}
+          handlePhoneNumberChange={(value) =>
+            setValue("partner_alternate_phone", value, {
+              shouldDirty: true,
+              shouldValidate: submitCount > 0,
+            })
+          }
+        />
       </div>
       <div className="buttons">
-        <BlackButton name={"Submit"}/>
-        <LightButton name={"Back"}/>
+        <BlackButton name={"Submit"} handleClick={handleSubmit(handleNext)} />
+        <LightButton name={"Back"} handleClick={handlePrev} />
       </div>
     </div>
   );
