@@ -23,7 +23,7 @@ const PhotoUpload = ({ name, value, error, onChange }) => {
             </div>
           )}
           <img src={IconUpload1} alt="" />
-          <span>Upload Your Photo</span>
+          <span className="upload-text">Upload Your Photo</span>
         </label>
         <span className="error-photo">{error && error}</span>
       </div>

@@ -32,7 +32,7 @@ const MenuComp = ({ isMobile, children }) => {
       zIndex: 30,
     },
     bmMenu: {
-      background: "#d9d9d9",
+      background: "white",
       top: 0,
     },
     bmItem: {

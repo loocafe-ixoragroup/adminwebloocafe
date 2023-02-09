@@ -1,9 +1,10 @@
 .Container-2{
-    background: #EAEAEA;
+    background: white;
     width: 28%;
     border-radius: 1rem;
     /* margin: 10% 14%; */
     margin:3% 2%;
     display: inline-block;
     justify-self: center;
+    box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
 }

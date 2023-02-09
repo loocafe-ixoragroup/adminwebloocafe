@@ -1,3 +1,10 @@
+.list_main{
+  background-color: white;
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+}
 .list_main > h3 {
   font-weight: 600;
   font-size: 28px;

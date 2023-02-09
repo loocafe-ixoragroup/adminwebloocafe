@@ -38,15 +38,15 @@ const Header = () => {
     <div className="header_block">
       <span>{title}</span>
       <div className="user__icons">
-        <div className="icon">
+        {/* <div className="icon">
           <img src={IconEnvelope} alt="" />
           <span></span>
-        </div>
+        </div> */}
 
-        <div className="icon">
+        {/* <div className="icon">
           <img src={IconBell} alt="" />
           <span></span>
-        </div>
+        </div> */}
         <div className="user__avtar"></div>
       </div>
     </div>

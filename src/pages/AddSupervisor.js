@@ -3,11 +3,12 @@ import Supervisor from "../subpages/AddnewSupervisor/Supervisor";
 import List from "../subpages/ListofSupervisors/List";
 const AddSupervisor = () => {
   return (
-    <>
-      {/* <List/> */}
-      <Supervisor />
-    </>
-  );
-};
+   
+  <>
+  {/* <List/> */}
+  <Supervisor/>
+  </>
+  )
+}
 
 export default AddSupervisor;

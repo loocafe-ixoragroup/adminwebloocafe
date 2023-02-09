@@ -11,8 +11,8 @@ import IconRs from "./icon-rs.svg";
 import IconUpload1 from "./icon-upload1.svg";
 import IconUpload2 from "./icon-upload2.svg";
 import IconUpload3 from "./icon-upload3.svg";
-import IconTrackrental from "./trackrental.png";
-import IconUserDetails from "./userdetails.png";
+import IconTrackrental from "./trackrental.svg";
+import IconUserDetails from "./userdetails.svg";
 
 export {
   IconDashboard,

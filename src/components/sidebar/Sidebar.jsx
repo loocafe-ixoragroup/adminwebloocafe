@@ -67,7 +67,7 @@ const Sidebar = () => {
               }
             >
               <img src={IconAddSup} alt="" />
-              <span>Add Supervisor</span>
+              <span>Supervisor</span>
             </NavLink>
             <NavLink
               to={SLUG.track_rentals}
@@ -88,8 +88,8 @@ const Sidebar = () => {
               <span>User Details</span>
             </NavLink>
           </div>
-          <div className="separator"></div>
-          <div className="sidebar__footer">
+           <div className="separator"></div>
+          {/*<div className="sidebar__footer">
             <NavLink
               to={"/settings"}
               className={({ isActive }) =>
@@ -113,7 +113,7 @@ const Sidebar = () => {
             <button className="btn_logout" onClick={handleLogout}>
               Logout
             </button>
-          </div>
+          </div> */}
         </div>
       </MenuComp>
     </>

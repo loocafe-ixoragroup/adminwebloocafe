@@ -1,5 +1,6 @@
 .sidebar__container {
   padding: 2rem 0;
+  background-color: white;
 }
 
 .sidebar__logo {
@@ -18,24 +19,35 @@
   margin-top: 2rem;
 }
 
+
 .sidebar__menu__item {
   /* width: 100%; */
   display: flex;
   align-items: center;
   text-decoration: none;
   height: 50px;
+  color: #0060D3;
 }
 
 .sidebar__menu__item.active::before {
   content: "";
   width: 5px;
   height: 50px;
-  background-color: #252525;
+  background-color: #0060D3;
 }
 
 .sidebar__menu__item:hover,
 .sidebar__menu__item.active {
-  background-color: #e8e8e8;
+  background-color: #E9F3FF;
+  color: #0060D3;
+}
+.sidebar__menu:hover,
+.sidebar__menu:active{
+  color: #0060D3;
+}
+
+.sidebar__menu.active > img{
+  fill: #4f4f4f;
 }
 
 .sidebar__menu__item > img {
@@ -46,12 +58,23 @@
 .sidebar__menu__item > span {
   padding-left: 1.2rem;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 17px;
   line-height: 19px;
-  color: #252525;
+  color: #353535;
 }
-
+/* .sidebar__container > span:active,
+.sidebar__container > span:hover{
+  color: #0060D3;
+} */
+.sidebar__menu__item.active > span,
+.sidebar__menu__item.hover > span{
+  color: #0060D3;
+  font-weight: 600;
+}
+.sidebar__menu__item.active::before > span{
+  color: #0060D3;
+}
 .separator {
   margin: 25px;
   opacity: 0.4;
