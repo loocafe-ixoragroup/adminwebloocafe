@@ -11,6 +11,9 @@ const PrivateRoutes = () => {
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/kyc" element={<KYC />} />
         <Route path="/add-supervisor" element={<AddSupervisor />} />
+        <Route path="/track-rentals" element={<Trackrentals />} />
+        <Route path="/user-details" element={<UserDetails />} />
+        <Route path="/track" element={<OrderTracking />} />
       </Routes>
     </Layout>
   );
