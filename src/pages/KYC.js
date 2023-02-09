@@ -1,23 +1,19 @@
-import React from "react";
-import {
-  BlackButton,
-  DateInput,
-  LightButton,
-  Phoneinput,
-  SimpleInput,
-  StateCity,
-  UploadInput,
-} from "../components/form-fields";
+import React, { useState } from "react";
 import Maintain from "../subpages/MaintainDetails/Maintain";
+import Rental from "../subpages/RentalDetails/Rental";
 import Tenant from "../subpages/TenantDetails/Tenant";
+import Unit from "../subpages/UnitDetails/Unit";
 
 const KYC = () => {
-  return (
-    <>
-      {/* <Maintain /> */}
-      <Tenant/>
-    </>
-  );
+  const [page, setPage] = useState(0);
+  const [values, setValues] = useState({});
+  const components = [
+    <Tenant setPage={setPage} values={values} setValues={setValues} />,
+    <Maintain setPage={setPage} values={values} setValues={setValues} />,
+    <Rental setPage={setPage} values={values} setValues={setValues} />,
+    <Unit setPage={setPage} values={values} setValues={setValues} />,
+  ];
+  return <>{components[page]}</>;
 };
 
 export default KYC;

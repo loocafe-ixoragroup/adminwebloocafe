@@ -1,14 +1,22 @@
 import React from "react";
 import "./Button.css";
-function BlackButton({name}) {
-  return <button className="btn-dark">{name}</button>;
+function BlackButton({ handleClick, name, type }) {
+  return (
+    <button className="btn-dark" onClick={handleClick} type={type}>
+      {name}
+    </button>
+  );
 }
 
-function LightButton({name}) {
-  return <button className="btn-light">{name}</button>;
+function LightButton({ name, handleClick }) {
+  return (
+    <button className="btn-light" onClick={handleClick}>
+      {name}
+    </button>
+  );
 }
-function ViewButton({name}){
-  return <button className="btn-view">{name}</button>
+function ViewButton({ name }) {
+  return <button className="btn-view">{name}</button>;
 }
 
 export { BlackButton, LightButton, ViewButton };

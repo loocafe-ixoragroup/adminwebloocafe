@@ -1,16 +1,15 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import "./SimpleInput.css";
 import { IconInfo } from "../../../assets/icons";
 
-const SimpleInput = ({ name, error, type }) => {
+const SimpleInput = ({ label, error, register, ...props }) => {
   return (
     <div className="si_div">
-      <LabelComp name={name} error={error} />
-      <input type={type} className="si_input" />
+      <LabelComp name={label} error={error} />
+      <input className="si_input" {...props} {...register} />
     </div>
   );
 };
-
 export const LabelComp = ({ name, error }) => {
   return (
     <div className="si_label">

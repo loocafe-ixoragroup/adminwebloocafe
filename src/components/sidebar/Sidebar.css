@@ -81,6 +81,22 @@
   border-top: 1px solid #4f4f4f;
 }
 
+.btn_logout{
+  /* width: 255px; */
+  width: 100%;
+  height: 53px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.btn_logout:hover{
+  background-color: #e8e8e8;
+}
+
 @media screen and (max-width: 499px) {
   .sidebar__menu__item > span {
     font-size: 15px;

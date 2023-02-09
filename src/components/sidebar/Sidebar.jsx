@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import Logo from "../../assets/icons/logo.png";
 import SLUG from "../../resources/slugs";
 import {
@@ -14,9 +14,17 @@ import {
   IconUserDetails,
 } from "../../assets/icons";
 import MenuComp from "./MenuComp";
+import Cookies from "universal-cookie";
 
 const Sidebar = () => {
   const isMobile = window.innerWidth <= 1000;
+  const cookies = new Cookies();
+
+  const handleLogout = () => {
+    cookies.remove("token", { path: "/" });
+    // Navigate({ to: "/" });
+  };
+
   return (
     <>
       <MenuComp isMobile={isMobile}>
@@ -83,7 +91,7 @@ const Sidebar = () => {
            <div className="separator"></div>
           {/*<div className="sidebar__footer">
             <NavLink
-              to={"/"}
+              to={"/settings"}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }
@@ -92,7 +100,7 @@ const Sidebar = () => {
               <span>Settings</span>
             </NavLink>
             <NavLink
-              to={"/"}
+              to={"/help"}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }
@@ -100,6 +108,11 @@ const Sidebar = () => {
               <img src={IconHelp} alt="" />
               <span>Help</span>
             </NavLink>
+            <div className="separator"></div>
+
+            <button className="btn_logout" onClick={handleLogout}>
+              Logout
+            </button>
           </div> */}
         </div>
       </MenuComp>

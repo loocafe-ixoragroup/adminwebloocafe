@@ -1,6 +1,6 @@
-import React from 'react';
-import Supervisor from '../subpages/AddnewSupervisor/Supervisor';
-import List from '../subpages/ListofSupervisors/List';
+import React from "react";
+import Supervisor from "../subpages/AddnewSupervisor/Supervisor";
+import List from "../subpages/ListofSupervisors/List";
 const AddSupervisor = () => {
   return (
    

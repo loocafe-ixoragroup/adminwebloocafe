@@ -1,0 +1,28 @@
+.login_container {
+  margin: 6.5rem auto 0;
+  background-color: #f1f1f1;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+}
+
+.login_container > h3 {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 33px;
+  /* identical to box height */
+  color: #252525;
+}
+
+.btnDiv {
+  margin: 2rem 0;
+}
+
+@media screen and (min-width: 425px) {
+  .login_container {
+    max-width: 400px;
+    min-width: 200px;
+  }
+}

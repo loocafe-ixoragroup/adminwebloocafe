@@ -4,4 +4,14 @@ import AddSupervisor from "./AddSupervisor";
 import Trackrentals from "./Trackrentals";
 import UserDetails from "./UserDetails";
 import OrderTracking from "./OrderTracking";
-export { Dashboard, KYC, AddSupervisor, Trackrentals, UserDetails, OrderTracking};
+import Login from "./Login/Login";
+
+export {
+  Dashboard,
+  KYC,
+  AddSupervisor,
+  Login,
+  Trackrentals,
+  UserDetails,
+  OrderTracking,
+};

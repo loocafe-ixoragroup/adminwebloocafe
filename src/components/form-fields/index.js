@@ -4,8 +4,11 @@ import Phoneinput from "./phone-input/Phoneinput";
 import DateInput from "./DatePicker/DateInput";
 import StateCity from "./DropdownList/StateCity";
 import UploadInput from "./UploadInput/UploadInput";
-import { BlackButton, LightButton , ViewButton} from "./Buttons/Button";
+import { BlackButton, LightButton, ViewButton } from "./Buttons/Button";
 import PhotoUpload from "./PhotoUpload/PhotoUpload";
+import MultiImage from "./multi-image-upload/MultiImage";
+import FileUpload from "./FileUpload/FileUpload";
+import Dropdown from "./DropdownList/Dropdown";
 
 export {
   SimpleInput,
@@ -13,9 +16,12 @@ export {
   PhotoUpload,
   LightButton,
   LabelComp,
+  Dropdown,
   Phoneinput,
+  FileUpload,
   DateInput,
   StateCity,
   UploadInput,
-  ViewButton
+  MultiImage,
+  ViewButton,
 };
