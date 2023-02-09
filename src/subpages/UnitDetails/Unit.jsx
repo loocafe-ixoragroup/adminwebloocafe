@@ -12,7 +12,6 @@ import {
 import "./Unit.css";
 import * as yup from "yup";
 import { addKycForm } from "../../apis/Api";
-import { object } from "prop-types";
 
 const schema = yup.object({
   loocafe_name: yup.string().required("Required"),

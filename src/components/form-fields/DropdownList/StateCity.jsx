@@ -13,6 +13,7 @@ const StateCity = ({
   onChange,
   states,
 }) => {
+  // console.log(states, city);
   return (
     <>
       <div className="dropdown_container">
