@@ -1,7 +1,11 @@
 .tenant_main {
-  margin: 0;
+  margin: 2rem;
   display: flex;
   flex-direction: column;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
 }
 
 .tenant_main > h3 {
@@ -25,7 +29,7 @@
 
 .flex-div {
   display: flex;
-  gap: 5rem;
+  gap: 2rem;
 }
 
 .btn-div {
@@ -40,6 +44,7 @@
   }
   .tenant_main {
     align-items: center;
+    margin: 2rem;
     /* padding: 0 2rem; */
   }
   .formpart1 {
@@ -52,5 +57,8 @@
   .flex-div {
     flex-direction: column;
     gap: 0;
+  }
+  .tenant_main{
+    margin: 1rem;
   }
 }

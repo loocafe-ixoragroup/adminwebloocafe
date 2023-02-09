@@ -33,7 +33,21 @@ const Bargraph = () => {
                   show: false,
                 },
               },
-
+              // responsive:[
+              //   {
+              //     breakpoint:650,
+              //     options: {
+              //       plotOptions: {
+              //         bar: {
+              //           horizontal: false
+              //         }
+              //       },
+              //       legend: {
+              //         position: "bottom"
+              //       }
+              //     }
+              //   }
+              // ],
               legend: {
                 show: true,
                 position: "bottom",
@@ -58,6 +72,7 @@ const Bargraph = () => {
                 opacity: 1,
               },
               chart: {
+                fontFamily: 'Poppins', 
                 toolbar: {
                   show: false,
                 },

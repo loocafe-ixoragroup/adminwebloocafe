@@ -5,8 +5,8 @@ const AddSupervisor = () => {
   return (
    
   <>
-  <List/>
-  {/* <Supervisor/> */}
+  {/* <List/> */}
+  <Supervisor/>
   </>
   )
 }

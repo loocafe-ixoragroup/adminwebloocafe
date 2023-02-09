@@ -1,3 +1,10 @@
+.track_main{
+    background-color: white;
+    box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+    padding: 2rem;
+    border-radius: 1.25rem;
+    margin: 2rem;
+}
 .track_main > h3 {
     font-weight: 600;
     font-size: 28px;

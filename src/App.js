@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import './App.css';
 import Sidebar from "./components/sidebar/Sidebar";
 import useWindowSize from "./hooks/useWindowSize";
 import Layout from "./layout/Layout";

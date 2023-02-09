@@ -1,14 +1,59 @@
+.Order_main{
+  background-color: white;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  margin: 2rem;
+}
 .Order_main  > h3 {
     font-weight: 600;
     font-size: 28px;
     line-height: 33px;
     color: #252525;
+    margin-left: 3%;
+}
+.Order_main  > p{
+    margin-left: 3%;
 }
 .Order_date{
     display: flex;
     gap: 2rem;
+    margin-left:3%;
 }
 .order_table{
     width: 90%;
     margin: 2%;
+}
+@media screen and (min-width: 769px) {
+    .Order_main {
+      margin-left: 2rem;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .Order_main {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .Order_date{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 1%;
+    }
+  }
+  @media screen and (max-width: 601px){
+    table{
+        width: 80%;
+    }
+      td{
+        font-size: 12px;
+      }
+      th{
+        font-size: 14px;
+      }
 }

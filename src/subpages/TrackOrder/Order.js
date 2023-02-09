@@ -5,7 +5,7 @@ const Order = () => {
   return (
     <div className='Order_main'>
         <h3>Track Your Order</h3>
-        <p>Order found:16</p>
+        <p>Order found: 16</p>
         <div className='Order_date'>
         <DateInput name={"From"}/>
         <DateInput name={"To"}/>
