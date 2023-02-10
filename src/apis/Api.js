@@ -10,7 +10,7 @@ const LoginAdmin = async ({ email, password }) => {
       username: email,
       password,
     });
-    console.log(data.data.token);
+    console.log(data);
     cookies.set("token", data.data.token, { path: "/" });
     window.location.replace("/dashboard");
   } catch (error) {
@@ -35,4 +35,21 @@ const addKycForm = async (formData) => {
   }
 };
 
-export { LoginAdmin, addKycForm };
+const addSupervisor = async (formData) => {
+  try {
+    const response = await axios({
+      method: "post",
+      url: `${BASE_URL}/supervisor/add-supervisor`,
+      data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    console.log(response);
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+export { LoginAdmin, addKycForm, addSupervisor };

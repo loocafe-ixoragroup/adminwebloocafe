@@ -1,0 +1,66 @@
+@import url("../../index.css");
+.smodal__container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+  pointer-events: none;
+}
+
+.smodal__container.show {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+.smodal__content {
+  width: 400px;
+  height: 200px;
+  padding: 15px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 10px;
+  transition: all 0.6s ease-in-out;
+  transform: translateY(-200px);
+}
+
+.smodal__container.show .smodal__content {
+  transform: translateY(0);
+}
+
+.smodal__content > span {
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+}
+
+/* .smodal__content > button {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  color: #fff;
+  font-size: 1rem;
+  margin: 1rem auto 0;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--clr-secondary-light);
+  transition: all ease 0.3s;
+}
+
+.smodal__content > button:hover {
+  background-color: var(--clr-hover-btn);
+} */

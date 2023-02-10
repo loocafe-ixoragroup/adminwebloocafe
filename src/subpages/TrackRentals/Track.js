@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { City, State } from "country-state-city";
+import { useTrait } from "../../hooks/useTrait";
 
 const schema = yup.object({
   sup_city: yup.string().required("Required!"),
@@ -25,11 +26,20 @@ const Track = () => {
     mode: "all",
     resolver: yupResolver(schema),
   });
-  const states = State.getStatesOfCountry("IN");
-  const [city, setCity] = useState([]);
 
-  const onChange = (e) => {
-    setCity(City.getCitiesOfState("IN", e.target.value));
+  const defaultState = useTrait("");
+  const defaultCity = useTrait("");
+  const states = State.getStatesOfCountry("IN");
+  const [city1, setCity1] = useState([]);
+  const onChangeState = (e) => {
+    setCity1(City.getCitiesOfState("IN", e.target.value));
+    defaultState.set(e.target.value);
+    console.log(defaultState.get());
+  };
+
+  const onChangeCity = (e) => {
+    defaultCity.set(e.target.value);
+    console.log(defaultCity.get());
   };
   return (
     <div className="track_main">
@@ -41,9 +51,12 @@ const Track = () => {
         errors={errors.state?.message}
         names={"state"}
         registers={{ ...register("state") }}
-        onChange={onChange}
-        city={city}
+        city={city1}
         states={states}
+        onChangeState={onChangeState}
+        onChangeCity={onChangeCity}
+        defaultState={defaultState.get()}
+        defaultCity={defaultCity.get()}
       />
       <div className="date_picker">
         <DateInput label={"From"} />

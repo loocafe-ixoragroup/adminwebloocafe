@@ -13,6 +13,7 @@ import "./Rental.css";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useData } from "../../context/KycContext";
 
 const schema = yup.object({
   tenant_name: yup.string().required("Required!"),
@@ -24,21 +25,60 @@ const schema = yup.object({
   rental_start_date: yup.string().required("Required!"),
   rental_electricity: yup.string().required("Required!"),
   rental_water: yup.string().required("Required!"),
-  monthly_rent: yup.number("Rent must be a number").required("Required!"),
-  security_deposit: yup.number("Rent must be a number").required("Required!"),
+  monthly_rent: yup
+    .number("Rent must be a number")
+    .positive("Rent must be a positive value")
+    .required("Required!"),
+  security_deposit: yup
+    .number("Rent must be a number")
+    .positive("Rent must be a positive value")
+    .required("Required!"),
+  rental_photo: yup
+    .mixed()
+    .test("file", "You need to provide a file", (value) => {
+      if (value.length > 0) {
+        return true;
+      }
+      return false;
+    }),
+  rental_agreement: yup
+    .mixed()
+    .test("file", "You need to provide a file", (value) => {
+      if (value.length > 0) {
+        return true;
+      }
+      return false;
+    }),
 });
 
-const Rental = ({ setPage, setValues, values }) => {
+const Rental = ({ setPage }) => {
+  const { setValues, data } = useData();
+
   const {
     register,
     handleSubmit,
     formState: { errors, submitCount },
     setValue,
   } = useForm({
+    defaultValues: {
+      tenant_name: data.tenant_name,
+      previous_tenant: data.previous_tenant,
+      rental_phone: data.rental_phone,
+      agreement_start: data.agreement_start,
+      agreement_end: data.agreement_end,
+      unit_start_date: data.unit_start_date,
+      rental_start_date: data.rental_start_date,
+      rental_electricity: data.rental_electricity,
+      rental_water: data.rental_water,
+      monthly_rent: data.monthly_rent,
+      security_deposit: data.security_deposit,
+      rental_photo: data.rental_photo,
+      rental_agreement: data.rental_agreement,
+    },
     mode: "all",
     resolver: yupResolver(schema),
   });
-  console.log(values);
+
   // const [imgObj, setImgObj] = useState();
   // // const imgArr = useTrait();
 
@@ -49,13 +89,15 @@ const Rental = ({ setPage, setValues, values }) => {
   // };
 
   const handleNext = (data) => {
-    console.log(data);
-    setValues((prevData) => ({ ...prevData, ...data }));
+    // console.log(data);
+    setValues(data);
     setPage((prev) => prev + 1);
   };
   const handlePrev = () => {
     setPage((prev) => prev - 1);
   };
+
+  // console.log(errors);
 
   return (
     <div className="rental_main">
@@ -71,6 +113,7 @@ const Rental = ({ setPage, setValues, values }) => {
         label={"Whatsapp Number"}
         error={errors.rental_phone?.message}
         name={"rental_phone"}
+        phone={data.rental_phone}
         register={{ ...register("rental_phone") }}
         handlePhoneNumberChange={(value) =>
           setValue("rental_phone", value, {
@@ -144,44 +187,21 @@ const Rental = ({ setPage, setValues, values }) => {
           error={errors.rental_start_date?.message}
         />
       </div>
-      {/* <MultiImage
+      <MultiImage
         name={"rental_photo"}
         label={"Add Photos"}
-        error={!values.rental_photo && "Required!"}
+        files={data.rental_photo}
+        error={errors.rental_photo?.message}
         // val={values.rental_photo}
-        // register={{ ...register("address_proof", { required: true }) }}
-        onChange={(e) => {
-          imgArr.set(e.target.files[0]);
-          console.log(typeof imgArr.get());
-          // for (let i = 0; i < imgArr?.get()?.length; i++) {
-          //   setImgObj((prev) => [
-          //     ...prev,
-          //     URL.createObjectURL(imgArr.get()[i]),
-          //   ]);
-          // }
-          setValues({ ...values, ["rental_photo"]: e.target.files[0] });
-        }}
-        deleteImg={deleteImg}
-        previews={imgObj}
-      /> */}
-      <PhotoUpload
-        name={"rental_photo"}
-        error={!values.rental_photo && "Required!"}
-        value={values.rental_photo}
-        // register={{ ...register("cleaner_photo", { required: true }) }}
-        onChange={(e) =>
-          setValues({ ...values, ["rental_photo"]: e.target.files[0] })
-        }
+        register={{ ...register("rental_photo") }}
       />
+
       <FileUpload
         label={"Upload Agreement File"}
+        error={errors.rental_agreement?.message}
         name={"rental_agreement"}
-        error={!values.rental_agreement && "Required!"}
-        value={values.rental_agreement}
-        // register={{ ...register("cleaner_pan", { required: true }) }}
-        onChange={(e) =>
-          setValues({ ...values, ["rental_agreement"]: e.target.files[0] })
-        }
+        file={data.rental_agreement}
+        register={{ ...register("rental_agreement") }}
       />
       <div className="buttons">
         <BlackButton name={"Next"} handleClick={handleSubmit(handleNext)} />

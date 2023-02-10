@@ -10,8 +10,12 @@ const StateCity = ({
   registerc,
   registers,
   city,
-  onChange,
+  // onChange,
+  onChangeState,
+  onChangeCity,
   states,
+  defaultState,
+  defaultCity,
 }) => {
   // console.log(states, city);
   return (
@@ -19,8 +23,10 @@ const StateCity = ({
       <div className="dropdown_container">
         <div className="select">
           <LabelComp name={"State"} error={errors} />
-          <select name={names} {...registers} onChange={onChange}>
-            <option value="">--select--</option>
+          <select name={names} {...registers} onChange={onChangeState}>
+            <option value="">
+              {defaultState !== "" ? defaultState : "--select--"}
+            </option>
             {states.map((state) => (
               <option key={state.isoCode} value={state.isoCode}>
                 {state.name}
@@ -30,8 +36,10 @@ const StateCity = ({
         </div>
         <div className="select">
           <LabelComp name={"City"} error={errorc} />
-          <select name={namec} {...registerc}>
-            <option value="">--select--</option>
+          <select name={namec} {...registerc} onChange={onChangeCity}>
+            <option value="">
+              {defaultCity !== "" ? defaultCity : "--select--"}
+            </option>
             {city.map((city) => (
               <option key={city.isoCode} value={city.isoCode}>
                 {city.name}
