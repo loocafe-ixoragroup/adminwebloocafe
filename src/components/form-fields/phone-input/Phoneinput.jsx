@@ -2,7 +2,7 @@ import React from "react";
 import { LabelComp } from "../simple-input/SimpleInput";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/high-res.css";
-const Phoneinput = ({ label, error, handlePhoneNumberChange }) => {
+const Phoneinput = ({ label, error, handlePhoneNumberChange, phone }) => {
   return (
     <div
       style={{
@@ -13,6 +13,7 @@ const Phoneinput = ({ label, error, handlePhoneNumberChange }) => {
       <LabelComp name={label} error={error} />
       <PhoneInput
         country={"in"}
+        value={phone}
         onChange={handlePhoneNumberChange}
         inputStyle={{
           border: "1.2px solid #7b7b7b",

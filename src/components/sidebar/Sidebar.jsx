@@ -88,7 +88,7 @@ const Sidebar = () => {
               <span>User Details</span>
             </NavLink>
           </div>
-           <div className="separator"></div>
+          <div className="separator"></div>
           {/*<div className="sidebar__footer">
             <NavLink
               to={"/settings"}

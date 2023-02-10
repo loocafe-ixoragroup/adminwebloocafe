@@ -9,26 +9,34 @@ import "./Maintain.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useData } from "../../context/KycContext";
 
-const Maintain = ({ setPage, setValues }) => {
+const Maintain = ({ setPage }) => {
   const schema = yup.object({
     partner_name: yup.string().required("Required!"),
     partner_phone: yup.string().required("Required!"),
     partner_alternate_phone: yup.string(),
   });
 
+  const { setValues, data } = useData();
   const {
     register,
     handleSubmit,
     formState: { errors, submitCount },
     setValue,
   } = useForm({
+    defaultValues: {
+      partner_name: data.partner_name,
+      partner_phone: data.partner_phone,
+      partner_alternate_phone: data.partner_alternate_phone,
+    },
     mode: "all",
     resolver: yupResolver(schema),
   });
 
   const handleNext = (data) => {
-    setValues((prevData) => ({ ...prevData, ...data }));
+    setValues(data);
+    // console.log(data);
     setPage((prev) => prev + 1);
   };
   const handlePrev = () => {
@@ -46,6 +54,7 @@ const Maintain = ({ setPage, setValues }) => {
         <Phoneinput
           label={"Mobile No."}
           register={{ ...register("partner_phone") }}
+          phone={data.partner_phone}
           error={errors.partner_phone?.message}
           handlePhoneNumberChange={(value) =>
             setValue("partner_phone", value, {
@@ -58,6 +67,7 @@ const Maintain = ({ setPage, setValues }) => {
           label={"Alternative Mobile No."}
           register={{ ...register("partner_alternate_phone") }}
           error={errors.partner_alternate_phone?.message}
+          phone={data.partner_alternate_phone}
           handlePhoneNumberChange={(value) =>
             setValue("partner_alternate_phone", value, {
               shouldDirty: true,

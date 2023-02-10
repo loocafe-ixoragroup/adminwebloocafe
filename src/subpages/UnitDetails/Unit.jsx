@@ -12,6 +12,8 @@ import {
 import "./Unit.css";
 import * as yup from "yup";
 import { addKycForm } from "../../apis/Api";
+import { useData } from "../../context/KycContext";
+import Confirm from "../../components/Popup/Confirm";
 
 const schema = yup.object({
   loocafe_name: yup.string().required("Required"),
@@ -37,36 +39,45 @@ const schema = yup.object({
   timing_to: yup.string().required("Required"),
 });
 
-const Unit = ({ setPage, setValues, values }) => {
+const Unit = ({ setPage }) => {
+  const { setValues, data } = useData();
+  const [show, setShow] = useState(false);
+
+  const onClose = () => {
+    setShow(false);
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors, submitCount },
   } = useForm({
+    defaultValues: {
+      loocafe_name: data.loocafe_name,
+      loocafe_address: data.loocafe_address,
+      loocafe_type: data.loocafe_type,
+      electricity_unit_no: data.electricity_unit_no,
+      water_bill_unit_no: data.water_bill_unit_no,
+      latitude: data.latitude,
+      longitude: data.longitude,
+      pincode: data.pincode,
+      city: data.city,
+      state: data.state,
+      supervisorID: data.supervisorID,
+      timing_from: data.timing_from,
+      timing_to: data.timing_to,
+    },
     mode: "all",
     resolver: yupResolver(schema),
   });
 
-  const handleNext = async (data) => {
-    console.log(data);
-    setValues({ ...values, ...data });
-
-    var formData = new FormData();
-    var cnt = 1;
-    for (var key in values) {
-      formData.append(key, values[key]);
-      cnt++;
-    }
-    // formData.append("rental_start_date", "2020-10-20");
-    console.log(cnt);
-
-    addKycForm(formData);
-
-    // clearTimeout();
-
-    // console.log(values);
+  const handleNext = async (d) => {
+    setValues(d);
+    // console.log(data);
+    setShow(true);
     // setPage((prev) => prev + 1);
   };
+
   const handlePrev = () => {
     setPage((prev) => prev - 1);
   };
@@ -179,6 +190,7 @@ const Unit = ({ setPage, setValues, values }) => {
         <BlackButton name={"Submit"} handleClick={handleSubmit(handleNext)} />
         <LightButton name={"Back"} handleClick={handlePrev} />
       </div>
+      <Confirm show={show} setShow={setShow} onClose={onClose} />
     </div>
   );
 };

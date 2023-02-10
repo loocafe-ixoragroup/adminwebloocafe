@@ -1,6 +1,7 @@
 import React from "react";
 import "./Layout.css";
-import { Sidebar, Header, SidebarContext } from "../components";
+import { Sidebar, Header } from "../components";
+import SidebarContext from "../context/SidebarContext";
 
 const Layout = ({ children }) => {
   return (
