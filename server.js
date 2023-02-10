@@ -38,6 +38,7 @@ app.use("/api/loocafe",cors(corsOptionsDelegate),require("./routes/loocafe"))
 app.use("/api/kyc",cors(corsOptionsDelegate),require("./routes/kyc"))
 app.use("/api/supervisor",cors(corsOptionsDelegate),require("./routes/supervisor"))
 app.use("/api/user",cors(corsOptionsDelegate),require("./routes/user"))
+app.use("/api/rental",cors(corsOptionsDelegate),require("./routes/rental"))
 
 
 const PORT = process.env.PORT || 8000

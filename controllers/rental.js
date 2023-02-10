@@ -6,7 +6,7 @@ module.exports.trackRent = async(req,res)=>{
     try{
         const data = await rentalSchema.find({})
         let arr=[]
-        data[0].forEach(ele=>{
+        data.forEach(ele=>{
             if(ele.unit_start_date < req.body.from_date){
                 const d = new Date(ele.unit_start_date) + 1000*60*60*24*30
                 if(d <= req.body.to_date){
