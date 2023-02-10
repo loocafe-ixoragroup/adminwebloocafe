@@ -58,4 +58,20 @@ module.exports.getSupervisors = async(req,res)=>{
         })
     }
 }
+module.exports.getAllSupervisors = async(req,res)=>{
+    try{
+        const data = await supervisorSchema.find({})
+        return res.status(200).json({
+            success:true,
+            message:"all supervisors fetched successfully",
+            data:data
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+err
+        })
+    }
+}
 
