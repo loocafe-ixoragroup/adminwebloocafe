@@ -12,8 +12,8 @@ module.exports.addUser = async(req,res)=>{
             email:req.body.email,
             phone:req.body.phone,
             state:req.body.state,
+            city:req.body.city,
             dob:req.body.dob,
-            age:req.body.age,
             gender:req.body.gender,
             disability:req.body.disability
         })
@@ -66,7 +66,7 @@ module.exports.getUser = async(req,res)=>{
     await userSchema.findById(req.user._id).then(data=>{
         return res.status(200).json({
             success:true,
-            message:"users fetched successfully",
+            message:"user fetched successfully",
             data:data
         })
     }).catch(error=>{

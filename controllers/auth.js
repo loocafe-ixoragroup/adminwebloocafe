@@ -6,7 +6,7 @@ module.exports.login = async(req,res)=>{
         const data = await userSchema.find({username:req.body.username,
         password:req.body.password})
         if(data.length == 0){
-            return res.status(402).json({
+            return res.status(401).json({
                 success:false,
                 message:"Invalid credentials"
             })
