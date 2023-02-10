@@ -9,6 +9,8 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
 
             result = await uploadFileToS3(file, fileName);    //upload file to s3
             console.log(result.key);
+            let rental_images = []
+
             if(file.fieldname == "address_proof"){
                 cleaner.address_proof = result.key
                 await cleaner.save()
@@ -27,13 +29,13 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
                 cleaner.photo = result.key
                 await cleaner.save()
             }
-            else if(file.fieldname == "rental_photo"){
-                rental.images.push(result.key)
-                await rental.save()
-            }
+            
             else if(file.fieldname == "rental_agreement"){
                 rental.agreement_file = result.key
                 await rental.save()
+            }
+            else if(file.fieldname == "rental_photo"){
+                rental_images.push(result.key)
             }
            
             fs.unlink(file.path,(err => {
@@ -44,4 +46,6 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
               
                 }}
               ))
+              console.log("we get ",rental_images)
+              return rental_images
 }

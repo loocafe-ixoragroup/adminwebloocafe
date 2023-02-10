@@ -7,6 +7,7 @@ const rentalSchema = require("../models/rental")
 const {fileUploader} = require("../utils/fileUploader")
 const qrcode = require("qrcode")
 const supervisorSchema = require("../models/supervisor")
+const {uploadFileToS3} = require("../utils/s3")
 
 module.exports.addKyc = async(req,res)=>{
 try{
@@ -91,14 +92,23 @@ try{
     })
     await cleaner.save()
     await partner.save()
+    let rental_images = []
+    req.files.forEach(async(file,index)=>{
 
-    req.files.forEach(async(file)=>{
+        fileUploader(file,cleaner,rental).then(async(arr)=>{
+            // console.log("===",arr)
+                if(arr.length > 0){
+                    rental_images.push(...arr)
+                }
+                if(index == req.files.length - 1){
 
-        fileUploader(file,cleaner,rental)
+                    rental.images = rental_images
+                    await rental.save()
+                }
+        })
         
-
     })
-
+  
 
     qrcode.toDataURL(
         
@@ -113,7 +123,7 @@ Coordinates: ${loocafe.coordinates}
         if(err){
             console.log(err)
         }
-        console.log("qr")
+        // console.log("qr")
         const all_loocafes = await loocafeSchema.find({}).sort({_id:-1})
             await loocafeSchema.findByIdAndUpdate(loocafe._id,{
                 $set:{
