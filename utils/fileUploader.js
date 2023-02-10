@@ -13,31 +13,29 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
 
             if(file.fieldname == "address_proof"){
                 cleaner.address_proof = result.key
-                await cleaner.save()
                 
             }
             else if(file.fieldname == "cleaner_pan"){
                 cleaner.pan = result.key
-                await cleaner.save()
                 
             }
             else if(file.fieldname == "cleaner_aadhar"){
                 cleaner.aadhar = result.key
-                await cleaner.save()
             }
             else if(file.fieldname == "cleaner_photo"){
                 cleaner.photo = result.key
-                await cleaner.save()
             }
             
             else if(file.fieldname == "rental_agreement"){
                 rental.agreement_file = result.key
-                await rental.save()
             }
             else if(file.fieldname == "rental_photo"){
                 rental_images.push(result.key)
             }
            
+            await cleaner.save()
+            await rental.save()
+            
             fs.unlink(file.path,(err => {
                 if (err) console.log(err);
                 else {
