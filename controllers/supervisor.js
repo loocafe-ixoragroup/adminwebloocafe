@@ -1,5 +1,6 @@
 const supervisorSchema = require("../models/supervisor")
 const userSchema = require("../models/user")
+const {uploadFileToS3} = require("../utils/s3")
 
 module.exports.addSupervisor = async(req,res)=>{
     try{
@@ -8,12 +9,22 @@ module.exports.addSupervisor = async(req,res)=>{
             username:req.body.username,
             phone:req.body.phone,
             city:req.body.city,
-            state:req.body.state
+            state:req.body.state,
+            alternate_phone:req.body.alternate_phone,
+            password:req.body.password
         })
         await data.save()
+        let file = req.file
+        originalname = (file.originalname).replace(/[&\/\\#, +()$~%'":*?<>{}]/g, '_')   // here replace special char to "_"
+
+            fileName = originalname+"-"+new Date().getTime()/1000
+
+            result = await uploadFileToS3(file, fileName);    //upload file to s3
+            data.photo = result.key
+            await data.save()
         const user = new userSchema({
             userId:req.body.username,
-            phone:req.body.phone,
+            phone:req.body.password,
             role:"supervisor"
         })
         await user.save()
