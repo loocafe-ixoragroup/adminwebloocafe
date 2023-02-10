@@ -1,4 +1,5 @@
 const supervisorSchema = require("../models/supervisor")
+const userSchema = require("../models/user")
 
 module.exports.addSupervisor = async(req,res)=>{
     try{
@@ -10,6 +11,12 @@ module.exports.addSupervisor = async(req,res)=>{
             state:req.body.state
         })
         await data.save()
+        const user = new userSchema({
+            userId:req.body.username,
+            phone:req.body.phone,
+            role:"supervisor"
+        })
+        await user.save()
         return res.status(200).json({
             success:true,
             message:"supervisor added successfully"
@@ -29,7 +36,7 @@ module.exports.getSupervisors = async(req,res)=>{
         // console.log(data)
         return res.status(200).json({
             success:true,
-            message:"supervisor added successfully",
+            message:"supervisor(s) fetched successfully",
             data:data
         })
     }

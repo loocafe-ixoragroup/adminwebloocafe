@@ -12,7 +12,11 @@ const user = new Schema({
     age:String,
     bloodgroup:String,
     gender:String,
-    disability:String
+    disability:String,
+    role:{
+        type:String,
+        default:"user"
+    }
     
 })
 

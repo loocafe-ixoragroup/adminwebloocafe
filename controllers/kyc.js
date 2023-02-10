@@ -2,10 +2,11 @@ const { ObjectID } = require("bson")
 const cleanerSchema = require("../models/cleaner")
 const loocafeSchema = require("../models/loocafe")
 const partnerSchema = require("../models/partner")
+const userSchema = require("../models/user")
 const rentalSchema = require("../models/rental")
 const {fileUploader} = require("../utils/fileUploader")
 const qrcode = require("qrcode")
-const loocafe = require("../models/loocafe")
+const supervisorSchema = require("../models/supervisor")
 
 module.exports.addKyc = async(req,res)=>{
 try{
@@ -26,7 +27,12 @@ try{
         dob:req.body.dob
     })
     await cleaner.save()
-
+    const user = new userSchema({
+        userId:req.body.email,
+        phone:req.body.cleaner_phone,
+        role:"cleaner"
+    })
+    await user.save()
     const partner = new partnerSchema({
         name:req.body.partner_name,
         phone:req.body.partner_phone,
@@ -67,7 +73,7 @@ try{
         },
         electricity_unit_no:req.body.electricity_unit_no,
         water_bill_unit_no:req.body.water_bill_unit_no,
-        supervisorID:ObjectID(req.body.supervisor),
+        supervisorID:ObjectID(req.body.supervisorID),
         timing:{
             from:req.body.timing_from,
             to:req.body.timing_to
@@ -78,7 +84,11 @@ try{
 
     cleaner.loocafe = loocafe._id
     partner.loocafeID.push(loocafe._id)
-
+    await supervisorSchema.findByIdAndUpdate(ObjectID(req.body.supervisorID),{
+        $push:{
+            loocafes:loocafe._id
+        }
+    })
     await cleaner.save()
     await partner.save()
 
@@ -92,10 +102,10 @@ try{
 
     qrcode.toDataURL(
         
-`Loocafe name: ${data.name}
-Loocafe Type: ${data.type}
-Location : ${data.location}
-Coordinates: ${data.coordinates}
+`Loocafe name: ${loocafe.name}
+Loocafe Type: ${loocafe.type}
+Location : ${loocafe.location}
+Coordinates: ${loocafe.coordinates}
 `, 
         
     
@@ -103,24 +113,15 @@ Coordinates: ${data.coordinates}
         if(err){
             console.log(err)
         }
-
+        console.log("qr")
         const all_loocafes = await loocafeSchema.find({}).sort({_id:-1})
-        if(all_loocafes.length == 1){
             await loocafeSchema.findByIdAndUpdate(loocafe._id,{
                 $set:{
-                    id:1,
+                    id:(all_loocafes.length+1),
                     qr:url
                 }
             })
-        }
-        else{
-            await loocafeSchema.findByIdAndUpdate(loocafe._id,{
-                $set:{
-                    id:(all_loocafes[0].id+1),
-                    qr:url
-                }
-            })
-        }
+        
         return res.status(200).json({
             success:true,
             message:"data saved successfully"
