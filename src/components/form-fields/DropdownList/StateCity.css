@@ -13,7 +13,12 @@
   display: flex;
   gap: 2rem;
 }
-
+@media screen and (min-width:1000px) and (max-width:1110px) {
+  .dropdown_container{
+    display: flex;
+    flex-direction: column;
+  }
+}
 @media screen and (max-width: 768px) {
   .dropdown_container {
     flex-direction: column;

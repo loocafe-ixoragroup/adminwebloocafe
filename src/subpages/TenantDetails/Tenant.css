@@ -51,7 +51,9 @@
     width: 100%;
   }
 }
-
+@media screen and (min-width:1000px) and (max-width:1130px) {
+  
+}
 @media screen and (max-width: 768px) {
   .mobileno,
   .flex-div {

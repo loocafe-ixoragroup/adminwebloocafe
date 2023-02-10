@@ -1,3 +1,12 @@
+.rental_main{
+  margin: 2rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+  /* width: fit-content;
+  box-sizing: fit-content; */
+}
 .rental_main > h3 {
   font-weight: 600;
   font-size: 28px;
@@ -5,7 +14,10 @@
   /* identical to box height */
   color: #252525;
 }
-
+.unitNoFlex{
+  display: flex;
+  gap: 2rem;
+}
 @media screen and (max-width: 1000px) {
   .rental_main {
     display: flex;
@@ -17,7 +29,7 @@
 @media screen and (min-width: 1000px) {
   .unitNoFlex {
     display: flex;
-    max-width: 90%;
+    max-width: 50%;
     gap: 2rem;
   }
 }

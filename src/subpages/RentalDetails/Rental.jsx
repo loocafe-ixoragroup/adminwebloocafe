@@ -184,7 +184,7 @@ const Rental = ({ setPage, setValues, values }) => {
         }
       />
       <div className="buttons">
-        <BlackButton name={"Submit"} handleClick={handleSubmit(handleNext)} />
+        <BlackButton name={"Next"} handleClick={handleSubmit(handleNext)} />
         <LightButton name={"Back"} handleClick={handlePrev} />
       </div>
     </div>
