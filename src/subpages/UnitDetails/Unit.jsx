@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { City, State } from "country-state-city";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   BlackButton,
@@ -14,6 +14,9 @@ import * as yup from "yup";
 import { addKycForm } from "../../apis/Api";
 import { useData } from "../../context/KycContext";
 import Confirm from "../../components/Popup/Confirm";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllSupervisor } from "../../features/SupervisorSlice";
+import { useTrait } from "../../hooks/useTrait";
 
 const schema = yup.object({
   loocafe_name: yup.string().required("Required"),
@@ -42,6 +45,12 @@ const schema = yup.object({
 const Unit = ({ setPage }) => {
   const { setValues, data } = useData();
   const [show, setShow] = useState(false);
+  const { supervisor } = useSelector((state) => state.supervisor);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllSupervisor({ state: "gujarat", city: "ahmedabad" }));
+  }, []);
 
   const onClose = () => {
     setShow(false);
@@ -71,7 +80,7 @@ const Unit = ({ setPage }) => {
     resolver: yupResolver(schema),
   });
 
-  const handleNext = async (d) => {
+  const handleNext = (d) => {
     setValues(d);
     // console.log(data);
     setShow(true);
@@ -84,10 +93,18 @@ const Unit = ({ setPage }) => {
 
   const states = State.getStatesOfCountry("IN");
   const [city, setCity] = useState([]);
-  // const loocafetype = ["type1", "type2", "type3"];
-  const onChange = (e) => {
-    // console.log(e.target.value);
+
+  const defaultState = useTrait("");
+  const defaultCity = useTrait("");
+  const onChangeState = (e) => {
     setCity(City.getCitiesOfState("IN", e.target.value));
+    defaultState.set(e.target.value);
+    // console.log(defaultState.get());
+  };
+
+  const onChangeCity = (e) => {
+    defaultCity.set(e.target.value);
+    // console.log(defaultCity.get());
   };
   return (
     <div className="unit_main">
@@ -113,7 +130,8 @@ const Unit = ({ setPage }) => {
         errors={errors.state?.message}
         names={"state"}
         registers={{ ...register("state") }}
-        onChange={onChange}
+        onChangeCity={onChangeCity}
+        onChangeState={onChangeState}
         city={city}
         states={states}
       />

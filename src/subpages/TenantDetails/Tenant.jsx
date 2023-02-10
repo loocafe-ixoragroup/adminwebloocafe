@@ -14,6 +14,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "./Tenant.css";
 import { useData } from "../../context/KycContext";
+import { useTrait } from "../../hooks/useTrait";
 
 const schema = yup.object({
   cleaner_name: yup
@@ -108,9 +109,17 @@ const Tenant = ({ setPage }) => {
   const states = State.getStatesOfCountry("IN");
   const [city, setCity] = useState([]);
 
-  const onChange = (e) => {
-    // console.log(e.target.value);
+  const defaultState = useTrait("");
+  const defaultCity = useTrait("");
+  const onChangeState = (e) => {
     setCity(City.getCitiesOfState("IN", e.target.value));
+    defaultState.set(e.target.value);
+    // console.log(defaultState.get());
+  };
+
+  const onChangeCity = (e) => {
+    defaultCity.set(e.target.value);
+    // console.log(defaultCity.get());
   };
 
   return (
@@ -181,7 +190,8 @@ const Tenant = ({ setPage }) => {
             errors={errors.cleaner_state?.message}
             names={"cleaner_state"}
             registers={{ ...register("cleaner_state") }}
-            onChange={onChange}
+            onChangeCity={onChangeCity}
+            onChangeState={onChangeState}
             city={city}
             states={states}
           />

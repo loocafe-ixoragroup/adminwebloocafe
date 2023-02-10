@@ -12,10 +12,13 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllSupervisor } from "../../features/SupervisorSlice";
+import { useTrait } from "../../hooks/useTrait";
 
 const schema = yup.object({
-  sup_city: yup.string().required("Required!"),
-  sup_state: yup.string().required("Required!"),
+  city: yup.string(),
+  state: yup.string(),
 });
 
 const List = ({ setPage }) => {
@@ -26,38 +29,67 @@ const List = ({ setPage }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, submitCount },
+    formState: { errors },
+    setValue,
   } = useForm({
+    defaultValues: {
+      city: "",
+      state: "",
+    },
     mode: "all",
     resolver: yupResolver(schema),
   });
+
+  // const [defaultValue, setDefaultValue] = useState({ state: "", city: "" });
+  const defaultState = useTrait("");
+  const defaultCity = useTrait("");
+  const states = State.getStatesOfCountry("IN");
+  const [cities, setCities] = useState([]);
+
+  const { supervisors } = useSelector((state) => state.supervisor);
+  const dispatch = useDispatch();
+
+  const handleShow = (data) => {
+    dispatch(getAllSupervisor(data));
+  };
 
   const handleNext = () => {
     setPage((prev) => prev + 1);
   };
 
-  const states = State.getStatesOfCountry("IN");
-  const [city, setCity] = useState([]);
+  const onChangeState = (e) => {
+    setCities(City.getCitiesOfState("IN", e.target.value));
+    defaultState.set(e.target.value);
+    // console.log(defaultState.get());
+  };
 
-  const onChange = (e) => {
-    setCity(City.getCitiesOfState("IN", e.target.value));
+  const onChangeCity = (e) => {
+    defaultCity.set(e.target.value);
+    // console.log(defaultCity.get());
   };
   return (
     <div className="list_main">
       <h3>List of Supervisors</h3>
       <StateCity
-        errorc={errors.sup_city?.message}
-        namec={"sup_city"}
-        registerc={{ ...register("sup_city") }}
-        errors={errors.sup_state?.message}
-        names={"sup_state"}
-        registers={{ ...register("sup_state") }}
-        onChange={onChange}
-        city={city}
+        errorc={errors.city?.message}
+        namec={"city"}
+        registerc={{ ...register("city") }}
+        errors={errors.state?.message}
+        names={"state"}
+        // onChange={onChange}
+        registers={{ ...register("state") }}
+        onChangeState={onChangeState}
+        onChangeCity={onChangeCity}
+        city={cities}
         states={states}
+        defaultState={defaultState.get()}
+        defaultCity={defaultCity.get()}
       />
       <div className="buttons">
-        <BlackButton name={"Show List"} />
+        <BlackButton
+          name={"Show List"}
+          handleClick={handleSubmit(handleShow)}
+        />
         <LightButton name={"Add Supervisor"} handleClick={handleNext} />
       </div>
       <table>
@@ -66,69 +98,23 @@ const List = ({ setPage }) => {
           <th>Role</th>
           <th>Assigned Loocafe</th>
         </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Rohini</td>
-          <td>Supervisor</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
+        {supervisors?.data?.length > 0 ? (
+          supervisors?.data.map((s) => (
+            <tr key={s._id}>
+              <td>{s.name}</td>
+              <td>Supervisor</td>
+              <td>
+                <ViewButton name={"view"} />
+              </td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td></td>
+            <td> No data to show</td>
+            <td></td>
+          </tr>
+        )}
       </table>
     </div>
   );
