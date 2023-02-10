@@ -46,6 +46,6 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
               
                 }}
               ))
-              console.log("we get ",rental_images)
+            //   console.log("we get ",rental_images)
               return rental_images
 }
