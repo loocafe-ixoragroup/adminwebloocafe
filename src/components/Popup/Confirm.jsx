@@ -28,6 +28,7 @@ const Confirm = ({ show, onClose }) => {
     });
 
     addKycForm(formData);
+    onClose();
   };
 
   // console.log(data);
