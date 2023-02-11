@@ -81,12 +81,12 @@ const Supervisor = ({ setPage }) => {
   const onChangeState = (e) => {
     setCity1(City.getCitiesOfState("IN", e.target.value));
     defaultState.set(e.target.value);
-    console.log(defaultState.get());
+    //  console.log(defaultState.get());
   };
 
   const onChangeCity = (e) => {
     defaultCity.set(e.target.value);
-    console.log(defaultCity.get());
+    //  console.log(defaultCity.get());
   };
   return (
     <div className="supervisor_main">

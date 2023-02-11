@@ -27,12 +27,12 @@ const Order = () => {
   const onChangeState = (e) => {
     setCity1(City.getCitiesOfState("IN", e.target.value));
     defaultState.set(e.target.value);
-    console.log(defaultState.get());
+    // console.log(defaultState.get());
   };
 
   const onChangeCity = (e) => {
     defaultCity.set(e.target.value);
-    console.log(defaultCity.get());
+    // console.log(defaultCity.get());
   };
   return (
     <div className="Order_main">
@@ -40,10 +40,10 @@ const Order = () => {
       <p>Order found: 16</p>
       <div className="State-city-track">{/* <StateCity/> */}</div>
       <div className="Order_date">
-        <DateInput label={"From"}/>
-        <DateInput label={"To"}/>
-        </div>
-        <div className="Track-order-statecity">
+        <DateInput label={"From"} />
+        <DateInput label={"To"} />
+      </div>
+      <div className="Track-order-statecity">
         <StateCity
           city={city1}
           states={states}
@@ -54,7 +54,7 @@ const Order = () => {
         />
       </div>
       <div className="view-orders-button">
-      <BlackButton name={"View"} />
+        <BlackButton name={"View"} />
       </div>
       <table className="order_table">
         <tr>
@@ -68,7 +68,7 @@ const Order = () => {
         </tr>
         {loocafe?.length > 0 ? (
           loocafe?.map((lc, index) => (
-            <tr>
+            <tr key={lc.loocafe._id}>
               <td>{index + 1}</td>
               <td>{lc.loocafe.name}</td>
               <td>{lc.loocafe.location.address}</td>

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Details.css";
-import {
-  BlackButton,
-  StateCity
-} from "../../components/form-fields";
+import { BlackButton, StateCity } from "../../components/form-fields";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -35,17 +32,17 @@ const Details = () => {
   const onChangeState = (e) => {
     setCity1(City.getCitiesOfState("IN", e.target.value));
     defaultState.set(e.target.value);
-    console.log(defaultState.get());
+    // console.log(defaultState.get());
   };
 
   const onChangeCity = (e) => {
     defaultCity.set(e.target.value);
-    console.log(defaultCity.get());
+    // console.log(defaultCity.get());
   };
 
   useEffect(() => {
     dispatch(getAllUser());
-  },[]);
+  }, []);
 
   // const handleShow = (data) => {
   //   dispatch(getAllUser(data));
