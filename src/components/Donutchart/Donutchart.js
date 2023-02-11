@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "react-apexcharts";
-import '../Donutchart/Donutchart.css';
-const Donutchart = () => {
+import "../Donutchart/Donutchart.css";
+const Donutchart = ({ text, title }) => {
   return (
     <React.Fragment>
       <div className="Container-2">
@@ -16,7 +16,7 @@ const Donutchart = () => {
             labels: ["Pending", "Solved"],
             colors: ["#E20000", "#51A358"],
             title: {
-              text: "Total Issues Reported",
+              text: title,
               align: "left",
               margin: 10,
               style: {
@@ -26,7 +26,7 @@ const Donutchart = () => {
               },
             },
             subtitle: {
-              text: "By User",
+              text: text,
               margin: 10,
               style: {
                 fontSize: 14,
@@ -56,7 +56,7 @@ const Donutchart = () => {
               position: "bottom",
               itemMargin: {
                 horizontal: 20,
-                vertical:10
+                vertical: 10,
               },
               onItemHover: {
                 highlightDataSeries: false,
