@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BlackButton, SimpleInput } from "../../components/form-fields";
 import "./Login.css";
+import Logo from "../../assets/icons/logo.png";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -30,6 +31,7 @@ const Login = () => {
 
   return (
     <div className="login_container">
+    <img src={Logo} alt=" "/>
       <h3>Admin Login</h3>
       <SimpleInput
         label={"Email:"}

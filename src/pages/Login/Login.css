@@ -1,23 +1,38 @@
 .login_container {
   margin: 6.5rem auto 0;
-  background-color: #f1f1f1;
+  background: #FFFFFF;
+box-shadow: 0px 0px 51px -8px rgba(0, 96, 211, 0.25);
+border-radius: 20px;
   display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 13px;
 }
-
+.seperator-line{
+  /* color: #002F75;
+  background-color: #002F75;
+  height: 5; */
+  opacity: 0.4;
+  border-top: 5px solid #621414;
+}
+.login_container > img{
+  width: 100px;
+  height: 100px;
+  margin-top: 5%;
+}
 .login_container > h3 {
   font-weight: 600;
-  font-size: 25px;
+  font-size: 34px;
   line-height: 33px;
   /* identical to box height */
-  color: #252525;
+  color: #002F75;
+  margin-bottom: 0;
 }
 
 .btnDiv {
   margin: 2rem 0;
+  margin-bottom: 4rem;
 }
 
 @media screen and (min-width: 425px) {

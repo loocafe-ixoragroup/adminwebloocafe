@@ -1,7 +1,7 @@
-import React from 'react'
-import '../../components/StatewiseDonutChart/Statewise.css';
+import React from 'react';
+import './StatewiseTrack.css';
 import Chart from 'react-apexcharts';
-const Statewise = () => {
+const StatewiseTrack = () => {
   return (
     <React.Fragment>
     <div className='Container-1'>
@@ -10,12 +10,12 @@ const Statewise = () => {
         <Chart
         type='donut'
         width='100%'
-        height={500}
-        series={[10,20,20,10,20,15,11,9,8,11]}
+        height={450}
+        series={[100,30,10]}
 
         options={{
-            labels:['Madhya Pradesh' , 'Uttar Pradesh' , 'Karnataka', 'Gujarat' , 'Jammu & Kashmir' , 'Telangana' , 'Rajastan' , 'Himachal Pradesh' , 'Maharashatra' , 'Tamil Nadu'],
-            colors: ["#006DEF", "#79C980", "#FF0000" , "#51A358"],
+            labels:['Active' , 'Maintainance' , 'Removed'],
+            colors: ["#51A358" , "#FF0000" , "#0060D3"],
             title:{
                 text:'Total Loocafes',
                 align: 'left',
@@ -57,7 +57,7 @@ const Statewise = () => {
             legend: {
               position: 'bottom',
               itemMargin:{
-                horizontal:10
+                horizontal:20
               },
               onItemHover:{
                 highlightDataSeries:false
@@ -82,4 +82,4 @@ const Statewise = () => {
   )
 }
 
-export default Statewise
+export default StatewiseTrack

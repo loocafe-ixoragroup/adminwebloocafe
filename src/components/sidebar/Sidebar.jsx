@@ -90,7 +90,7 @@ const Sidebar = () => {
             </NavLink>
           </div>
           <div className="separator"></div>
-          {/*<div className="sidebar__footer">
+          <div className="sidebar__footer">
             <NavLink
               to={"/"}
               className={({ isActive }) =>
@@ -101,6 +101,7 @@ const Sidebar = () => {
               <img src={IconLogout} alt="" />
               <span>Logout</span>
             </NavLink>
+            {/*
             {/* <NavLink
               to={"/help"}
               className={({ isActive }) =>
@@ -117,7 +118,7 @@ const Sidebar = () => {
               Logout
             </button>
             </div> */}
-          </div> 
+          </div>
        </div>
       </MenuComp>
     </>

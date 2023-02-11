@@ -24,6 +24,12 @@
     width: 90%;
     margin: 2%;
 }
+.Track-order-statecity{
+  margin-left: 3%;
+}
+.view-orders-button{
+  margin: 2% 3%;
+}
 th{
   font-weight: 600;
 }

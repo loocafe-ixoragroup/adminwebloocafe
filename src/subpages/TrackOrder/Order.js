@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Order.css";
 import {
   ViewButton,
-  DateInput, StateCity, DropdownStatus,
+  DateInput, DropdownStatus,
   StateCity,
   BlackButton,
 } from "../../components/form-fields";
@@ -27,10 +27,11 @@ const Order = () => {
     <div className="Order_main">
       <h3>Track Loocafe’s</h3>
       <p>Order found: 16</p>
-      <div className="State-city-track">
-         {/* <StateCity/> */}
-      </div>
       <div className="Order_date">
+        <DateInput label={"From"}/>
+        <DateInput label={"To"}/>
+        </div>
+        <div className="Track-order-statecity">
         <StateCity
           city={city1}
           states={states}
@@ -40,7 +41,9 @@ const Order = () => {
           defaultCity={defaultCity.get()}
         />
       </div>
+      <div className="view-orders-button">
       <BlackButton name={"View"} />
+      </div>
       <table className="order_table">
         <tr>
           <th>id</th>
