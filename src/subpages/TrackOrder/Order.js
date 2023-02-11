@@ -64,10 +64,10 @@ const Order = () => {
           loocafe?.map((lc, index) => (
             <tr>
               <td>{index + 1}</td>
-              <td>{lc.name}</td>
-              <td>{lc.location.address}</td>
-              <td>07 feb 2023</td>
-              <td>₹10000</td>
+              <td>{lc.loocafe.name}</td>
+              <td>{lc.loocafe.location.address}</td>
+              <td>{lc.unit_start_date}</td>
+              <td>₹{lc.monthly_rent}</td>
               <td>
                 <DropdownStatus />
               </td>

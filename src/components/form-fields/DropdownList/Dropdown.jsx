@@ -3,16 +3,19 @@ import { useSelector } from "react-redux";
 import { LabelComp } from "../simple-input/SimpleInput";
 
 const Dropdown = ({ label, name, error, register }) => {
-  const { supervisors } = useSelector((state) => state.supervisor);
+  const { supervisor } = useSelector((state) => state.supervisor);
   return (
     <div className="select">
       <LabelComp name={label} error={error} />
       {name === "supervisorID" ? (
         <select name={name} {...register}>
-          {supervisors?.data &&
-            supervisors?.data.map((supervisor) => (
+          {supervisor.length > 0 ? (
+            supervisor.map((supervisor) => (
               <option value={supervisor._id}>{supervisor.name}</option>
-            ))}
+            ))
+          ) : (
+            <option>jajkjakpoi</option>
+          )}
         </select>
       ) : (
         <select name={name} {...register}>

@@ -15,8 +15,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { trackRental } from "../../features/TrackRentalSlice";
 
 const schema = yup.object({
-  city: yup.string(),
-  state: yup.string(),
+  city: yup.string().required("Required!"),
+  state: yup.string().required("Required!"),
+  from: yup.string().required("Required!"),
+  to: yup.string().required("Required!"),
 });
 
 const Track = () => {
@@ -28,12 +30,14 @@ const Track = () => {
     defaultValues: {
       city: "",
       state: "",
+      from: "",
+      to: "",
     },
     mode: "all",
     resolver: yupResolver(schema),
   });
 
-  const { trackrental } = useSelector((state) => state.trackrental);
+  const { rentals, isloading } = useSelector((state) => state.trackrental);
   const dispatch = useDispatch();
 
   const defaultState = useTrait("");
@@ -52,7 +56,7 @@ const Track = () => {
   };
 
   const handleShow = (data) => {
-    dispatch(trackRental());
+    dispatch(trackRental(data));
   };
 
   return (
@@ -73,8 +77,18 @@ const Track = () => {
         defaultCity={defaultCity.get()}
       />
       <div className="date_picker">
-        <DateInput label={"From"} />
-        <DateInput label={"To"} />
+        <DateInput
+          label={"From"}
+          error={errors.from?.message}
+          name={"from"}
+          register={{ ...register("from") }}
+        />
+        <DateInput
+          label={"To"}
+          error={errors.to?.message}
+          name={"to"}
+          register={{ ...register("to") }}
+        />
       </div>
       <div className="buttons">
         <BlackButton
@@ -90,51 +104,33 @@ const Track = () => {
           <th>Rent</th>
           <th>View</th>
         </tr>
-        <tr>
-          <td>Loocafe1</td>
-          <td>--</td>
-          <td>--</td>
-          <td>₹10000</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>Loocafe2</td>
-          <td>--</td>
-          <td>₹10000</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>Loocafe3</td>
-          <td>₹10000</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>Loocafe4</td>
-          <td>--</td>
-          <td>--</td>
-          <td>₹10000</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>Loocafe5</td>
-          <td>₹10000</td>
-          <td>
-            <ViewButton name={"view"} />
-          </td>
-        </tr>
+        {rentals?.length > 0 ? (
+          rentals.map((r) => (
+            <tr key={r._id}>
+              <td>
+                {r.ele.rental_collection === "Pending" ? r.loocafe_name : "--"}
+              </td>
+              <td>
+                {r.ele.rental_collection === "Over Due" ? r.loocafe_name : "--"}
+              </td>
+              <td>
+                {r.ele.rental_collection === "Completed"
+                  ? r.loocafe_name
+                  : "--"}
+              </td>
+              <td>₹{r.ele.monthly_rent}</td>
+              <td>
+                <ViewButton name={"view"} />
+              </td>
+            </tr>
+          ))
+        ) : isloading ? (
+          <>Loading....</>
+        ) : (
+          <tr>
+            <td>No data to show</td>
+          </tr>
+        )}
       </table>
     </div>
   );

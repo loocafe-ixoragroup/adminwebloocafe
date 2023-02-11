@@ -11,7 +11,7 @@ const cookies = new Cookies();
 export const getAllLoocafe = createAsyncThunk("loocafe/getAllLoocafe", () => {
   return axios({
     method: "get",
-    url: `${BASE_URL}/loocafe/get-all-loocafes`,
+    url: `${BASE_URL}/loocafe/get-loocafe-details`,
     headers: { Authorization: `Bearer ${cookies.get("token")}` },
   }).then((res) => res.data.data);
 });

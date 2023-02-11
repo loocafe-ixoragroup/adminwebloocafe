@@ -6,14 +6,17 @@ const BASE_URL = "https://loocafe.herokuapp.com/api";
 const cookies = new Cookies();
 
 //ACTIONS
-export const trackRental = createAsyncThunk("trackrental/trackRental", () => {
-  return axios({
-    method: "post",
-    // data: { state, city },
-    url: `${BASE_URL}/rental/track-rental`,
-    headers: { Authorization: `Bearer ${cookies.get("token")}` },
-  }).then((res) => res.data);
-});
+export const trackRental = createAsyncThunk(
+  "trackrental/trackRental",
+  ({ state, city, from, to }) => {
+    return axios({
+      method: "post",
+      data: { state, city, from_date: from, to_date: to },
+      url: `${BASE_URL}/rental/track-rental`,
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    }).then((res) => res.data.data);
+  }
+);
 
 const initialState = {
   rentals: [],
@@ -31,12 +34,12 @@ const TrackRentalSlice = createSlice({
     });
     builder.addCase(trackRental.fulfilled, (state, action) => {
       state.isloading = false;
-      state.supervisors = action.payload;
+      state.rentals = action.payload;
       state.error = "";
     });
     builder.addCase(trackRental.rejected, (state, action) => {
       state.isloading = false;
-      state.supervisors = [];
+      state.rentals = [];
       state.error = action.error.message;
     });
   },
