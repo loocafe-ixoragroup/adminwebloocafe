@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Details.css";
 import {
   BlackButton,
-  StateCity,
-  ViewButton,
-  DateInput,
+  StateCity
 } from "../../components/form-fields";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -47,7 +45,7 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getAllUser());
-  }, []);
+  },[]);
 
   // const handleShow = (data) => {
   //   dispatch(getAllUser(data));

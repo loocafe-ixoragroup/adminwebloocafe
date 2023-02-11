@@ -1,6 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+//import { Route, Routes } from "react-router-dom";
 import './App.css';
-import Sidebar from "./components/sidebar/Sidebar";
+//import Sidebar from "./components/sidebar/Sidebar";
 import Cookies from "universal-cookie/cjs/Cookies";
 import useWindowSize from "./hooks/useWindowSize";
 import PrivateRoutes from "./routes/PrivateRoutes";

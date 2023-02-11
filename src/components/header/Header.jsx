@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
-import { IconEnvelope, IconBell } from "../../assets/icons";
+//import { IconEnvelope, IconBell } from "../../assets/icons";
 import { SidebarContext } from "../../hooks/useSidebar";
 import slugs from "../../resources/slugs";
 

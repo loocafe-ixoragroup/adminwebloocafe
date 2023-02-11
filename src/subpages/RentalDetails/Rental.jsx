@@ -122,7 +122,7 @@ const Rental = ({ setPage }) => {
           })
         }
       />
-      <div className="unitNoFlex">
+      <div className="billunitNoFlex">
         <SimpleInput
           label={"Electricity Unit Number"}
           type={"number"}

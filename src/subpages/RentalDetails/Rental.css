@@ -14,9 +14,19 @@
   /* identical to box height */
   color: #252525;
 }
+.billunitNoFlex{
+  display: flex;
+  gap: 1rem;
+}
 .unitNoFlex{
   display: flex;
   gap: 2rem;
+}
+@media screen and (min-width:1000px) and (max-width:1110px) {
+  .billunitNoFlex{
+    display: flex;
+    flex-direction: column;
+  }
 }
 @media screen and (max-width: 1000px) {
   .rental_main {
