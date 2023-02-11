@@ -1,3 +1,4 @@
+const { DataPipeline } = require("aws-sdk")
 const { ObjectID } = require("mongodb")
 const loocafeSchema = require("../models/loocafe")
 const rentalSchema = require("../models/rental")
@@ -94,4 +95,20 @@ module.exports.getLoocafeDetails = async(req,res)=>{
         })
     }
    
+}
+module.exports.getFunctionalLoocafes = async(req,res)=>{
+    try{
+        const data = await loocafeSchema.find({functional_status:req.body.functional_status})
+        return res.status(200).json({
+            success:true,
+            message:"data retrieved according to functional status",
+            data:data
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+error
+        })
+    }
 }

@@ -84,7 +84,8 @@ try{
             to:req.body.timing_to
         },
         partnerID:partner._id,
-        rentalID:rental._id
+        rentalID:rental._id,
+        functional_status:"Maintenance"
     })
     await loocafe.save()
 
