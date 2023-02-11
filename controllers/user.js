@@ -48,7 +48,7 @@ module.exports.addUser = async(req,res)=>{
 }
 module.exports.getAllUsers = async(req,res)=>{
     
-    await userSchema.find({}).then(data=>{
+    await userSchema.find({city:req.body.city,state:req.body.state}).then(data=>{
         return res.status(200).json({
             success:true,
             message:"users fetched successfully",

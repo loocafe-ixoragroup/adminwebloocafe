@@ -4,7 +4,7 @@ const loocafeSchema = require("../models/loocafe")
 module.exports.trackRent = async(req,res)=>{
     
     try{
-        const data = await rentalSchema.find({})
+        const data = await rentalSchema.find({state:req.body.state,city:req.body.city})
         let arr=[]
         data.forEach(ele=>{
             if(ele.unit_start_date < req.body.from_date){
