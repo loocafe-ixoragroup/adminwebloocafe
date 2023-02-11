@@ -1,14 +1,12 @@
 .login_container {
   margin: 6.5rem auto 0;
   background: #FFFFFF;
-box-shadow: 0px 0px 51px -8px rgba(0, 96, 211, 0.25);
-border-radius: 20px;
+  box-shadow: 0px 0px 51px -8px rgba(0, 96, 211, 0.25);
+  border-radius: 20px;
   display: flex !important;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border-radius: 13px;
-  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+  align-items: center;  
 }
 .login_container > img{
   width: 100px;
