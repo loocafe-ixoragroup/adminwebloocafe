@@ -57,3 +57,26 @@ module.exports.getSpecificLoocafe = async(req,res)=>{
 
     })
 }
+module.exports.getLoocafeDetails = async(req,res)=>{
+
+    let result = []
+    await loocafeSchema.find({}).then((data)=>{
+        data.forEach(async(ele)=>{
+            const rental = await rentalSchema.findById(ele.rentalID)
+            result.push(ele)
+            result.push(rental.monthly_rent, rental.unit_start_date)
+
+        })
+        return res.status(200).json({
+            success:true,
+            message:"all loocafe data retrieved",
+            data:result
+        })
+    }).catch(error=>{
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+err
+        })
+    })
+    
+}

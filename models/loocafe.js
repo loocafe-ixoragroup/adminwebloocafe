@@ -39,6 +39,7 @@ const loocafe = new Schema({
     }],
     partnerID:mongoose.SchemaTypes.ObjectId,
     supervisorID: mongoose.SchemaTypes.ObjectId,
+    rentalID: mongoose.SchemaTypes.ObjectId,
     id:Number,
     qr:String
     

@@ -83,7 +83,8 @@ try{
             from:req.body.timing_from,
             to:req.body.timing_to
         },
-        partnerID:partner._id
+        partnerID:partner._id,
+        rentalID:rental._id
     })
     await loocafe.save()
 
