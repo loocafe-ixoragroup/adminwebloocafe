@@ -92,21 +92,10 @@ try{
     })
     await cleaner.save()
     await partner.save()
-    let rental_images = []
     req.files.forEach(async(file,index)=>{
 
-        fileUploader(file,cleaner,rental).then(async(arr)=>{
-            // console.log("===",arr)
-                if(arr.length > 0){
-                    rental_images.push(...arr)
-                }
-                if(index == req.files.length - 1){
-
-                    rental.images = rental_images
-                    await rental.save()
-                }
-        })
-        
+        fileUploader(file,cleaner,rental)
+           
     })
   
 

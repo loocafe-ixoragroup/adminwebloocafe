@@ -7,7 +7,6 @@ const cleaner = new Schema({
     phone:String,
     relative_name:String,
     email:String,
-    phone:String,
     alternate_phone:String,
     address:{
         street_address:String,

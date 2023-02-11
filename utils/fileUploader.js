@@ -1,5 +1,7 @@
 const fs = require("fs")
 const { uploadFileToS3} = require("./s3");
+const cleanerSchema = require("../models/cleaner")
+const rentalSchema = require("../models/rental")
 
 module.exports.fileUploader = async(file,cleaner,rental)=>{
     
@@ -9,33 +11,59 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
 
             result = await uploadFileToS3(file, fileName);    //upload file to s3
             console.log(result.key);
-            let rental_images = []
+            // let rental_images = []
 
             if(file.fieldname == "address_proof"){
-                cleaner.address_proof = result.key
+                await cleanerSchema.findByIdAndUpdate(cleaner._id,{
+                    $set:{
+                        address_proof : result.key
+                    }
+                })
+               
                 
             }
             else if(file.fieldname == "cleaner_pan"){
-                cleaner.pan = result.key
+                await cleanerSchema.findByIdAndUpdate(cleaner._id,{
+                    $set:{
+                        pan : result.key
+                    }
+                })
+                
                 
             }
             else if(file.fieldname == "cleaner_aadhar"){
-                cleaner.aadhar = result.key
+                await cleanerSchema.findByIdAndUpdate(cleaner._id,{
+                    $set:{
+                        aadhar : result.key
+                    }
+                })
+                
             }
             else if(file.fieldname == "cleaner_photo"){
-                cleaner.photo = result.key
+                await cleanerSchema.findByIdAndUpdate(cleaner._id,{
+                    $set:{
+                       photo : result.key
+                    }
+                })
+                
             }
             
             else if(file.fieldname == "rental_agreement"){
-                rental.agreement_file = result.key
+                await rentalSchema.findByIdAndUpdate(rental._id,{
+                    $set:{
+                        agreement_file : result.key
+                    }
+                })
+                
             }
             else if(file.fieldname == "rental_photo"){
-                rental_images.push(result.key)
+                await rentalSchema.findByIdAndUpdate(rental._id,{
+                    $push:{
+                        images : result.key
+                    }
+                })
             }
            
-            await cleaner.save()
-            await rental.save()
-            
             fs.unlink(file.path,(err => {
                 if (err) console.log(err);
                 else {
@@ -44,6 +72,4 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
               
                 }}
               ))
-            //   console.log("we get ",rental_images)
-              return rental_images
 }
