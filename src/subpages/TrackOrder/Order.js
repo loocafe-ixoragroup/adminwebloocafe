@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Order.css";
 import {
   ViewButton,
-  DateInput, StateCity, DropdownStatus,
+  DateInput,
+  DropdownStatus,
   StateCity,
   BlackButton,
 } from "../../components/form-fields";
 import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllLoocafe } from "../../features/LoocafeSlice";
 const Order = () => {
   const defaultState = useTrait("");
   const defaultCity = useTrait("");
   const states = State.getStatesOfCountry("IN");
   const [city1, setCity1] = useState([]);
+
+  const { loocafe, isloading } = useSelector((state) => state.loocafe);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllLoocafe());
+  }, []);
+
   const onChangeState = (e) => {
     setCity1(City.getCitiesOfState("IN", e.target.value));
     defaultState.set(e.target.value);
@@ -27,9 +38,7 @@ const Order = () => {
     <div className="Order_main">
       <h3>Track Loocafe’s</h3>
       <p>Order found: 16</p>
-      <div className="State-city-track">
-         {/* <StateCity/> */}
-      </div>
+      <div className="State-city-track">{/* <StateCity/> */}</div>
       <div className="Order_date">
         <StateCity
           city={city1}
@@ -51,94 +60,39 @@ const Order = () => {
           <th>Status</th>
           <th>Details</th>
         </tr>
-        <tr>
-          <td>#2525</td>
-          <td>Rohini</td>
-          <td>201, Sainikpuri</td>
-          <td>07 feb 2023</td>
-          <td>₹10000</td>
-          <td><DropdownStatus/></td>
-          <td>
-            <ViewButton name={"Open form"} />
-          </td>
-        </tr>
-        <tr>
-          <td>#2525</td>
-          <td>Rohini</td>
-          <td>201, Sainikpuri</td>
-          <td>07 feb 2023</td>
-          <td>₹10000</td>
-          <td><DropdownStatus/></td>
-          <td>
-            <ViewButton name={"Open form"} />
-          </td>
-        </tr>
-        <tr>
-          <td>#2525</td>
-          <td>Rohini</td>
-          <td>201, Sainikpuri</td>
-          <td>07 feb 2023</td>
-          <td>₹10000</td>
-          <td><DropdownStatus/></td>
-          <td>
-            <ViewButton name={"Open form"} />
-          </td>
-        </tr>
-        <tr>
-          <td>#2525</td>
-          <td>Rohini</td>
-          <td>201, Sainikpuri</td>
-          <td>07 feb 2023</td>
-          <td>₹10000</td>
-          <td><DropdownStatus/></td>
-          <td>
-            <ViewButton name={"Open form"} />
-          </td>
-        </tr>
-        <tr>
-          <td>#2525</td>
-          <td>Rohini</td>
-          <td>201, Sainikpuri</td>
-          <td>07 feb 2023</td>
-          <td>₹10000</td>
-          <td><DropdownStatus/></td>
-          <td>
-            <ViewButton name={"Open form"} />
-          </td>
-        </tr>
-        <tr>
-          <td>#2525</td>
-          <td>Rohini</td>
-          <td>201, Sainikpuri</td>
-          <td>07 feb 2023</td>
-          <td>₹10000</td>
-          <td><DropdownStatus/></td>
-          <td>
-            <ViewButton name={"Open form"} />
-          </td>
-        </tr>
-        <tr>
-          <td>#2525</td>
-          <td>Rohini</td>
-          <td>201, Sainikpuri</td>
-          <td>07 feb 2023</td>
-          <td>₹10000</td>
-          <td><DropdownStatus/></td>
-          <td>
-            <ViewButton name={"Open form"} />
-          </td>
-        </tr>
-        <tr>
-          <td>#2525</td>
-          <td>Rohini</td>
-          <td>201, Sainikpuri</td>
-          <td>07 feb 2023</td>
-          <td>₹10000</td>
-          <td><DropdownStatus/></td>
-          <td>
-            <ViewButton name={"Open form"} />
-          </td>
-        </tr>
+        {loocafe?.length > 0 ? (
+          loocafe?.map((lc, index) => (
+            <tr>
+              <td>{index + 1}</td>
+              <td>{lc.name}</td>
+              <td>{lc.location.address}</td>
+              <td>07 feb 2023</td>
+              <td>₹10000</td>
+              <td>
+                <DropdownStatus />
+              </td>
+              <td>
+                <ViewButton name={"Open form"} />
+              </td>
+            </tr>
+          ))
+        ) : isloading ? (
+          <>Loading...</>
+        ) : (
+          <tr>
+            <td></td>
+            <td>No</td>
+            <td>Data </td>
+            <td>to </td>
+            <td>Show</td>
+            <td>
+              <DropdownStatus />
+            </td>
+            <td>
+              <ViewButton name={"Open form"} />
+            </td>
+          </tr>
+        )}
       </table>
     </div>
   );

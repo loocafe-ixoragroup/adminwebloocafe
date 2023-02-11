@@ -49,7 +49,7 @@ const List = ({ setPage }) => {
   const states = State.getStatesOfCountry("IN");
   const [cities, setCities] = useState([]);
 
-  const { supervisors } = useSelector((state) => state.supervisor);
+  const { supervisor, isloading } = useSelector((state) => state.supervisor);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -105,8 +105,8 @@ const List = ({ setPage }) => {
           <th>Role</th>
           <th>Assigned Loocafe</th>
         </tr>
-        {supervisors?.data?.length > 0 ? (
-          supervisors?.data.map((s) => (
+        {supervisor?.length > 0 ? (
+          supervisor.map((s) => (
             <tr key={s._id}>
               <td>{s.name}</td>
               <td>Supervisor</td>
@@ -115,7 +115,7 @@ const List = ({ setPage }) => {
               </td>
             </tr>
           ))
-        ) : (
+        ) : isloading?<>Loading...</>: (
           <tr>
             <td></td>
             <td> No data to show</td>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Details.css";
 import {
   BlackButton,
@@ -11,10 +11,12 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUser } from "../../features/UserSlice";
 
 const schema = yup.object({
-  sup_city: yup.string().required("Required!"),
-  sup_state: yup.string().required("Required!"),
+  city: yup.string().required("Required!"),
+  state: yup.string().required("Required!"),
 });
 const Details = () => {
   const {
@@ -26,6 +28,8 @@ const Details = () => {
     resolver: yupResolver(schema),
   });
 
+  const { users, isloading } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
   const defaultState = useTrait("");
   const defaultCity = useTrait("");
   const states = State.getStatesOfCountry("IN");
@@ -40,6 +44,15 @@ const Details = () => {
     defaultCity.set(e.target.value);
     console.log(defaultCity.get());
   };
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, []);
+
+  // const handleShow = (data) => {
+  //   dispatch(getAllUser(data));
+  // };
+
   return (
     <div className="user_main">
       <h3>All User Details</h3>
@@ -58,45 +71,34 @@ const Details = () => {
         defaultCity={defaultCity.get()}
       />
       <div className="buttons">
-        <BlackButton name={"Show List"} />
+        <BlackButton name={"Show List"} handleClick={handleSubmit()} />
       </div>
       <table>
         <tr>
-          <th>S No.</th>
+          <th>S.No.</th>
           <th>Name</th>
           <th>Mail Id</th>
-          <th>Mobile No</th>
+          <th>Contact No</th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>Rohini</td>
-          <td>rohini@gmail.com</td>
-          <td>7793982265</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Rohini</td>
-          <td>rohini@gmail.com</td>
-          <td>7793982265</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Rohini</td>
-          <td>rohini@gmail.com</td>
-          <td>7793982265</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Rohini</td>
-          <td>rohini@gmail.com</td>
-          <td>7793982265</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Rohini</td>
-          <td>rohini@gmail.com</td>
-          <td>7793982265</td>
-        </tr>
+        {users?.length > 0 ? (
+          users?.map((user, index) => (
+            <tr key={user._id}>
+              <td>{index + 1}</td>
+              <td>{user.full_name ? user.full_name : "-"}</td>
+              <td>{user.email ? user.email : "-"}</td>
+              <td>{user.phone ? user.phone : "-"}</td>
+            </tr>
+          ))
+        ) : isloading ? (
+          <>Loading...</>
+        ) : (
+          <tr>
+            <td></td>
+            <td>No data to show</td>
+            <td></td>
+            <td></td>
+          </tr>
+        )}
       </table>
     </div>
   );

@@ -4,6 +4,7 @@ import Cookies from "universal-cookie";
 
 const BASE_URL = "https://loocafe.herokuapp.com/api";
 const cookies = new Cookies();
+
 //ACTIONS
 
 //get all supervisors
@@ -14,7 +15,7 @@ export const getAllSupervisor = createAsyncThunk(
       method: "get",
       url: `${BASE_URL}/supervisor/get-all-supervisors`,
       headers: { Authorization: `Bearer ${cookies.get("token")}` },
-    }).then((res) => res.data);
+    }).then((res) => res.data.data);
   }
 );
 
@@ -27,12 +28,12 @@ export const getSupervisor = createAsyncThunk(
       data: { state, city },
       url: `${BASE_URL}/supervisor/get-supervisor`,
       headers: { Authorization: `Bearer ${cookies.get("token")}` },
-    }).then((res) => res.data);
+    }).then((res) => res.data.data);
   }
 );
 
 const initialState = {
-  supervisors: [],
+  supervisor: [],
   isloading: false,
   error: "",
 };
@@ -47,12 +48,12 @@ const SupervisorSlice = createSlice({
     });
     builder.addCase(getAllSupervisor.fulfilled, (state, action) => {
       state.isloading = false;
-      state.supervisors = action.payload;
+      state.supervisor = action.payload;
       state.error = "";
     });
     builder.addCase(getAllSupervisor.rejected, (state, action) => {
       state.isloading = false;
-      state.supervisors = [];
+      state.supervisor = [];
       state.error = action.error.message;
     });
     builder.addCase(getSupervisor.pending, (state) => {
@@ -60,12 +61,12 @@ const SupervisorSlice = createSlice({
     });
     builder.addCase(getSupervisor.fulfilled, (state, action) => {
       state.isloading = false;
-      state.supervisors = action.payload;
+      state.supervisor = action.payload;
       state.error = "";
     });
     builder.addCase(getSupervisor.rejected, (state, action) => {
       state.isloading = false;
-      state.supervisors = [];
+      state.supervisor = [];
       state.error = action.error.message;
     });
   },

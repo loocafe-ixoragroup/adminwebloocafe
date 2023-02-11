@@ -1,11 +1,12 @@
 .login_container {
   margin: 6.5rem auto 0;
-  background-color: #f1f1f1;
+  background-color: #fff;
   display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 13px;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
 }
 
 .login_container > h3 {

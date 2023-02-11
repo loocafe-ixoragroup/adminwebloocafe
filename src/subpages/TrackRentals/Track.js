@@ -11,10 +11,12 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
+import { useDispatch, useSelector } from "react-redux";
+import { trackRental } from "../../features/TrackRentalSlice";
 
 const schema = yup.object({
-  sup_city: yup.string().required("Required!"),
-  sup_state: yup.string().required("Required!"),
+  city: yup.string(),
+  state: yup.string(),
 });
 
 const Track = () => {
@@ -23,9 +25,16 @@ const Track = () => {
     handleSubmit,
     formState: { errors, submitCount },
   } = useForm({
+    defaultValues: {
+      city: "",
+      state: "",
+    },
     mode: "all",
     resolver: yupResolver(schema),
   });
+
+  const { trackrental } = useSelector((state) => state.trackrental);
+  const dispatch = useDispatch();
 
   const defaultState = useTrait("");
   const defaultCity = useTrait("");
@@ -41,6 +50,11 @@ const Track = () => {
     defaultCity.set(e.target.value);
     console.log(defaultCity.get());
   };
+
+  const handleShow = (data) => {
+    dispatch(trackRental());
+  };
+
   return (
     <div className="track_main">
       <h3>Track Your Rentals</h3>
@@ -63,7 +77,10 @@ const Track = () => {
         <DateInput label={"To"} />
       </div>
       <div className="buttons">
-        <BlackButton name={"Show List"} />
+        <BlackButton
+          name={"Show List"}
+          handleClick={handleSubmit(handleShow)}
+        />
       </div>
       <table>
         <tr>

@@ -13,7 +13,7 @@ const LoginAdmin = async ({ email, password }) => {
     cookies.set("token", data.data.token, { path: "/" });
     window.location.replace("/dashboard");
   } catch (error) {
-    console.log(error.message);
+    alert("Invalid credentials");
   }
 };
 
