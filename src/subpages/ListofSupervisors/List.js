@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import "./List.css";
 import { City, State } from "country-state-city";
@@ -13,12 +13,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllSupervisor } from "../../features/SupervisorSlice";
+import {
+  getAllSupervisor,
+  getSupervisor,
+} from "../../features/SupervisorSlice";
 import { useTrait } from "../../hooks/useTrait";
 
 const schema = yup.object({
-  city: yup.string(),
-  state: yup.string(),
+  city: yup.string().required("Required"),
+  state: yup.string().required("Required"),
 });
 
 const List = ({ setPage }) => {
@@ -46,11 +49,15 @@ const List = ({ setPage }) => {
   const states = State.getStatesOfCountry("IN");
   const [cities, setCities] = useState([]);
 
-  const { supervisors } = useSelector((state) => state.supervisor);
+  const { supervisor, isloading } = useSelector((state) => state.supervisor);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getAllSupervisor());
+  }, []);
+
   const handleShow = (data) => {
-    dispatch(getAllSupervisor(data));
+    dispatch(getSupervisor(data));
   };
 
   const handleNext = () => {
@@ -98,8 +105,8 @@ const List = ({ setPage }) => {
           <th>Role</th>
           <th>Assigned Loocafe</th>
         </tr>
-        {supervisors?.data?.length > 0 ? (
-          supervisors?.data.map((s) => (
+        {supervisor?.length > 0 ? (
+          supervisor.map((s) => (
             <tr key={s._id}>
               <td>{s.name}</td>
               <td>Supervisor</td>
@@ -108,7 +115,7 @@ const List = ({ setPage }) => {
               </td>
             </tr>
           ))
-        ) : (
+        ) : isloading?<>Loading...</>: (
           <tr>
             <td></td>
             <td> No data to show</td>

@@ -8,13 +8,7 @@ border-radius: 20px;
   justify-content: center;
   align-items: center;
   border-radius: 13px;
-}
-.seperator-line{
-  /* color: #002F75;
-  background-color: #002F75;
-  height: 5; */
-  opacity: 0.4;
-  border-top: 5px solid #621414;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
 }
 .login_container > img{
   width: 100px;

@@ -49,7 +49,7 @@ const Unit = ({ setPage }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllSupervisor({ state: "gujarat", city: "ahmedabad" }));
+    dispatch(getAllSupervisor());
   }, []);
 
   const onClose = () => {

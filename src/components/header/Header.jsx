@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import "./Header.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IconEnvelope, IconBell } from "../../assets/icons";
 import { SidebarContext } from "../../hooks/useSidebar";
 import slugs from "../../resources/slugs";
@@ -47,7 +47,9 @@ const Header = () => {
           <img src={IconBell} alt="" />
           <span></span>
         </div> */}
-        <div className="user__avtar"></div>
+        <Link to="/dashboard">
+          <div className="user__avtar"></div>
+        </Link>
       </div>
     </div>
   );

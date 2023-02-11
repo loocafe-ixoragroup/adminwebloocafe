@@ -10,11 +10,10 @@ const LoginAdmin = async ({ email, password }) => {
       username: email,
       password,
     });
-    console.log(data);
     cookies.set("token", data.data.token, { path: "/" });
     window.location.replace("/dashboard");
   } catch (error) {
-    console.log(error.message);
+    alert("Invalid credentials");
   }
 };
 
@@ -29,9 +28,12 @@ const addKycForm = async (formData) => {
       },
       headers: { Authorization: `Bearer ${cookies.get("token")}` },
     });
-    console.log(response);
+    // console.log(response);
+    alert(response.data.message);
+    window.location.replace("/dashboard");
   } catch (error) {
     alert(error.message);
+    window.location.replace("/kyc");
   }
 };
 
@@ -46,7 +48,7 @@ const addSupervisor = async (formData) => {
       },
       headers: { Authorization: `Bearer ${cookies.get("token")}` },
     });
-    console.log(response);
+    alert(response.data.message);
   } catch (error) {
     alert(error.message);
   }
