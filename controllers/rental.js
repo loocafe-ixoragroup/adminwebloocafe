@@ -6,7 +6,8 @@ module.exports.trackRent = async(req,res)=>{
     try{
         const data = await rentalSchema.find({state:req.body.state,city:req.body.city})
         let arr=[]
-        data.forEach(ele=>{
+        for(let ele of data){
+            const loocafe = await loocafeSchema.find({rentalID:ele._id})
             if(ele.unit_start_date < req.body.from_date){
                 let d = new Date(ele.unit_start_date).getTime() + (1000*60*60*24*30)
                 d = new Date(d)
@@ -14,11 +15,11 @@ module.exports.trackRent = async(req,res)=>{
 
                 
                 if(d <= new Date(req.body.to_date)){
-                    arr.push(ele)
+                    arr.push({ele,loocafe_name:loocafe[0].name})
                 }
             }
             // console.log(arr)
-        })
+        }
         console.log(arr)
         return res.status(200).json({
             success:true,
