@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 const path = require("path")
 const cors = require("cors")
 const whitelist = ["http://127.0.0.1:3000", "localhost", "http://localhost:3000",
-"https://loocafe-frontend.netlify.app/"];
+"https://loocafe-frontend.netlify.app"];
 
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions = { origin: true};
