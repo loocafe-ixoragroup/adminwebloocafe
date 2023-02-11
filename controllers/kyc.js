@@ -31,6 +31,9 @@ try{
     const user = new userSchema({
         userId:req.body.email,
         phone:req.body.cleaner_phone,
+        full_name:req.body.cleaner_name,
+        city:req.body.cleaner_city,
+        state:req.body.cleaner_state,
         role:"cleaner"
     })
     await user.save()

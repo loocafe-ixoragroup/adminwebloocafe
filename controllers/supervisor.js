@@ -25,7 +25,10 @@ module.exports.addSupervisor = async(req,res)=>{
         const user = new userSchema({
             userId:req.body.username,
             password:req.body.password,
-            role:"supervisor"
+            role:"supervisor",
+            state:req.body.state,
+            city:req.body.city,
+            full_name:req.body.name
         })
         await user.save()
         return res.status(200).json({
