@@ -40,6 +40,11 @@
   min-width: 40%;
   max-width: 100%;
 }
+@media screen and (max-width: 1100px) {
+  .si_input {
+    max-width: 400px;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .si_input {

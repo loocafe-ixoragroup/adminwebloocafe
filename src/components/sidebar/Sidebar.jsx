@@ -8,6 +8,7 @@ import {
   IconDashboard,
   IconHelp,
   IconKyc,
+  IconLogout,
   IconSettings,
   IconTrack,
   IconTrackrental,
@@ -91,15 +92,16 @@ const Sidebar = () => {
           <div className="separator"></div>
           {/*<div className="sidebar__footer">
             <NavLink
-              to={"/settings"}
+              to={"/"}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }
+              onClick={handleLogout}
             >
-              <img src={IconSettings} alt="" />
-              <span>Settings</span>
+              <img src={IconLogout} alt="" />
+              <span>Logout</span>
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to={"/help"}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
@@ -107,14 +109,16 @@ const Sidebar = () => {
             >
               <img src={IconHelp} alt="" />
               <span>Help</span>
-            </NavLink>
-            <div className="separator"></div>
-
+            </NavLink> */}
+            {/* <div className="separator"></div>
+        <div className="logut-btn">
+            <img src={IconLogout}/>
             <button className="btn_logout" onClick={handleLogout}>
               Logout
             </button>
-          </div> */}
-        </div>
+            </div> */}
+          </div> 
+       </div>
       </MenuComp>
     </>
   );

@@ -1,0 +1,17 @@
+.Status-dropdown > select{
+    border-radius: 8px;
+    height: 20px;
+    /* width: 100px; */
+}
+@media screen  and (max-width:855px) {
+    .Status-dropdown > select{
+        width: 60px;
+        border-radius: 5px;
+    }
+}
+@media screen and (min-width:1000px) and (max-width:1130px) {
+    .Status-dropdown > select{
+        width: 60px;
+        border-radius: 5px;
+    }
+}

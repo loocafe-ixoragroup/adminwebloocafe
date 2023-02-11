@@ -24,6 +24,16 @@
     width: 90%;
     margin: 2%;
 }
+th{
+  font-weight: 600;
+}
+@media screen and (min-width:1000px) and (max-width:1130px) {
+  .Order_date{
+    display: flex;
+    flex-direction: column;
+    gap:0;
+  }
+}
 @media screen and (min-width: 769px) {
     .Order_main {
       margin-left: 2rem;
@@ -44,6 +54,7 @@
         justify-content: center;
         text-align: center;
         margin-top: 1%;
+        gap: 0;
     }
   }
   @media screen and (max-width: 601px){

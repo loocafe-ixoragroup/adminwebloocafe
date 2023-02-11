@@ -240,7 +240,7 @@ const Tenant = ({ setPage }) => {
         />
       </div>
       <div className="btn-div">
-        <BlackButton name={"Submit"} handleClick={handleSubmit(handleClick)} />
+        <BlackButton name={"Next"} handleClick={handleSubmit(handleClick)} />
       </div>
     </div>
   );

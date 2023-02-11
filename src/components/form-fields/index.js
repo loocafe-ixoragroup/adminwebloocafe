@@ -9,7 +9,7 @@ import PhotoUpload from "./PhotoUpload/PhotoUpload";
 import MultiImage from "./multi-image-upload/MultiImage";
 import FileUpload from "./FileUpload/FileUpload";
 import Dropdown from "./DropdownList/Dropdown";
-
+import DropdownStatus from "./StatusDropdown/DropdownStatus";
 export {
   SimpleInput,
   BlackButton,
@@ -24,4 +24,5 @@ export {
   UploadInput,
   MultiImage,
   ViewButton,
+  DropdownStatus
 };

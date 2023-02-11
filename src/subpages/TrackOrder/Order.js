@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Order.css";
 import {
   ViewButton,
-  DateInput,
+  DateInput, StateCity, DropdownStatus,
   StateCity,
   BlackButton,
 } from "../../components/form-fields";
@@ -25,8 +25,11 @@ const Order = () => {
   };
   return (
     <div className="Order_main">
-      <h3>Track Your Order</h3>
+      <h3>Track Loocafe’s</h3>
       <p>Order found: 16</p>
+      <div className="State-city-track">
+         {/* <StateCity/> */}
+      </div>
       <div className="Order_date">
         <StateCity
           city={city1}
@@ -46,7 +49,7 @@ const Order = () => {
           <th>Date</th>
           <th>Price</th>
           <th>Status</th>
-          <th>Expenses</th>
+          <th>Details</th>
         </tr>
         <tr>
           <td>#2525</td>
@@ -54,7 +57,7 @@ const Order = () => {
           <td>201, Sainikpuri</td>
           <td>07 feb 2023</td>
           <td>₹10000</td>
-          <td>Live</td>
+          <td><DropdownStatus/></td>
           <td>
             <ViewButton name={"Open form"} />
           </td>
@@ -65,7 +68,7 @@ const Order = () => {
           <td>201, Sainikpuri</td>
           <td>07 feb 2023</td>
           <td>₹10000</td>
-          <td>Live</td>
+          <td><DropdownStatus/></td>
           <td>
             <ViewButton name={"Open form"} />
           </td>
@@ -76,7 +79,7 @@ const Order = () => {
           <td>201, Sainikpuri</td>
           <td>07 feb 2023</td>
           <td>₹10000</td>
-          <td>Live</td>
+          <td><DropdownStatus/></td>
           <td>
             <ViewButton name={"Open form"} />
           </td>
@@ -87,7 +90,7 @@ const Order = () => {
           <td>201, Sainikpuri</td>
           <td>07 feb 2023</td>
           <td>₹10000</td>
-          <td>Live</td>
+          <td><DropdownStatus/></td>
           <td>
             <ViewButton name={"Open form"} />
           </td>
@@ -98,7 +101,7 @@ const Order = () => {
           <td>201, Sainikpuri</td>
           <td>07 feb 2023</td>
           <td>₹10000</td>
-          <td>Live</td>
+          <td><DropdownStatus/></td>
           <td>
             <ViewButton name={"Open form"} />
           </td>
@@ -109,7 +112,7 @@ const Order = () => {
           <td>201, Sainikpuri</td>
           <td>07 feb 2023</td>
           <td>₹10000</td>
-          <td>Live</td>
+          <td><DropdownStatus/></td>
           <td>
             <ViewButton name={"Open form"} />
           </td>
@@ -120,7 +123,7 @@ const Order = () => {
           <td>201, Sainikpuri</td>
           <td>07 feb 2023</td>
           <td>₹10000</td>
-          <td>Live</td>
+          <td><DropdownStatus/></td>
           <td>
             <ViewButton name={"Open form"} />
           </td>
@@ -131,7 +134,7 @@ const Order = () => {
           <td>201, Sainikpuri</td>
           <td>07 feb 2023</td>
           <td>₹10000</td>
-          <td>Live</td>
+          <td><DropdownStatus/></td>
           <td>
             <ViewButton name={"Open form"} />
           </td>
