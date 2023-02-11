@@ -54,7 +54,8 @@ try{
         agreement_start:req.body.agreement_start,
         agreement_end:req.body.agreement_end,
         unit_start_date:req.body.unit_start_date,
-
+        city:req.body.city,
+        state:req.body.state
     })
     await rental.save()
     cleaner.rental = rental._id
