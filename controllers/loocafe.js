@@ -1,5 +1,6 @@
 const { ObjectID } = require("mongodb")
 const loocafeSchema = require("../models/loocafe")
+const rentalSchema = require("../models/rental")
 
 module.exports.addLoocafe = async(req,res)=>{
     try{
@@ -59,24 +60,38 @@ module.exports.getSpecificLoocafe = async(req,res)=>{
 }
 module.exports.getLoocafeDetails = async(req,res)=>{
 
-    let result = []
-    await loocafeSchema.find({}).then((data)=>{
-        data.forEach(async(ele)=>{
-            const rental = await rentalSchema.findById(ele.rentalID)
-            result.push(ele)
-            result.push(rental.monthly_rent, rental.unit_start_date)
+    try{
+        let result = []
 
+        const a = new Promise(async(resolve,reject)=>{
+            await loocafeSchema.find({}).then(async(data)=>{
+            
+                    for(let ele of data){
+                        const rental = await rentalSchema.findById(ele.rentalID)
+                        
+                        result.push({loocafe:ele,monthly_rent:rental.monthly_rent,
+                            unit_start_date:rental.unit_start_date})
+                        // console.log(ele)
+                    }
+                    resolve(result)
+                    
+                })
+        
+                
+        })    
+        a.then(data=>{
+            return res.status(200).json({
+                success:true,
+                message:"loocafes retrieved",
+                data:data
+            })
         })
-        return res.status(200).json({
-            success:true,
-            message:"all loocafe data retrieved",
-            data:result
-        })
-    }).catch(error=>{
+    }
+    catch(error){
         return res.status(500).json({
             success:false,
-            message:"Internal server error "+err
+            message:"Internal server error "+error
         })
-    })
-    
+    }
+   
 }

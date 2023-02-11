@@ -8,12 +8,18 @@ module.exports.trackRent = async(req,res)=>{
         let arr=[]
         data.forEach(ele=>{
             if(ele.unit_start_date < req.body.from_date){
-                const d = new Date(ele.unit_start_date) + 1000*60*60*24*30
-                if(d <= req.body.to_date){
+                let d = new Date(ele.unit_start_date).getTime() + (1000*60*60*24*30)
+                d = new Date(d)
+                // console.log(d,new Date(req.body.to_date))
+
+                
+                if(d <= new Date(req.body.to_date)){
                     arr.push(ele)
                 }
             }
+            // console.log(arr)
         })
+        console.log(arr)
         return res.status(200).json({
             success:true,
             message:"rental data retrieved successfully",
@@ -32,7 +38,7 @@ module.exports.updateRentalStatus = async(req,res)=>{
     try{
         await rentalSchema.find({}).then(data=>{
             data.forEach(async(ele)=>{
-                let d = new Date(ele.unit_start_date) + (1000*60*60*24*30)
+                let d = new Date(ele.unit_start_date).getTime() + (1000*60*60*24*30)
                 d = new Date(d)
 
                 console.log(d)
