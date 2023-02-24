@@ -1,6 +1,8 @@
-const { ObjectID } = require("mongodb")
+const { ObjectID, ObjectId } = require("mongodb")
 const loocafeSchema = require("../models/loocafe")
 const rentalSchema = require("../models/rental")
+const partnerSchema = require("../models/partner")
+const cleanerSchema = require("../models/cleaner")
 
 module.exports.addLoocafe = async(req,res)=>{
     try{
@@ -105,6 +107,30 @@ module.exports.getFunctionalLoocafes = async(req,res)=>{
             message:"data retrieved according to functional status",
             data:data
         })
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+error
+        })
+    }
+}
+module.exports.getAllKycDetails = async(req,res)=>{
+    try{
+        const loocafe = await loocafeSchema.findById(ObjectId(req.params.id))
+        const rental = await rentalSchema.findOne({_id:loocafe.rentalID})
+        const partner = await partnerSchema.findById(loocafe.partnerID)
+        const tenant = await cleanerSchema.find({loocafe:loocafe._id})
+
+        return res.status(200).json({
+            success:true,
+            message:"data retrieved successfully",
+            loocafe:loocafe,
+            rental:rental,
+            partner:partner,
+            tenant:tenant
+        })
+
     }
     catch(error){
         return res.status(500).json({
