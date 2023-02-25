@@ -6,6 +6,7 @@ export default {
   add_supervisor: "/add-supervisor",
   track_rentals:"/track-rentals",
   user_details:"/user-details",
+  download:"/download-kyc",
   settings: "/settings",
   // auth
   login: "/login",

@@ -1,0 +1,22 @@
+.download-form-fields2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+     height: 42px;
+    margin-top: 0rem;
+    margin-left: 3rem;
+    margin-right: 2rem;
+    margin-bottom: 3rem;
+}
+.download_label2{
+   color:#707070;
+   font-size: 15px;
+}
+.download_name2{
+   color: #252525;
+   font-weight: 500;
+   font-size: 16px;
+   padding-top: -20px;
+   margin: 0;
+}

@@ -8,6 +8,7 @@ import {
   OrderTracking,
   Trackrentals,
   UserDetails,
+  DownloadKyc
 } from "../pages";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -22,6 +23,7 @@ const PrivateRoutes = () => {
         <Route path="/track-rentals" element={<Trackrentals />} />
         <Route path="/user-details" element={<UserDetails />} />
         <Route path="/track" element={<OrderTracking />} />
+        <Route path="/download-kyc" element={<DownloadKyc />} />
       </Routes>
     </Layout>
   );

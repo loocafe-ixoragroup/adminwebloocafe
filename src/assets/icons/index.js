@@ -14,6 +14,7 @@ import IconUpload3 from "./icon-upload3.svg";
 import IconTrackrental from "./trackrental.svg";
 import IconUserDetails from "./userdetails.svg";
 import IconLogout from "./icon-logout.svg";
+import IconDownload from "./icon-download.svg"
 
 export {
   IconDashboard,
@@ -31,5 +32,6 @@ export {
   IconUpload3,
   IconTrackrental,
   IconUserDetails,
-  IconLogout
+  IconLogout,
+  IconDownload
 };

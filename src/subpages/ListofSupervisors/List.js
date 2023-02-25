@@ -103,13 +103,15 @@ const List = ({ setPage }) => {
         <tr>
           <th>Name</th>
           <th>Role</th>
-          <th>Assigned Loocafe</th>
+          <th>Assigned Loocafes</th>
+          <th>Details</th>
         </tr>
         {supervisor?.length > 0 ? (
           supervisor.map((s) => (
             <tr key={s._id}>
               <td>{s.name}</td>
               <td>Supervisor</td>
+              <td>5</td>
               <td>
                 <ViewButton name={"view"} />
               </td>

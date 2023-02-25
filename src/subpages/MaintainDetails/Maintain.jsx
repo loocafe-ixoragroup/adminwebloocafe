@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useData } from "../../context/KycContext";
+import { useNavigate } from "react-router-dom";
 
 const Maintain = ({ setPage }) => {
   const schema = yup.object({

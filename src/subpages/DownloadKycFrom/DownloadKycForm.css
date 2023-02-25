@@ -1,0 +1,103 @@
+.main-download-kyc{
+    background-color: white;
+  margin: 0.5rem;
+  /* padding: 2rem; */
+  border-radius: 1.25rem;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+}
+.user-details-main{
+  background-color: #0060D3;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* height: 40%; */
+  border-radius: 20px 20px 0px 0px;
+}
+.user-details-main > p{
+  color: white;
+  font-size: 26px;
+  /* padding-left: 3.5rem; */
+  text-align: center;
+  padding-top: 1rem;
+}
+/* .title-btn{
+  display: flex;
+  justify-content: space-between;
+} */
+.title-btn > p{
+  color: white;
+  font-size: 26px;
+  padding-left: 3.5rem;
+  padding-top: 3rem;
+  padding-bottom: 0.5rem;
+}
+
+.download-button{
+  height: 3rem;
+  border-radius: 1rem;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+ margin-left: 2rem;
+ margin-top: 2rem;
+  padding: 1rem;
+  background-color: white;
+  float: right;
+  position: absolute;
+}
+.download-img{
+  padding-right: 1rem;
+
+}
+.circle{
+  /* position: absolute; */
+  background-color: #EFEFEF;
+  height: 170px;
+  width: 170px;
+  border-radius: 50%;
+  /* display: flex;
+  justify-content: center; */
+  /* margin-left: 42%; */
+  /* margin-left: 3rem; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
+  /* padding: 2rem 3rem; */
+}
+/* .form-fields{
+  display: flex; 
+  position: absolute;
+  margin-top:-12rem;
+  margin-left: 11rem;
+   gap: 2rem;
+} */
+.maintain-partner{
+  margin: 0;
+}
+.maintain-partner > p {
+  color: #252525;
+  font-size: 26px;
+  padding-left: 3.5rem;
+  padding-top: 1rem;
+}
+.rental-details{
+  margin: 0;
+}
+.rental-details > p{
+  color: #252525;
+  font-size: 26px;
+  padding-left: 3.5rem;
+  padding-top: 1rem;
+}
+.unit-details{
+  margin:0;
+}
+.unit-details > p{
+  color: #252525;
+  font-size: 26px;
+  padding-left: 3.5rem;
+  padding-top: 1rem;
+}

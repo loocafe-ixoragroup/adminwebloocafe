@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route,useNavigate } from "react-router-dom";
 import "./Order.css";
 import {
   ViewButton,
@@ -7,11 +8,13 @@ import {
   StateCity,
   BlackButton,
 } from "../../components/form-fields";
+import Tabs from "../../components/TabComponent/Tabs";
 import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllLoocafe } from "../../features/LoocafeSlice";
 const Order = () => {
+  const navigate = useNavigate();
   const defaultState = useTrait("");
   const defaultCity = useTrait("");
   const states = State.getStatesOfCountry("IN");
@@ -23,6 +26,7 @@ const Order = () => {
   useEffect(() => {
     dispatch(getAllLoocafe());
   }, []);
+
 
   const onChangeState = (e) => {
     setCity1(City.getCitiesOfState("IN", e.target.value));
@@ -56,6 +60,9 @@ const Order = () => {
       <div className="view-orders-button">
         <BlackButton name={"View"} />
       </div>
+      <div>
+        <Tabs/>
+      </div>
       <table className="order_table">
         <tr>
           <th>id</th>
@@ -78,7 +85,7 @@ const Order = () => {
                 <DropdownStatus />
               </td>
               <td>
-                <ViewButton name={"Open form"} />
+                <ViewButton name={"Open form"}/>
               </td>
             </tr>
           ))
@@ -95,7 +102,7 @@ const Order = () => {
               <DropdownStatus />
             </td>
             <td>
-              <ViewButton name={"Open form"} />
+              <ViewButton name={"Open form"}/>
             </td>
           </tr>
         )}

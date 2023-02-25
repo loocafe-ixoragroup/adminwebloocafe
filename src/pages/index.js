@@ -5,6 +5,7 @@ import Trackrentals from "./Trackrentals";
 import UserDetails from "./UserDetails";
 import OrderTracking from "./OrderTracking";
 import Login from "./Login/Login";
+import DownloadKyc from "./DownloadKyc";
 
 export {
   Dashboard,
@@ -14,4 +15,5 @@ export {
   Trackrentals,
   UserDetails,
   OrderTracking,
+  DownloadKyc
 };

@@ -10,6 +10,8 @@ import MultiImage from "./multi-image-upload/MultiImage";
 import FileUpload from "./FileUpload/FileUpload";
 import Dropdown from "./DropdownList/Dropdown";
 import DropdownStatus from "./StatusDropdown/DropdownStatus";
+import FormComponents from "./Form-Download-Components/FormComponents";
+import FormComp from "./Form-Download-Components/FormComp";
 export {
   SimpleInput,
   BlackButton,
@@ -24,5 +26,7 @@ export {
   UploadInput,
   MultiImage,
   ViewButton,
-  DropdownStatus
+  DropdownStatus,
+  FormComponents,
+  FormComp
 };

@@ -90,8 +90,17 @@ const Sidebar = () => {
               <img src={IconUserDetails} alt="" />
               <span>User Details</span>
             </NavLink>
+            <NavLink
+              to={SLUG.download}
+              className={({ isActive }) =>
+                isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
+              }
+            >
+              <img src={IconHelp} alt="" />
+              <span>Download Form</span>
+            </NavLink>
           </div>
-
+          
           {/*<div className="sidebar__footer">
             <NavLink
               to={"/"}
@@ -104,15 +113,7 @@ const Sidebar = () => {
               <span>Logout</span>
             </NavLink>
             {/*
-            {/* <NavLink
-              to={"/help"}
-              className={({ isActive }) =>
-                isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
-              }
-            >
-              <img src={IconHelp} alt="" />
-              <span>Help</span>
-            </NavLink> */}
+            {/*  */}
           <div className="separator"></div>
           <div className="logut-btn">
             <button className="btn_logout" onClick={handleLogout}>
