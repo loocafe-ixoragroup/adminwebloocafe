@@ -28,7 +28,10 @@ const loocafe = new Schema({
         from:String,
         to:String
     },
-    functional_status:String,
+    functional_status:{
+        type:String,
+        default:"maintenance"
+    },
 
     expenses:[{
         reason:String,
