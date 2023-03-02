@@ -99,8 +99,16 @@ module.exports.getLoocafeDetails = async(req,res)=>{
 }
 module.exports.getFunctionalLoocafes = async(req,res)=>{
     try{
-        const data = await loocafeSchema.find({functional_status:req.body.functional_status,
-        "location.city":req.body.city,"location.state":req.body.state})
+        let data;
+        if (req.body.state != undefined && req.body.city != undefined){
+            data = await loocafeSchema.find({functional_status:req.body.functional_status,
+                "location.city":req.body.city,"location.state":req.body.state})
+                
+        }
+        else{
+            data = await loocafeSchema.find({functional_status:req.body.functional_status})
+                
+        }
         
         return res.status(200).json({
             success:true,
@@ -115,6 +123,7 @@ module.exports.getFunctionalLoocafes = async(req,res)=>{
         })
     }
 }
+
 module.exports.getAllKycDetails = async(req,res)=>{
     try{
         const loocafe = await loocafeSchema.findById(ObjectId(req.params.id))
