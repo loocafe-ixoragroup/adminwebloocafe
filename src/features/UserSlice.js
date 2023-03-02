@@ -2,17 +2,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-const BASE_URL = "https://loocafe.herokuapp.com/api";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const cookies = new Cookies();
 
 //ACTIONS
-export const getAllUser = createAsyncThunk("users/getAllUser", () => {
-  return axios({
+export const getAllUser = createAsyncThunk("users/getAllUser", async () => {
+  const res = await axios({
     method: "get",
     // data: { state, city },
     url: `${BASE_URL}/user/get-all-users`,
     headers: { Authorization: `Bearer ${cookies.get("token")}` },
-  }).then((res) => res.data.data.filter((user) => user.role === "user"));
+  });
+  return res.data.data.filter((user) => user.role === "user");
 });
 
 const initialState = {
