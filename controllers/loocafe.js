@@ -109,11 +109,24 @@ module.exports.getFunctionalLoocafes = async(req,res)=>{
             data = await loocafeSchema.find({functional_status:req.body.functional_status})
                 
         }
+        let arr = []
+        for (let loocafe of data){
+            await rentalSchema.findById(loocafe.rentalID).then(rental=>{
+                if(rental != null){
+                    arr.push({
+                        loocafe:loocafe,
+                        monthly_rent:rental.monthly_rent,
+                        unit_start_date:rental.unit_start_date
+                    })
+                }
+                
+            })
+        }
         
         return res.status(200).json({
             success:true,
             message:"data retrieved according to functional status",
-            data:data
+            data:arr
         })
     }
     catch(error){
