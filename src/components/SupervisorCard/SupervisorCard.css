@@ -1,0 +1,59 @@
+.supervisor-card{
+    width: 255px;
+    height: 255px;
+    border-radius: 2rem;
+    background-color: #E7E7E7;
+    margin: 2rem;
+    display: inline-block;
+}
+.card-body{
+    height: 148px;
+    width: 255px;
+}
+.card-footer{
+    background-color: #3A3A3A;
+    height: 107px;
+    width: 255px;
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+/* .block-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+} */
+.block-1{
+    /* display: flex;
+    justify-content: space-around; */
+    padding-left: 1rem;
+}
+.block-1 > p{
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.block-2{
+    display: flex;
+   justify-content: left;
+    color: white;
+    margin-top: -1.5rem;
+}
+.block-2 img{
+    padding-right: 0.5rem;
+}
+.block-3{
+    display: flex;
+    justify-content: left;
+    color: white;
+    /* padding-left: 1rem; */
+    margin-top: -1.5rem;
+
+}
+.block-3 img{
+    padding-right: 0.5rem;
+}
+.block-5{
+    display: flex;
+    justify-content: space-around;
+}

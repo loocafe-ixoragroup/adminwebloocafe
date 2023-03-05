@@ -91,13 +91,13 @@ const Sidebar = () => {
               <span>User Details</span>
             </NavLink>
             <NavLink
-              to={SLUG.download}
+              to={SLUG.list_supervisors}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }
             >
               <img src={IconHelp} alt="" />
-              <span>Download Form</span>
+              <span>List of Supervisors</span>
             </NavLink>
           </div>
           
