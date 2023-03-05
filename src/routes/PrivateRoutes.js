@@ -8,9 +8,10 @@ import {
   OrderTracking,
   Trackrentals,
   UserDetails,
-  DownloadKyc,Supervisors_List
+  DownloadKyc,Supervisors_List,
 } from "../pages";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useParams } from "react-router-dom";
+import { getKycData } from "../apis/Api";
 
 const PrivateRoutes = () => {
   return (
@@ -23,7 +24,7 @@ const PrivateRoutes = () => {
         <Route path="/track-rentals" element={<Trackrentals />} />
         <Route path="/user-details" element={<UserDetails />} />
         <Route path="/track" element={<OrderTracking />} />
-        <Route path="/download-kyc" element={<DownloadKyc />} />
+        <Route path="/download-kyc/:loocafeId" element={<DownloadKyc />} />
         <Route path="/list-supervisors" element={<Supervisors_List />} />
       </Routes>
     </Layout>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route,useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import "./Order.css";
 import {
   ViewButton,
@@ -26,7 +26,6 @@ const Order = () => {
   useEffect(() => {
     dispatch(getAllLoocafe());
   }, []);
-
 
   const onChangeState = (e) => {
     setCity1(City.getCitiesOfState("IN", e.target.value));
@@ -61,7 +60,7 @@ const Order = () => {
         <BlackButton name={"View"} />
       </div>
       <div>
-        <Tabs/>
+        <Tabs state={defaultState.get()} city={defaultCity.get()} />
       </div>
       <table className="order_table">
         <tr>
@@ -82,11 +81,11 @@ const Order = () => {
               <td>{lc.unit_start_date}</td>
               <td>₹{lc.monthly_rent}</td>
               <td>
-                <DropdownStatus />
+                <DropdownStatus value={lc.loocafe.functional_status} />
               </td>
-              <td>
-                <ViewButton name={"Open form"}/>
-              </td>
+              <Link to={`/download-kyc/${lc.loocafe._id}`}>
+                <ViewButton name={"Open form"} />
+              </Link>
             </tr>
           ))
         ) : isloading ? (
@@ -98,12 +97,9 @@ const Order = () => {
             <td>Data </td>
             <td>to </td>
             <td>Show</td>
-            <td>
-              <DropdownStatus />
-            </td>
-            <td>
-              <ViewButton name={"Open form"}/>
-            </td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         )}
       </table>

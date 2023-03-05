@@ -7,7 +7,7 @@ const cookies = new Cookies();
 
 //ACTIONS
 
-//get all supervisors
+//get all loocafes
 export const getAllLoocafe = createAsyncThunk("loocafe/getAllLoocafe", () => {
   return axios({
     method: "get",
@@ -15,6 +15,20 @@ export const getAllLoocafe = createAsyncThunk("loocafe/getAllLoocafe", () => {
     headers: { Authorization: `Bearer ${cookies.get("token")}` },
   }).then((res) => res.data.data);
 });
+
+//get all loocafes by functional status
+export const getFunctionalLoocafe = createAsyncThunk(
+  "loocafe/getFunctionalLoocafe",
+  (data) => {
+    console.log(data);
+    return axios({
+      method: "post",
+      url: `${BASE_URL}/loocafe/get-functional-loocafe`,
+      data: data,
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    }).then((res) => res.data.data);
+  }
+);
 
 const initialState = {
   loocafe: [],
@@ -36,6 +50,19 @@ const LoocafeSlice = createSlice({
       state.error = "";
     });
     builder.addCase(getAllLoocafe.rejected, (state, action) => {
+      state.isloading = false;
+      state.loocafe = [];
+      state.error = action.error.message;
+    });
+    builder.addCase(getFunctionalLoocafe.pending, (state) => {
+      state.isloading = true;
+    });
+    builder.addCase(getFunctionalLoocafe.fulfilled, (state, action) => {
+      state.isloading = false;
+      state.loocafe = action.payload;
+      state.error = "";
+    });
+    builder.addCase(getFunctionalLoocafe.rejected, (state, action) => {
       state.isloading = false;
       state.loocafe = [];
       state.error = action.error.message;

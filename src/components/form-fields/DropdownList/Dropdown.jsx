@@ -14,14 +14,14 @@ const Dropdown = ({ label, name, error, register }) => {
               <option value={supervisor._id}>{supervisor.name}</option>
             ))
           ) : (
-            <option>jajkjakpoi</option>
+            <option>No supervisors found</option>
           )}
         </select>
       ) : (
         <select name={name} {...register}>
-          <option value="type1">Type1</option>
-          <option value="type2">Type2</option>
-          <option value="type3">Type3</option>
+          <option value="Mini loocafe">Mini loocafe</option>
+          <option value="Pink loocafe">Pink loocafe</option>
+          <option value="Large loocafe">Large loocafe</option>
         </select>
       )}
     </div>

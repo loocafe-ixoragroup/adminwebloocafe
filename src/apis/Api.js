@@ -1,7 +1,8 @@
 import axios from "axios";
+import { useParams } from "react-router";
 import Cookies from "universal-cookie";
 
-const BASE_URL = "https://loocafe.herokuapp.com/api";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const cookies = new Cookies();
 
 const LoginAdmin = async ({ email, password }) => {
@@ -54,4 +55,18 @@ const addSupervisor = async (formData) => {
   }
 };
 
-export { LoginAdmin, addKycForm, addSupervisor };
+const getKycData = async (id) => {
+  try {
+    const response = await axios({
+      method: "get",
+      url: `${BASE_URL}/loocafe/get-kyc-details/${id}`,
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    // const data = await response.data;
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { LoginAdmin, addKycForm, addSupervisor, getKycData };

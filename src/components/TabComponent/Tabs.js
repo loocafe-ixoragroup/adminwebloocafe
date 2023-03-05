@@ -1,42 +1,84 @@
-import React, {useState} from 'react';
-import './Tabs.css';
-import All from '../../subpages/DummyPages/All'
-import Live from '../../subpages/DummyPages/Live'
-import Maintainance from '../../subpages/DummyPages/Maintainance'
-import Removed from '../../subpages/DummyPages/Removed'
-const Tabs = () => {
-  const [activeTab , setActiveTab] = useState("all");
+import React, { useState } from "react";
+import "./Tabs.css";
+import All from "../../subpages/DummyPages/All";
+import Live from "../../subpages/DummyPages/Live";
+import Maintainance from "../../subpages/DummyPages/Maintainance";
+import Removed from "../../subpages/DummyPages/Removed";
+import { useDispatch } from "react-redux";
+import {
+  getAllLoocafe,
+  getFunctionalLoocafe,
+} from "../../features/LoocafeSlice";
+const Tabs = ({ state, city }) => {
+  const [activeTab, setActiveTab] = useState("all");
+  const dispatch = useDispatch();
+  // console.log(state, city);
+  const handleAll = (e) => {
+    const functional_status = e.target.innerText.toLowerCase();
+    // console.log(functional_status);
+    setActiveTab(functional_status);
+    if (functional_status === "all") {
+      dispatch(getAllLoocafe());
+    } else {
+      if (state && city) {
+        dispatch(getFunctionalLoocafe({ state, city, functional_status }));
+      } else {
+        dispatch(getFunctionalLoocafe({ functional_status }));
+      }
+    }
+  };
+  // const handleLive = () => {
+  //   setActiveTab("live");
+  //   console.log(activeTab);
+  //   dispatch(getFunctionalLoocafe(state, city, activeTab));
+  // };
+  // const handleMaintainance = () => {
+  //   setActiveTab("maintenance");
+  //   console.log(activeTab);
 
-  const handleAll = () => {
-    setActiveTab("all");
-  }
-  const handleLive = () => {
-    setActiveTab("live");
-  }
-  const handleMaintainance = () => {
-    setActiveTab("maintainance");
-  }
-  const handleRemoved = () => {
-    setActiveTab("removed");
-  }
+  //   dispatch(getFunctionalLoocafe(state, city, activeTab));
+  // };
+  // const handleRemoved = () => {
+  //   setActiveTab("removed");
+  //   console.log(activeTab);
+
+  //   dispatch(getFunctionalLoocafe(state, city, activeTab));
+  // };
   return (
-    <div className='Tabs'>
-        <ul className="nav">
-        <li className={activeTab === "all" ? "active" : ""} onClick={handleAll}>All Orders</li>
-        <li className={activeTab === "live" ? "active" : ""} onClick={handleLive}>Live</li>
-        <li className={activeTab === "maintainance" ? "active" : ""} onClick={handleMaintainance}>Maintainance</li>
-        <li className={activeTab === "removed" ? "active" : ""} onClick={handleRemoved}>Removed</li>
-        </ul>
+    <div className="Tabs">
+      <ul className="nav">
+        <li className={activeTab === "all" ? "active" : ""} onClick={handleAll}>
+          All
+        </li>
+        <li
+          className={activeTab === "live" ? "active" : ""}
+          onClick={handleAll}
+        >
+          Live
+        </li>
+        <li
+          className={activeTab === "maintenance" ? "active" : ""}
+          onClick={handleAll}
+        >
+          Maintenance
+        </li>
+        <li
+          className={activeTab === "removed" ? "active" : ""}
+          onClick={handleAll}
+        >
+          Removed
+        </li>
+      </ul>
       <div className="outlet">
-       {/* <All/>
+        {/* <All/>
        <Live/>
        <Maintainance/>
        <Removed/> */}
-       {/* {activeTab === "all" ? <All /> : <All />}
+        {/* {activeTab === "all" ? <All /> : <All />}
        {activeTab === "live" ? <Live /> : <All />} */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Tabs
+export default Tabs;
