@@ -161,3 +161,21 @@ module.exports.getAllKycDetails = async(req,res)=>{
         })
     }
 }
+module.exports.getUnitNo = async(req,res)=>{
+    try{
+        const data = await loocafeSchema.find({"location.city":req.body.city,
+        "location.state":req.body.state},{id:1})
+
+        return res.status(200).json({
+            success:true,
+            message:"IDs fetched successfully",
+            data:data
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+error
+        })
+    }
+}

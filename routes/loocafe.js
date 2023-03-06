@@ -1,4 +1,5 @@
-const { addLoocafe, getAllLoocafes, getSpecificLoocafe, getLoocafeDetails, getFunctionalLoocafes, getAllKycDetails } = require("../controllers/loocafe");
+const { addLoocafe, getAllLoocafes, getSpecificLoocafe, getLoocafeDetails, 
+getFunctionalLoocafes, getAllKycDetails, getUnitNo } = require("../controllers/loocafe");
 const { authorize } = require("../middleware/auth");
 
 const router = require("express").Router();
@@ -9,6 +10,8 @@ router.get("/get-loocafe/:id",authorize("Admin"),getSpecificLoocafe)
 router.get("/get-loocafe-details",authorize("Admin"),getLoocafeDetails)
 router.post("/get-functional-loocafe",authorize("Admin"),getFunctionalLoocafes)
 router.get("/get-kyc-details/:id",authorize("Admin"),getAllKycDetails)
+
+router.post("/get-unit-no",authorize("Admin"),getUnitNo)
 
 
 module.exports = router

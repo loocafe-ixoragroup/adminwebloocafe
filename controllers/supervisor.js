@@ -1,3 +1,4 @@
+const { ObjectID } = require("bson")
 const supervisorSchema = require("../models/supervisor")
 const userSchema = require("../models/user")
 const {uploadFileToS3} = require("../utils/s3")
@@ -78,3 +79,20 @@ module.exports.getAllSupervisors = async(req,res)=>{
     }
 }
 
+module.exports.getLoocafeSupervisor = async(req,res)=>{
+    try{
+        const data = await supervisorSchema.find({loocafes:{$in:[ObjectID(req.body.loocafeID)]}})
+
+        return res.status(200).json({
+            success:true,
+            message:"retrieved supervisors according to loocafeID successfully",
+            data:data
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+err
+        })
+    }
+}
