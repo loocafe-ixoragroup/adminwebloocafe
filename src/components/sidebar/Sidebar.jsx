@@ -64,7 +64,7 @@ const Sidebar = () => {
               <span>Track</span>
             </NavLink>
             <NavLink
-              to={SLUG.add_supervisor}
+              to={SLUG.list_all_supervisor}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }

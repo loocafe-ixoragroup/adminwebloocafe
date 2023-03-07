@@ -8,7 +8,9 @@ import {
   LightButton,
 } from "../../components/form-fields";
 import SupervisorCard from "../../components/SupervisorCard/SupervisorCard";
+import { useNavigate } from "react-router-dom";
 const SupervisorsList = () => {
+  const navigate = useNavigate();
   var cards = [
     {
       id: 1,
@@ -20,14 +22,14 @@ const SupervisorsList = () => {
       id: 3,
     },
     {
-      id:4
+      id: 4,
     },
     {
-      id:5
+      id: 5,
     },
     {
-      id:6
-    }
+      id: 6,
+    },
   ];
   return (
     <div className="supervisors-list-main">
@@ -42,9 +44,12 @@ const SupervisorsList = () => {
       </div>
       <div className="buttons">
         <BlackButton name={"Show List"} />
-        <LightButton name={"Add Supervisor"} />
+        <LightButton
+          name={"Add Supervisor"}
+          handleClick={() => navigate("/add-supervisor")}
+        />
       </div>
-      <div> 
+      <div>
         {cards.map((e) => {
           return <SupervisorCard />;
         })}

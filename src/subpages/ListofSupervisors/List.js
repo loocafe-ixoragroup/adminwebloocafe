@@ -18,6 +18,7 @@ import {
   getSupervisor,
 } from "../../features/SupervisorSlice";
 import { useTrait } from "../../hooks/useTrait";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
   city: yup.string().required("Required"),
@@ -48,7 +49,7 @@ const List = ({ setPage }) => {
   const defaultCity = useTrait("");
   const states = State.getStatesOfCountry("IN");
   const [cities, setCities] = useState([]);
-
+  const navigate = useNavigate();
   const { supervisor, isloading } = useSelector((state) => state.supervisor);
   const dispatch = useDispatch();
 
@@ -61,7 +62,7 @@ const List = ({ setPage }) => {
   };
 
   const handleNext = () => {
-    setPage((prev) => prev + 1);
+    navigate("/add-supervisor");
   };
 
   const onChangeState = (e) => {
@@ -103,7 +104,7 @@ const List = ({ setPage }) => {
         <tr>
           <th>Name</th>
           <th>Role</th>
-          <th>Assigned Loocafes</th>
+          {/* <th>Assigned Loocafes</th> */}
           <th>Details</th>
         </tr>
         {supervisor?.length > 0 ? (
@@ -111,13 +112,17 @@ const List = ({ setPage }) => {
             <tr key={s._id}>
               <td>{s.name}</td>
               <td>Supervisor</td>
-              <td>5</td>
               <td>
-                <ViewButton name={"view"} />
+                <ViewButton
+                  name={"view"}
+                  handleClick={() => navigate("/list-supervisors")}
+                />
               </td>
             </tr>
           ))
-        ) : isloading?<>Loading...</>: (
+        ) : isloading ? (
+          <>Loading...</>
+        ) : (
           <tr>
             <td></td>
             <td> No data to show</td>

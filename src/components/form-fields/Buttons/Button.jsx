@@ -15,8 +15,12 @@ function LightButton({ name, handleClick }) {
     </button>
   );
 }
-function ViewButton({ name }) {
-  return <button className="btn-view">{name}</button>;
+function ViewButton({ name, handleClick }) {
+  return (
+    <button className="btn-view" onClick={handleClick}>
+      {name}
+    </button>
+  );
 }
 
 export { BlackButton, LightButton, ViewButton };

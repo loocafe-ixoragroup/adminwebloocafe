@@ -83,9 +83,12 @@ const Order = () => {
               <td>
                 <DropdownStatus value={lc.loocafe.functional_status} />
               </td>
-              <Link to={`/download-kyc/${lc.loocafe._id}`}>
-                <ViewButton name={"Open form"} />
-              </Link>
+
+              <td>
+                <Link to={`/download-kyc/${lc.loocafe._id}`}>
+                  <ViewButton name={"Open form"} />
+                </Link>
+              </td>
             </tr>
           ))
         ) : isloading ? (
