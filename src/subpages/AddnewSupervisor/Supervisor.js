@@ -14,6 +14,7 @@ import * as yup from "yup";
 import "./Supervisor.css";
 import { addSupervisor } from "../../apis/Api";
 import { useTrait } from "../../hooks/useTrait";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
   name: yup.string().required("Required!"),
@@ -52,7 +53,7 @@ const Supervisor = ({ setPage }) => {
   const defaultCity = useTrait("");
   const states = State.getStatesOfCountry("IN");
   const [city1, setCity1] = useState([]);
-
+  const navigate = useNavigate();
   const handleNext = (data) => {
     // console.log(data);
 
@@ -74,7 +75,7 @@ const Supervisor = ({ setPage }) => {
     addSupervisor(formData);
 
     setTimeout(() => {
-      setPage((prev) => prev - 1);
+      navigate("/list-all-supervisor");
     }, 5000);
   };
 
