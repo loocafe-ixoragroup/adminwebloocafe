@@ -1,0 +1,26 @@
+.update-formcomp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+     height: 42px;
+    margin-left: 3rem;
+    margin-right: 2rem;
+    margin-bottom: 3rem;
+}
+.update_label1{
+   color:#BCBCBC;
+   font-size: 15px;
+}
+.update_name1{
+    width: 120px;
+   font-weight: 500;
+   font-size: 16px;
+   padding: 0.3rem 0.5rem;
+  /* padding: 1rem 0.5rem; */
+  box-sizing: border-box;
+   margin: 0;
+   background: #F8F8F8;
+   border: 1px solid #B1B1B1;
+   border-radius: 10px;
+}

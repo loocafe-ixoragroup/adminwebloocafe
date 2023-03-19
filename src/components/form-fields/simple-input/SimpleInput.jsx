@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import "./SimpleInput.css";
-import { IconInfo } from "../../../assets/icons";
+import { IconAsterisk } from "../../../assets/icons";
 
 const SimpleInput = ({ label, error, register, ...props }) => {
   return (
@@ -14,7 +14,7 @@ export const LabelComp = ({ name, error }) => {
   return (
     <div className="si_label">
       <span className="si_label_name">{name}</span>
-      <img src={IconInfo} alt="" />
+      <img src={IconAsterisk} alt="" />
       <span className="si_error">{error && error}</span>
     </div>
   );

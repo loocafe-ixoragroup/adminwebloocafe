@@ -104,8 +104,8 @@ const List = ({ setPage }) => {
         <tr>
           <th>Name</th>
           <th>Role</th>
-          {/* <th>Assigned Loocafes</th> */}
-          <th>Details</th>
+          <th>Assigned Loocafes</th>
+          <th>Supervisor Details</th>
         </tr>
         {supervisor?.length > 0 ? (
           supervisor.map((s) => (
@@ -117,6 +117,9 @@ const List = ({ setPage }) => {
                   name={"view"}
                   handleClick={() => navigate("/list-supervisors")}
                 />
+              </td>
+              <td>
+                <ViewButton name={"View Details"}/>
               </td>
             </tr>
           ))

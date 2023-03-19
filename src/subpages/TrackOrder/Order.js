@@ -9,6 +9,7 @@ import {
   BlackButton,
 } from "../../components/form-fields";
 import Tabs from "../../components/TabComponent/Tabs";
+import { IconSearchbar } from "../../assets/icons";
 import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,13 +41,13 @@ const Order = () => {
   return (
     <div className="Order_main">
       <h3>Track Loocafe’s</h3>
-      <p>Order found: 16</p>
+      {/* <p>Order found: 16</p> */}
       <div className="State-city-track">{/* <StateCity/> */}</div>
-      <div className="Order_date">
+      {/* <div className="Order_date">
         <DateInput label={"From"} />
         <DateInput label={"To"} />
-      </div>
-      <div className="Track-order-statecity">
+      </div>  */}
+      {/* <div className="Track-order-statecity">
         <StateCity
           city={city1}
           states={states}
@@ -55,13 +56,20 @@ const Order = () => {
           defaultState={defaultState.get()}
           defaultCity={defaultCity.get()}
         />
-      </div>
-      <div className="view-orders-button">
+      </div> */}
+      {/* <div className="view-orders-button">
         <BlackButton name={"View"} />
-      </div>
-      <div>
+      </div> */}
+      <div className="track-main-top-bar">
+        <div>
         <Tabs state={defaultState.get()} city={defaultCity.get()} />
+        </div>
+        <div className="search-field">
+        <input className="search-bar" type="text" key="search-bar"/>
+        <img className="search-bar-img" src={IconSearchbar} alt="search Bar"/>
+        </div>
       </div>
+      {/* <div className="search-bar"></div> */}
       <table className="order_table">
         <tr>
           <th>id</th>

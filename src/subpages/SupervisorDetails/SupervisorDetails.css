@@ -1,0 +1,53 @@
+.supervisor-details-main{
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+}
+.supervisor-details-main > h3 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+    color: #252525;
+    text-align: center;
+}
+.supervisor-edit-button{
+    width: 120px;
+    height: 3rem;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #7B7B7B;
+    font-size: 18px;
+    border-radius: 1rem;
+    float: right;
+}
+
+.profile-container{
+    display: flex;
+    /* gap:5rem; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.supervisor-profile{
+    background-color: #efefef;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.supervisor-details-container{
+    margin-top: 3rem;
+}
+.Supervisor-page-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 3rem;
+}

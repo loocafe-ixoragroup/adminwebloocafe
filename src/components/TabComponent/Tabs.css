@@ -21,7 +21,7 @@
     list-style: none;
     text-align: center;
     cursor: pointer;
-    transition: all 0.1s;
+    transition: all 0.01s;
     border-bottom-left-radius: 2rem;
     border-top-left-radius: 2rem;
   }
@@ -42,6 +42,8 @@
     background: #0060D3;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 2rem;
     color: white;
 
   }

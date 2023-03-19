@@ -50,13 +50,12 @@ const SupervisorsList = () => {
   return (
     <div className="supervisors-list-main">
       <div className="supervisors-list-sub">
-        <h3>List of Supervisors</h3>
-        {/* <LightButton name={"Add Assigned Loocafe"}/> */}
+        <h3>Assigned Loocafes</h3>
         <button className="add-supervisor-btn">Add Assigned Loocafe</button>
       </div>
       <div>
-        <SimpleInput label={"LooCafe name"} />
-        <SimpleInput label={"LooCafe Unit No"} />
+        {/* <SimpleInput label={"LooCafe name"} />
+        <SimpleInput label={"LooCafe Unit No"} /> */}
         <StateCity
           onChangeState={onChangeState}
           onChangeCity={onChangeCity}
@@ -78,8 +77,6 @@ const SupervisorsList = () => {
           return <SupervisorCard />;
         })}
       </div>
-
-      {/* <StateCity names={"State"}/> */}
     </div>
   );
 };

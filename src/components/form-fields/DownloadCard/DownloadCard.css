@@ -1,0 +1,15 @@
+.document-card{
+    width: 170px;
+    height: 140px;
+    margin-left: 3.5rem;
+    margin-bottom: 2rem;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 15px -5px rgba(0, 96, 211, 0.25);
+    border-radius: 15px;
+   text-align: center;
+   padding-top: 20%;
+   cursor: pointer;
+  }
+  .document-card > p{
+    color: #0060D3;
+  }

@@ -225,7 +225,7 @@ const Tenant = ({ setPage }) => {
             // onChange={(e) => setValues({""})}
           />
           <UploadInput
-            label={"Adhar No"}
+            label={"Aadhar No"}
             error={errors.cleaner_aadhar?.message}
             file={data.cleaner_aadhar}
             name={"cleaner_aadhar"}

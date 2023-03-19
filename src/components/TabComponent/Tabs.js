@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import "./Tabs.css";
-import All from "../../subpages/DummyPages/All";
-import Live from "../../subpages/DummyPages/Live";
-import Maintainance from "../../subpages/DummyPages/Maintainance";
-import Removed from "../../subpages/DummyPages/Removed";
 import { useDispatch } from "react-redux";
 import {
   getAllLoocafe,

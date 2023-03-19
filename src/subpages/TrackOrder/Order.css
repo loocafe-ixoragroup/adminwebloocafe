@@ -15,10 +15,27 @@
 .Order_main  > p{
     margin-left: 3%;
 }
-.Order_date{
-    display: flex;
-    gap: 2rem;
-    margin-left:3%;
+/* .track-main-top-bar{
+  display: flex;
+  flex-direction: row;
+} */
+.search-field{
+  display: flex;
+  position: absolute;
+ margin-left: 45%;
+ margin-top: -5rem;
+}
+.search-bar{
+  width: 270px;
+  height: 43px;
+  border: 0.955854px solid #5F5F5F;
+  border-radius: 19.1171px;
+  font-size: 18px;
+  /* position: absolute; */
+}
+.search-bar-img{
+  float: right;
+  margin-left: -2rem;
 }
 .order_table{
     width: 90%;
@@ -32,6 +49,19 @@
 }
 th{
   font-weight: 600;
+}
+@media screen and (min-width:1500px) {
+  .search-field{
+    margin-left: 50%;
+  }
+}
+@media screen and (max-width:1300px) {
+  .search-bar{
+    width: 230px;
+  }
+  .search-field{
+    margin-left: 42%;
+  }
 }
 @media screen and (min-width:1000px) and (max-width:1130px) {
   .Order_date{

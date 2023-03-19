@@ -18,6 +18,10 @@ import IconDownload from "./icon-download.svg";
 import ImageError from "./image-error-page.svg";
 import IconLocation from "./icon-location.svg";
 import IconUnit from "./icon-unit.svg";
+import IconEdit from "./icon-edit.svg";
+import IconAsterisk from "./icon-asterisk.svg";
+import IconSearchbar from "./icon-searchbar.svg";
+//import IconCircle from "./icon-circle.svg";
 
 export {
   IconDashboard,
@@ -39,5 +43,8 @@ export {
   IconDownload,
   ImageError,
   IconLocation,
-  IconUnit
+  IconUnit,
+  IconEdit,
+  IconAsterisk,
+  IconSearchbar,
 };

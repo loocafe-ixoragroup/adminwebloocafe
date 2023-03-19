@@ -1,12 +1,12 @@
-.main-download-kyc{
-    background-color: white;
+.main-download-kyc {
+  background-color: white;
   margin: 0.5rem;
   /* padding: 2rem; */
   border-radius: 1.25rem;
   box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
 }
-.user-details-main{
-  background-color: #0060D3;
+.user-details-main {
+  background-color: #0060d3;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
   /* height: 40%; */
   border-radius: 20px 20px 0px 0px;
 }
-.user-details-main > p{
+.user-details-main > p {
   color: white;
   font-size: 26px;
   /* padding-left: 3.5rem; */
@@ -26,7 +26,7 @@
   display: flex;
   justify-content: space-between;
 } */
-.title-btn > p{
+.title-btn > p {
   color: white;
   font-size: 26px;
   padding-left: 3.5rem;
@@ -34,26 +34,42 @@
   padding-bottom: 0.5rem;
 }
 
-.download-button{
+.download-button {
   height: 3rem;
   border-radius: 1rem;
   border: none;
   font-size: 18px;
   cursor: pointer;
- margin-left: 2rem;
- margin-top: 2rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
   padding: 1rem;
   background-color: white;
   float: right;
   position: absolute;
 }
-.download-img{
+.download-img {
   padding-right: 1rem;
-
 }
-.circle{
+
+.edit-button {
+  height: 3rem;
+  border-radius: 1rem;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 2rem;
+  margin-top: 6rem;
+  padding: 1rem;
+  background-color: white;
+  float: right;
+  position: absolute;
+}
+.edit-img{
+  padding-right: 0.5rem;
+}
+.circle {
   /* position: absolute; */
-  background-color: #EFEFEF;
+  background-color: #efefef;
   height: 170px;
   width: 170px;
   border-radius: 50%;
@@ -74,7 +90,7 @@
   margin-left: 11rem;
    gap: 2rem;
 } */
-.maintain-partner{
+.maintain-partner {
   margin: 0;
 }
 .maintain-partner > p {
@@ -83,19 +99,25 @@
   padding-left: 3.5rem;
   padding-top: 1rem;
 }
-.rental-details{
+.rental-details {
   margin: 0;
 }
-.rental-details > p{
+.rental-details > p {
   color: #252525;
   font-size: 26px;
   padding-left: 3.5rem;
   padding-top: 1rem;
 }
-.unit-details{
-  margin:0;
+.unit-details {
+  margin: 0;
 }
-.unit-details > p{
+.unit-details > p {
+  color: #252525;
+  font-size: 26px;
+  padding-left: 3.5rem;
+  padding-top: 1rem;
+}
+.uploaded-documents > p {
   color: #252525;
   font-size: 26px;
   padding-left: 3.5rem;

@@ -1,0 +1,41 @@
+.add-assigned-loocafe-main {
+  background-color: white;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+}
+.add-assigned-loocafe-main > h3 {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 33px;
+  color: #252525;
+  text-align: center;
+}
+.simple-inputs-sub{
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem; 
+    margin-left: 6rem;
+}
+
+.state-city-sub {
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;  
+}
+.add-btn {
+  margin: 2rem;
+  text-align: center;
+}
+
+@media screen and (max-width : ""){
+  
+}

@@ -1,0 +1,27 @@
+.update-form-fields2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 42px;
+  margin-top: 0rem;
+  margin-left: 3rem;
+  margin-right: 2rem;
+  margin-bottom: 3rem;
+}
+.update_label2 {
+  color: #707070;
+  font-size: 15px;
+}
+.update_name2 {
+  width: 150px;
+  color: #252525;
+  font-weight: 500;
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  background: #f8f8f8;
+  border: 1px solid #818181;
+  border-radius: 1rem;
+}

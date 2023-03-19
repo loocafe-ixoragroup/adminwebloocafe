@@ -1,0 +1,6 @@
+.Kyc-update-Buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    padding: 3rem;
+}
