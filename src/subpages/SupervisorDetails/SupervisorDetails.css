@@ -27,17 +27,14 @@
 
 .profile-container{
     display: flex;
-    /* gap:5rem; */
+    gap:3rem;
     text-align: center;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
 .supervisor-profile{
-    background-color: #efefef;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
+    margin-left: 2rem;
 }
 .supervisor-details-container{
     margin-top: 3rem;

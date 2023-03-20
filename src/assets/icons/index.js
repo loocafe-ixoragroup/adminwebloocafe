@@ -21,7 +21,7 @@ import IconUnit from "./icon-unit.svg";
 import IconEdit from "./icon-edit.svg";
 import IconAsterisk from "./icon-asterisk.svg";
 import IconSearchbar from "./icon-searchbar.svg";
-//import IconCircle from "./icon-circle.svg";
+import IconProfile from "./icon-profile.svg";
 
 export {
   IconDashboard,
@@ -47,4 +47,5 @@ export {
   IconEdit,
   IconAsterisk,
   IconSearchbar,
+  IconProfile
 };

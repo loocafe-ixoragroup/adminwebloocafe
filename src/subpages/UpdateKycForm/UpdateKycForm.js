@@ -1,6 +1,7 @@
 import React from "react";
 import "./UpdateKycForm.css";
-import { BlackButton , LightButton } from "../../components/form-fields";
+import { BlackButton, LightButton } from "../../components/form-fields";
+import { IconEdit } from "../../assets/icons";
 import FormRow from "../../components/form-fields/Form-Download-Components/FormRow";
 import FormContainer from "../../components/form-fields/Form-Download-Components/FormContainer";
 import DownloadCard from "../../components/form-fields/DownloadCard/DownloadCard";
@@ -15,7 +16,13 @@ const UpdateKycForm = () => {
             <p>User Profile</p>
             <div className="circle">
               <img></img>
+              <div className="edit-profile">
+              <div className="white-circle">
+                <img className="edit-icon" src={IconEdit} alt="Edit" />
+              </div>
             </div>
+            </div>
+            
             <div className="form-fields">
               <FormRow>
                 <UpdateFormComp label={"First Name"} name={"X"} />
@@ -113,8 +120,8 @@ const UpdateKycForm = () => {
           </div>
         </div>
         <div className="Kyc-update-Buttons">
-        <BlackButton name={"Save"}/>
-        <LightButton name={"Back"}/>
+          <BlackButton name={"Save"} />
+          <LightButton name={"Back"} />
         </div>
       </div>
     </div>

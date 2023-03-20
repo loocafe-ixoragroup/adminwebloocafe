@@ -1,0 +1,23 @@
+.update-supervisor-main{
+    background-color: white;
+  box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  margin: 2rem;
+}
+.update-mobileno{
+    display: flex;
+    gap: 2rem;
+}
+@media screen and (min-width:1000px) and (max-width: 1125px){
+     .update-mobileno{
+        flex-direction: column;
+        gap: 0;
+     }
+}
+@media screen and (max-width: 768px){
+    .update-mobileno{
+        flex-direction: column;
+        gap: 0;
+    }
+}

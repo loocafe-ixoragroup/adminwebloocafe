@@ -16,26 +16,32 @@
   text-align: center;
 }
 .simple-inputs-sub{
-    align-items: center;
-    text-align: center;
     display: flex;
     flex-direction: row;
     gap: 2rem; 
-    margin-left: 6rem;
+    /* margin-left: 6rem; */
 }
-
-.state-city-sub {
+/* .state-city-sub {
     align-items: center;
     text-align: center;
     justify-content: space-around;
     display: flex;
     flex-direction: row;  
-}
+} */
 .add-btn {
   margin: 2rem;
   text-align: center;
 }
 
-@media screen and (max-width : ""){
-  
+@media screen and (min-width:1000px) and (max-width:1110px) {
+  .simple-inputs-sub{
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 768px) {
+  .simple-inputs-sub {
+    flex-direction: column;
+    gap: 0;
+  }
 }

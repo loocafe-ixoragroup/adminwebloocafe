@@ -4,12 +4,14 @@ import AddAssignedLoocafe from '../subpages/AddAssignedLoocafe/AddAssignedLoocaf
 import ErrorPage from '../subpages/ErrorPage/ErrorPage';
 import SupervisorDetails from '../subpages/SupervisorDetails/SupervisorDetails';
 import UpdateKycForm from '../subpages/UpdateKycForm/UpdateKycForm';
+import UpdateSupervisorDetails from '../subpages/UpdateSupervisorDetails/UpdateSupervisorDetails';
 const Supervisors_List = () => {
   return (
     <div>
-      <UpdateKycForm/>
+      {/* <UpdateSupervisorDetails/> */}
+      {/* <UpdateKycForm/> */}
       {/* <SupervisorDetails/> */}
-      {/* <AddAssignedLoocafe/> */}
+      <AddAssignedLoocafe/>
         {/* <SupervisorsList/> */}
         {/* <ErrorPage/> */}
     </div>

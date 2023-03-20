@@ -4,7 +4,7 @@ import FormRow from "../../components/form-fields/Form-Download-Components/FormR
 import FormComponents from "../../components/form-fields/Form-Download-Components/FormComponents";
 import FormContainer from "../../components/form-fields/Form-Download-Components/FormContainer";
 import { BlackButton , LightButton } from "../../components/form-fields";
-import { IconEdit} from "../../assets/icons";
+import { IconEdit , IconProfile} from "../../assets/icons";
 const SupervisorDetails = () => {
   return (
     <div className="supervisor-details-main">
@@ -13,9 +13,9 @@ const SupervisorDetails = () => {
       <div className="profile-container">
         <div className="supervisor-profile">
           {/* <img className="edit" src={IconEdit}></img> */}
-          <img></img>
+          <img src={IconProfile}></img>
         </div>
-        <div>
+        <div className="supervisor-profile-data">
           <FormRow>
             <FormComponents label={"Name"} name={"Karthik"} />
           </FormRow>
