@@ -30,7 +30,7 @@ const loocafe = new Schema({
     },
     functional_status:{
         type:String,
-        default:"maintenance"
+        default:"live"
     },
 
     expenses:[{
@@ -43,6 +43,7 @@ const loocafe = new Schema({
     partnerID:mongoose.SchemaTypes.ObjectId,
     supervisorID: mongoose.SchemaTypes.ObjectId,
     rentalID: mongoose.SchemaTypes.ObjectId,
+    previousPartners:[mongoose.SchemaTypes.ObjectId],
     id:Number,
     qr:String
     

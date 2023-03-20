@@ -179,3 +179,58 @@ module.exports.getUnitNo = async(req,res)=>{
         })
     }
 }
+module.exports.trackLoocafe = async(req,res)=>{
+    try{
+        const data = await loocafeSchema.find({name:req.body.name,
+        functional_status:req.body.functional_status})
+
+        return res.status(200).json({
+            success:true,
+            message:"retrieved loocafe",
+            data:data
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+error
+        })
+    }
+}
+module.exports.searchLoocafeName = async(req,res)=>{
+    try{
+        const loocafeName = (req.body.loocafe).toUpperCase()
+        const data = await loocafeSchema.find({name:{$regex:loocafeName}})
+
+        return res.status(200).json({
+            success:true,
+            message:"fetched the results",
+            data:data
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+error
+        })
+    }
+}
+module.exports.modifyFunctionalStatus = async(req,res)=>{
+    try{
+        await loocafeSchema.findByIdAndUpdate(ObjectId(req.params.id),{
+            $set:{
+                functional_status:req.body.functional_status
+            }
+        })
+        return res.status(200).json({
+            success:true,
+            message:"modified functional status successfully"
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+error
+        })
+    }
+}

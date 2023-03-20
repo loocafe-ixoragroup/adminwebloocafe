@@ -1,5 +1,6 @@
 const { addLoocafe, getAllLoocafes, getSpecificLoocafe, getLoocafeDetails, 
-getFunctionalLoocafes, getAllKycDetails, getUnitNo } = require("../controllers/loocafe");
+getFunctionalLoocafes, getAllKycDetails, getUnitNo, trackLoocafe,
+modifyFunctionalStatus } = require("../controllers/loocafe");
 const { authorize } = require("../middleware/auth");
 
 const router = require("express").Router();
@@ -12,6 +13,7 @@ router.post("/get-functional-loocafe",authorize("Admin"),getFunctionalLoocafes)
 router.get("/get-kyc-details/:id",authorize("Admin"),getAllKycDetails)
 
 router.post("/get-unit-no",authorize("Admin"),getUnitNo)
-
+router.post("/track-loocafe",authorize("Admin"),trackLoocafe)
+router.put("/modify-functional-status/:id",authorize("Admin"),modifyFunctionalStatus)
 
 module.exports = router
