@@ -200,9 +200,7 @@ module.exports.trackLoocafe = async(req,res)=>{
 module.exports.searchLoocafeName = async(req,res)=>{
     try{
         const loocafeName = req.body.loocafe
-        const data = await loocafeSchema.find({name:{$regex:loocafeName}},{
-            name:1
-        })
+        const data = await loocafeSchema.find({name:{$regex:loocafeName}})
 
         return res.status(200).json({
             success:true,

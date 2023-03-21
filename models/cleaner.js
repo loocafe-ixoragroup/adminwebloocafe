@@ -28,7 +28,7 @@ const cleaner = new Schema({
     }],
     aadhar:String,
     pan:String,
-    address_proof:String,
+    electricity_bill:String,
     photo:String
 })
 

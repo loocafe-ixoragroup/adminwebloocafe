@@ -13,10 +13,10 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
             console.log(result.key);
             // let rental_images = []
 
-            if(file.fieldname == "address_proof"){
+            if(file.fieldname == "electricity_bill"){
                 await cleanerSchema.findByIdAndUpdate(cleaner._id,{
                     $set:{
-                        address_proof : result.key
+                        electricity_bill : result.key
                     }
                 })
                
