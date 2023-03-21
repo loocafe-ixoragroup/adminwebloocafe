@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SupervisorsList.css";
 import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
@@ -9,74 +9,100 @@ import {
   LightButton,
 } from "../../components/form-fields";
 import SupervisorCard from "../../components/SupervisorCard/SupervisorCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getLoocafeBySupervisor } from "../../features/LoocafeSlice";
+import ErrorPage from "../ErrorPage/ErrorPage";
+import AddAssignedLoocafe from "../AddAssignedLoocafe/AddAssignedLoocafe";
 const SupervisorsList = () => {
-  const defaultState = useTrait("");
-  const defaultCity = useTrait("");
-  const states = State.getStatesOfCountry("IN");
-  const [cities, setCities] = useState([]);
+  // const defaultState = useTrait("");
+  // const defaultCity = useTrait("");
+  // const states = State.getStatesOfCountry("IN");
+  // const [cities, setCities] = useState([]);
+
+  const dispatch = useDispatch();
+  const { loocafe } = useSelector((state) => state.loocafe);
+  const [show, setShow] = useState(false);
+
   const navigate = useNavigate();
-  var cards = [
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
-    },
-  ];
+  const { supervisorId } = useParams();
+  // console.log(typeof loocafe);
 
-  const onChangeState = (e) => {
-    setCities(City.getCitiesOfState("IN", e.target.value));
-    defaultState.set(e.target.value);
-    // console.log(defaultState.get());
+  const onClose = () => {
+    setShow(false);
   };
 
-  const onChangeCity = (e) => {
-    defaultCity.set(e.target.value);
-    // console.log(defaultCity.get());
-  };
+  // var cards = [
+  //   {
+  //     id: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //   },
+  //   {
+  //     id: 3,
+  //   },
+  //   {
+  //     id: 4,
+  //   },
+  //   {
+  //     id: 5,
+  //   },
+  //   {
+  //     id: 6,
+  //   },
+  // ];
+
+  // const onChangeState = (e) => {
+  //   setCities(City.getCitiesOfState("IN", e.target.value));
+  //   defaultState.set(e.target.value);
+  //   // console.log(defaultState.get());
+  // };
+
+  // const onChangeCity = (e) => {
+  //   defaultCity.set(e.target.value);
+  //   // console.log(defaultCity.get());
+  // };
+
+  useEffect(() => {
+    dispatch(getLoocafeBySupervisor(supervisorId));
+  }, []);
+
   return (
     <div className="supervisors-list-main">
       <div className="supervisors-list-sub">
         <h3>Assigned Loocafes</h3>
-        <button className="add-supervisor-btn">Add Assigned Loocafe</button>
+        <button className="add-supervisor-btn" onClick={() => setShow(true)}>
+          Add Assigned Loocafe
+        </button>
       </div>
       <div>
         {/* <SimpleInput label={"LooCafe name"} />
         <SimpleInput label={"LooCafe Unit No"} /> */}
-        <StateCity
+        {/* <StateCity
           onChangeState={onChangeState}
           onChangeCity={onChangeCity}
           city={cities}
           states={states}
           defaultState={defaultState.get()}
           defaultCity={defaultCity.get()}
-        />
+        /> */}
       </div>
-      <div className="buttons">
+      {/* <div className="buttons">
         <BlackButton name={"Show List"} />
         <LightButton
           name={"Add Supervisor"}
           handleClick={() => navigate("/add-supervisor")}
         />
-      </div>
+      </div> */}
       <div>
-        {cards.map((e) => {
-          return <SupervisorCard />;
-        })}
+        {loocafe !== null ? (
+          <SupervisorCard loocafe={loocafe} />
+        ) : (
+          <ErrorPage setShow={setShow} />
+        )}
       </div>
+      <AddAssignedLoocafe show={show} setShow={setShow} onClose={onClose} />
     </div>
   );
 };

@@ -54,7 +54,7 @@ const schema = yup.object({
       }
       return false;
     }),
-  address_proof: yup
+  electricity_bill: yup
     .mixed()
     .test("file", "You need to provide a file", (value) => {
       if (value.length > 0) {
@@ -91,7 +91,7 @@ const Tenant = ({ setPage }) => {
       cleaner_pincode: data.cleaner_pincode,
       cleaner_state: data.cleaner_state,
       dob: data.dob,
-      address_proof: data.address_proof,
+      electricity_bill: data.electricity_bill,
       cleaner_pan: data.cleaner_pan,
       cleaner_aadhar: data.cleaner_aadhar,
       cleaner_photo: data.cleaner_photo,
@@ -210,11 +210,11 @@ const Tenant = ({ setPage }) => {
             />
           </div>
           <UploadInput
-            label={"Adress Proof"}
-            error={errors.address_proof?.message}
-            name={"address_proof"}
-            file={data.address_proof}
-            register={{ ...register("address_proof") }}
+            label={"Electricity Bill"}
+            error={errors.electricity_bill?.message}
+            name={"electricity_bill"}
+            file={data.electricity_bill}
+            register={{ ...register("electricity_bill") }}
           />
           <UploadInput
             label={"PAN No"}

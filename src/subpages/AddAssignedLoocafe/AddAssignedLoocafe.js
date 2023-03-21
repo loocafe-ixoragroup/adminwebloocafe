@@ -7,7 +7,7 @@ import {
   StateCity,
 } from "../../components/form-fields";
 import { useTrait } from "../../hooks/useTrait";
-const AddAssignedLoocafe = () => {
+const AddAssignedLoocafe = ({ show, setShow, onClose }) => {
   const defaultState = useTrait("");
   const defaultCity = useTrait("");
   const states = State.getStatesOfCountry("IN");
@@ -24,28 +24,35 @@ const AddAssignedLoocafe = () => {
   };
 
   return (
-    <div className="add-assigned-loocafe-main">
-      <h3>Add Assigned Loocafe</h3>
-      {/* <div className="add-assigned-loocafe-sub"> */}
+    <div
+      className={show ? "smodal__container show" : "smodal__container"}
+      onClick={onClose}
+    >
+      <div
+        className="add-assigned-loocafe-main"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h3>Add Assigned Loocafe</h3>
+        {/* <div className="add-assigned-loocafe-sub"> */}
         <div className="simple-inputs-sub">
-        <SimpleInput label={"LooCafe name"} />
-        <SimpleInput label={"LooCafe Unit No"} />
+          <SimpleInput label={"LooCafe name"} />
+          <SimpleInput label={"LooCafe Unit No"} />
         </div>
         <div className="state-city-sub">
-        <StateCity
-          onChangeState={onChangeState}
-          onChangeCity={onChangeCity}
-          city={cities}
-          states={states}
-          defaultState={defaultState.get()}
-          defaultCity={defaultCity.get()}
-        />
+          <StateCity
+            onChangeState={onChangeState}
+            onChangeCity={onChangeCity}
+            city={cities}
+            states={states}
+            defaultState={defaultState.get()}
+            defaultCity={defaultCity.get()}
+          />
         </div>
         <div className="add-btn">
           <BlackButton name={"Add"} />
         </div>
       </div>
-    // </div>
+    </div>
   );
 };
 

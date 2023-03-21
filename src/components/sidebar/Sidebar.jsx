@@ -64,7 +64,7 @@ const Sidebar = () => {
               <span>Track</span>
             </NavLink>
             <NavLink
-              to={SLUG.list_all_supervisor}
+              to={SLUG.supervisor}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
               }
@@ -90,7 +90,7 @@ const Sidebar = () => {
               <img src={IconUserDetails} alt="" />
               <span>User Details</span>
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to={SLUG.list_supervisors}
               className={({ isActive }) =>
                 isActive ? "sidebar__menu__item active" : "sidebar__menu__item"
@@ -98,7 +98,7 @@ const Sidebar = () => {
             >
               <img src={IconHelp} alt="" />
               <span>List of Supervisors</span>
-            </NavLink>
+            </NavLink> */}
           </div>
 
           {/*<div className="sidebar__footer">

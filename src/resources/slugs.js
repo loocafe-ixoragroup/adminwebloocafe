@@ -3,13 +3,18 @@ export default {
   dashboard: "/dashboard",
   kyc: "/kyc",
   track: "/track",
-  list_all_supervisor: "/list-all-supervisor",
-  add_supervisor: "/add-supervisor",
   track_rentals: "/track-rentals",
   user_details: "/user-details",
-  download: "/download-kyc",
+  download_kyc: `/track/download-kyc`,
+  edit_kyc: "/track/edit-kyc",
   settings: "/settings",
-  list_supervisors: "/list-supervisors",
+
+  supervisor: "/supervisor",
+  add_supervisor: "/supervisor/add-supervisor",
+  get_supervisor: "/supervisor/supervisor-details",
+  edit_supervisor: "/supervisor/edit-supervisor",
+  assigned_loocafe: "/supervisor/assigned-loocafes",
+
   // auth
   login: "/login",
   signup: "/signup",

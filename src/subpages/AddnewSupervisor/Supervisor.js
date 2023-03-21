@@ -83,6 +83,7 @@ const Supervisor = ({ setPage }) => {
     setCity1(City.getCitiesOfState("IN", e.target.value));
     defaultState.set(e.target.value);
     //  console.log(defaultState.get());
+    // console.log("hello");
   };
 
   const onChangeCity = (e) => {

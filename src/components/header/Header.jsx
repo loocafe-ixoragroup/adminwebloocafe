@@ -20,15 +20,19 @@ const Header = () => {
     case currentItem === slugs.track:
       title = "Track";
       break;
-    case currentItem === slugs.add_supervisor:
-      title = "Add Supervisor";
+    // case currentItem === slugs.download_kyc || currentItem === slugs.edit_kyc:
+    //   title = "Open Form";
+    //   break;
+    case currentItem === slugs.get_supervisor ||
+      currentItem === slugs.add_supervisor ||
+      currentItem === slugs.assigned_loocafe ||
+      currentItem === slugs.edit_supervisor ||
+      currentItem === slugs.supervisor:
+      title = "Supervisor";
       break;
-    case currentItem === slugs.list_supervisors:
-      title = "List Loocafe by supervisor";
-      break;
-    case currentItem === slugs.list_all_supervisor:
-      title = "List All supervisors";
-      break;
+    // case currentItem === slugs.supervisor:
+    //   title = "List All supervisors";
+    //   break;
     case currentItem === slugs.track_rentals:
       title = "Track Rentals";
       break;
