@@ -1,6 +1,6 @@
 import React from "react";
 import "./UpdateKycForm.css";
-import { BlackButton, LightButton } from "../../components/form-fields";
+import { BlackButton, LightButton, Dropdown } from "../../components/form-fields";
 import { IconEdit } from "../../assets/icons";
 import FormRow from "../../components/form-fields/Form-Download-Components/FormRow";
 import FormContainer from "../../components/form-fields/Form-Download-Components/FormContainer";

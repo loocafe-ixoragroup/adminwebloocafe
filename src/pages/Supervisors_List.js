@@ -9,9 +9,9 @@ const Supervisors_List = () => {
   return (
     <div>
       {/* <UpdateSupervisorDetails/> */}
-      {/* <UpdateKycForm/> */}
+      <UpdateKycForm/>
       {/* <SupervisorDetails/> */}
-      <AddAssignedLoocafe/>
+      {/* <AddAssignedLoocafe/> */}
         {/* <SupervisorsList/> */}
         {/* <ErrorPage/> */}
     </div>

@@ -19,7 +19,7 @@ import {
 } from "../../features/SupervisorSlice";
 import { useTrait } from "../../hooks/useTrait";
 import { useNavigate } from "react-router-dom";
-
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 const schema = yup.object({
   city: yup.string().required("Required"),
   state: yup.string().required("Required"),
@@ -119,16 +119,18 @@ const List = ({ setPage }) => {
                 />
               </td>
               <td>
-                <ViewButton name={"View Details"}/>
+                <ViewButton name={"View Details"} />
               </td>
             </tr>
           ))
         ) : isloading ? (
-          <>Loading...</>
+          <>
+            <LoadingSpinner />
+          </>
         ) : (
           <tr>
             <td></td>
-            <td> No data to show</td>
+            <td> <h3>No Data to show</h3> </td>
             <td></td>
           </tr>
         )}

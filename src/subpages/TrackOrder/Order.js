@@ -14,6 +14,7 @@ import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllLoocafe } from "../../features/LoocafeSlice";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 const Order = () => {
   const navigate = useNavigate();
   const defaultState = useTrait("");
@@ -100,7 +101,7 @@ const Order = () => {
             </tr>
           ))
         ) : isloading ? (
-          <>Loading...</>
+          <> <LoadingSpinner/> </>
         ) : (
           <tr>
             <td></td>
