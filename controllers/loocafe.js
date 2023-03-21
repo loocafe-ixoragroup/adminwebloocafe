@@ -234,3 +234,20 @@ module.exports.modifyFunctionalStatus = async(req,res)=>{
         })
     }
 }
+module.exports.loocafesBySupervisorId = async(req,res)=>{
+    try{
+        const data = await loocafeSchema.findOne({supervisorID:ObjectId(req.body.supervisorID)})
+
+        return res.status(200).json({
+            success:true,
+            message:"loocafe retrieved successfully",
+            data:data
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error "+err
+        })
+    }
+}
