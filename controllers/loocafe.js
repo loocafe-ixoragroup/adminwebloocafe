@@ -164,7 +164,7 @@ module.exports.getAllKycDetails = async(req,res)=>{
 module.exports.getUnitNo = async(req,res)=>{
     try{
         const data = await loocafeSchema.find({"location.city":req.body.city,
-        "location.state":req.body.state},{id:1})
+        "location.state":req.body.state},{id:1, name:1})
 
         return res.status(200).json({
             success:true,
@@ -200,8 +200,31 @@ module.exports.trackLoocafe = async(req,res)=>{
 module.exports.searchLoocafeName = async(req,res)=>{
     try{
         const loocafeName = req.body.loocafe
-        const data = await loocafeSchema.find({name:{$regex:loocafeName}})
+        let result = []
 
+        const a = new Promise(async(resolve,reject)=>{
+            await loocafeSchema.find({name:{$regex:loocafeName}}).then(async(data)=>{
+            
+                    for(let ele of data){
+                        const rental = await rentalSchema.findById(ele.rentalID)
+                        
+                        result.push({loocafe:ele,monthly_rent:rental.monthly_rent,
+                            unit_start_date:rental.unit_start_date})
+                        // console.log(ele)
+                    }
+                    resolve(result)
+                    
+                })
+        
+                
+        })    
+        a.then(data=>{
+            return res.status(200).json({
+                success:true,
+                message:"loocafes retrieved",
+                data:data
+            })
+        })
         return res.status(200).json({
             success:true,
             message:"fetched the results",
