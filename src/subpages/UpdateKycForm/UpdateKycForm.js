@@ -6,6 +6,7 @@ import FormRow from "../../components/form-fields/Form-Download-Components/FormR
 import FormContainer from "../../components/form-fields/Form-Download-Components/FormContainer";
 import DownloadCard from "../../components/form-fields/DownloadCard/DownloadCard";
 import UpdateFormComp from "../../components/form-fields/Form-Download-Components/UpdateFormComp";
+import UpdateDropdown from "../../components/form-fields/DropdownList/UpdateDropdown";
 import UpdateFormComponents from "../../components/form-fields/Form-Download-Components/UpdateFormComponents";
 import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -224,7 +225,7 @@ const UpdateKycForm = () => {
                   name={"X"}
                   editDetails={unit?.electricity_unit_no}
                 />
-                <UpdateFormComponents
+                <UpdateDropdown
                   label={"Type of Loocafe "}
                   name={"X"}
                   editDetails={unit?.type}
@@ -244,7 +245,7 @@ const UpdateKycForm = () => {
                   name={"X"}
                   editDetails={unit?.timing?.from}
                 />
-                <UpdateFormComponents
+                <UpdateDropdown
                   label={"Assigned Supervisor"}
                   name={"XXXX"}
                   editDetails={"-"}
