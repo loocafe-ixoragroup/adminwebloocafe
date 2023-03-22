@@ -2,7 +2,7 @@ import React from "react";
 import "./ErrorPage.css";
 import { ImageError } from "../../assets/icons";
 import { BlackButton } from "../../components/form-fields";
-const ErrorPage = () => {
+const ErrorPage = ({ setShow }) => {
   return (
     <div className="Error-main-page">
       <div className="Error-image">
@@ -14,7 +14,7 @@ const ErrorPage = () => {
           Please click on “Add Assigned LooCafe” to add an assigned loocafe of
           yours.
         </p>
-        <button>Add Assigned Loocafe</button>
+        <button onClick={() => setShow(true)}>Add Assigned Loocafe</button>
       </div>
 
       {/* <BlackButton name={"Add Assigned Loocafe"}/> */}

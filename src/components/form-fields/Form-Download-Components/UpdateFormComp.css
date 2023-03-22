@@ -15,7 +15,7 @@
 .update_name1{
     width: 120px;
    font-weight: 500;
-   font-size: 16px;
+   font-size: 13px;
    padding: 0.3rem 0.5rem;
   /* padding: 1rem 0.5rem; */
   box-sizing: border-box;
@@ -23,4 +23,5 @@
    background: #F8F8F8;
    border: 1px solid #B1B1B1;
    border-radius: 10px;
+   outline: none;
 }

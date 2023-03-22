@@ -69,4 +69,39 @@ const getKycData = async (id) => {
   }
 };
 
-export { LoginAdmin, addKycForm, addSupervisor, getKycData };
+const updateFunctionalStatus = async (status, id) => {
+  try {
+    const response = await axios({
+      method: "put",
+      data: { functional_status: status },
+      url: `${BASE_URL}/loocafe/modify-functional-status/${id}`,
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const updateSupervisor = async (data, id) => {
+  try {
+    const response = await axios({
+      method: "put",
+      data: data,
+      url: `${BASE_URL}/supervisor/update-supervisor/${id}`,
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    alert("Supervisor updated successfully");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  LoginAdmin,
+  addKycForm,
+  addSupervisor,
+  getKycData,
+  updateSupervisor,
+  updateFunctionalStatus,
+};

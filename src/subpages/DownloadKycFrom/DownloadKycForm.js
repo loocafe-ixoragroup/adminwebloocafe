@@ -6,13 +6,14 @@ import ReactToPrint from "react-to-print";
 import FormRow from "../../components/form-fields/Form-Download-Components/FormRow";
 import FormContainer from "../../components/form-fields/Form-Download-Components/FormContainer";
 import DownloadCard from "../../components/form-fields/DownloadCard/DownloadCard";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import Cookies from "universal-cookie";
 import axios from "axios";
 // import { getKycData } from "../../apis/Api";
 
 const DownloadKycForm = () => {
+  const navigate = useNavigate();
   const { loocafeId } = useParams();
   const [tenant, setTenant] = useState([]);
   const [partner, setPartner] = useState([]);
@@ -52,7 +53,10 @@ const DownloadKycForm = () => {
         )}
         content={() => divRef.current}
       />
-      <button className="edit-button">
+      <button
+        className="edit-button"
+        onClick={() => navigate(`/track/edit-kyc/${loocafeId}`)}
+      >
         <img className="edit-img" src={IconEdit} alt="edit" />
         Edit
       </button>

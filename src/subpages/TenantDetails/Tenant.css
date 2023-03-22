@@ -18,8 +18,8 @@
 
 .tenant_form {
   display: flex;
-  flex-wrap: wrap;
-  gap: 5rem;
+  /* flex-wrap: wrap; */
+  gap: 1rem;
 }
 
 .mobileno {
@@ -40,7 +40,7 @@
   .tenant_form {
     flex-direction: column-reverse;
     align-items: center;
-    gap: 3rem;
+    gap: 1rem;
   }
   .tenant_main {
     align-items: center;

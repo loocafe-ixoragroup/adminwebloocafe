@@ -13,7 +13,7 @@ import { IconSearchbar } from "../../assets/icons";
 import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllLoocafe } from "../../features/LoocafeSlice";
+import { getAllLoocafe, getLoocafeBySearch } from "../../features/LoocafeSlice";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 const Order = () => {
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ const Order = () => {
   const defaultCity = useTrait("");
   const states = State.getStatesOfCountry("IN");
   const [city1, setCity1] = useState([]);
+  const [status, setStatus] = useState("");
 
   const { loocafe, isloading } = useSelector((state) => state.loocafe);
   const dispatch = useDispatch();
@@ -28,6 +29,11 @@ const Order = () => {
   useEffect(() => {
     dispatch(getAllLoocafe());
   }, []);
+
+  const handleChange = (e) => {
+    dispatch(getLoocafeBySearch({ loocafe: e.target.value }));
+    console.log(loocafe);
+  };
 
   const onChangeState = (e) => {
     setCity1(City.getCitiesOfState("IN", e.target.value));
@@ -63,11 +69,20 @@ const Order = () => {
       </div> */}
       <div className="track-main-top-bar">
         <div>
-        <Tabs state={defaultState.get()} city={defaultCity.get()} />
+          <Tabs state={defaultState.get()} city={defaultCity.get()} />
         </div>
         <div className="search-field">
-        <input className="search-bar" type="text" key="search-bar"/>
-        <img className="search-bar-img" src={IconSearchbar} alt="search Bar"/>
+          <input
+            className="search-bar"
+            type="text"
+            key="search-bar"
+            onChange={handleChange}
+          />
+          <img
+            className="search-bar-img"
+            src={IconSearchbar}
+            alt="search Bar"
+          />
         </div>
       </div>
       {/* <div className="search-bar"></div> */}
@@ -83,18 +98,22 @@ const Order = () => {
         </tr>
         {loocafe?.length > 0 ? (
           loocafe?.map((lc, index) => (
-            <tr key={lc.loocafe._id}>
+            <tr key={lc?.loocafe?._id}>
               <td>{index + 1}</td>
-              <td>{lc.loocafe.name}</td>
-              <td>{lc.loocafe.location.address}</td>
-              <td>{lc.unit_start_date}</td>
-              <td>₹{lc.monthly_rent}</td>
+              <td>{lc?.loocafe?.name}</td>
+              <td>{lc?.loocafe?.location.address}</td>
+              <td>{lc?.unit_start_date}</td>
+              <td>₹{lc?.monthly_rent}</td>
               <td>
-                <DropdownStatus value={lc.loocafe.functional_status} />
+                <DropdownStatus
+                  value={lc?.loocafe?.functional_status}
+                  id={lc?.loocafe?._id}
+                  setStatus={setStatus}
+                />
               </td>
 
               <td>
-                <Link to={`/download-kyc/${lc.loocafe._id}`}>
+                <Link to={`/track/download-kyc/${lc?.loocafe?._id}`}>
                   <ViewButton name={"Open form"} />
                 </Link>
               </td>

@@ -18,7 +18,7 @@ import {
   getSupervisor,
 } from "../../features/SupervisorSlice";
 import { useTrait } from "../../hooks/useTrait";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 const schema = yup.object({
   city: yup.string().required("Required"),
@@ -62,7 +62,7 @@ const List = ({ setPage }) => {
   };
 
   const handleNext = () => {
-    navigate("/add-supervisor");
+    navigate("/supervisor/add-supervisor");
   };
 
   const onChangeState = (e) => {
@@ -115,11 +115,18 @@ const List = ({ setPage }) => {
               <td>
                 <ViewButton
                   name={"view"}
-                  handleClick={() => navigate("/list-supervisors")}
+                  handleClick={() =>
+                    navigate(`/supervisor/assigned-loocafes/${s._id}`)
+                  }
                 />
               </td>
               <td>
-                <ViewButton name={"View Details"} />
+                <ViewButton
+                  name={"View Details"}
+                  handleClick={() =>
+                    navigate(`/supervisor/supervisor-details/${s._id}`)
+                  }
+                />
               </td>
             </tr>
           ))

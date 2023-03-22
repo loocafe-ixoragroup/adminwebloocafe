@@ -22,11 +22,10 @@ export const getAllSupervisor = createAsyncThunk(
 //get supervisor by state and city
 export const getSupervisor = createAsyncThunk(
   "supervisor/getSupervisor",
-  ({ state, city }) => {
+  (id) => {
     return axios({
-      method: "post",
-      data: { state, city },
-      url: `${BASE_URL}/supervisor/get-supervisor`,
+      method: "get",
+      url: `${BASE_URL}/supervisor/get-specific-supervisor/${id}`,
       headers: { Authorization: `Bearer ${cookies.get("token")}` },
     }).then((res) => res.data.data);
   }

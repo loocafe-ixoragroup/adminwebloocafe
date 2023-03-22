@@ -25,6 +25,24 @@
     float: right;
 }
 
+.download_btn{
+    width: 200px;
+  height: 50px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  background-color: #0060D3;
+  color: #fff;
+  font-weight: 500;
+}
+
+.download_btn:hover{
+  background-color: #3188f2;
+}
+
 .profile-container{
     display: flex;
     gap:3rem;
@@ -34,7 +52,7 @@
     margin: auto;
 }
 .supervisor-profile{
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
 }
 .supervisor-details-container{
     margin-top: 3rem;
