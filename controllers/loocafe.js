@@ -225,11 +225,7 @@ module.exports.searchLoocafeName = async(req,res)=>{
                 data:data
             })
         })
-        return res.status(200).json({
-            success:true,
-            message:"fetched the results",
-            data:data
-        })
+        
     }
     catch(error){
         return res.status(500).json({
