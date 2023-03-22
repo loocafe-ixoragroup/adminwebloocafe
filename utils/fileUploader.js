@@ -22,6 +22,15 @@ module.exports.fileUploader = async(file,cleaner,rental)=>{
                
                 
             }
+            else if(file.fieldname == "cheque"){
+                await cleanerSchema.findByIdAndUpdate(cleaner._id,{
+                    $set:{
+                        cheque : result.key
+                    }
+                })
+               
+                
+            }
             else if(file.fieldname == "cleaner_pan"){
                 await cleanerSchema.findByIdAndUpdate(cleaner._id,{
                     $set:{

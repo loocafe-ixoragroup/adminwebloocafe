@@ -29,7 +29,8 @@ const cleaner = new Schema({
     aadhar:String,
     pan:String,
     electricity_bill:String,
-    photo:String
+    photo:String,
+    cheque:String
 })
 
 module.exports = mongoose.model("cleaner",cleaner)
