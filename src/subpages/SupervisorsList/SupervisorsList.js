@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLoocafeBySupervisor } from "../../features/LoocafeSlice";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import AddAssignedLoocafe from "../AddAssignedLoocafe/AddAssignedLoocafe";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 const SupervisorsList = () => {
   // const defaultState = useTrait("");
   // const defaultCity = useTrait("");
@@ -23,7 +24,9 @@ const SupervisorsList = () => {
   const dispatch = useDispatch();
   const { loocafe } = useSelector((state) => state.loocafe);
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  // console.log(loocafe =);
   const navigate = useNavigate();
   const { supervisorId } = useParams();
   // console.log(typeof loocafe);
@@ -65,7 +68,9 @@ const SupervisorsList = () => {
   // };
 
   useEffect(() => {
+    setLoading(true);
     dispatch(getLoocafeBySupervisor(supervisorId));
+    setLoading(false);
   }, []);
 
   return (
@@ -96,7 +101,9 @@ const SupervisorsList = () => {
         />
       </div> */}
       <div>
-        {loocafe !== null ? (
+        {loading ? (
+          <LoadingSpinner />
+        ) : loocafe.length !== 0 ? (
           <SupervisorCard loocafe={loocafe} />
         ) : (
           <ErrorPage setShow={setShow} />

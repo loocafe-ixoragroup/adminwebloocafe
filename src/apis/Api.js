@@ -93,7 +93,21 @@ const updateSupervisor = async (data, id) => {
     });
     alert("Supervisor updated successfully");
   } catch (error) {
-    console.log(error);
+    alert(error.message);
+  }
+};
+
+const assignLoocafe = async (id, supervisorId) => {
+  try {
+    const res = await axios({
+      method: "put",
+      url: `${BASE_URL}/supervisor/assign-loocafe/${supervisorId}`,
+      data: { loocafeID: id },
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    alert(res.data.data.message);
+  } catch (error) {
+    alert(error?.response?.data?.message);
   }
 };
 
@@ -104,4 +118,5 @@ export {
   getKycData,
   updateSupervisor,
   updateFunctionalStatus,
+  assignLoocafe,
 };
