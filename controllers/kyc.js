@@ -32,7 +32,8 @@ try{
         full_name:req.body.cleaner_name,
         city:req.body.cleaner_city,
         state:req.body.cleaner_state,
-        role:"cleaner"
+        role:"cleaner",
+        schemaId:cleaner._id
     })
     await user.save()
     const partner = new partnerSchema({
@@ -166,7 +167,8 @@ module.exports.updateKyc = async(req,res)=>{
                 full_name:req.body.cleaner_name,
                 city:req.body.cleaner_city,
                 state:req.body.cleaner_state,
-                role:"cleaner"
+                role:"cleaner",
+                schemaId:cleaner._id
             })
             await user.save()
         }

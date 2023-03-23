@@ -1,4 +1,6 @@
 const userSchema = require("../models/user")
+const cleanerSchema = require("../models/cleaner")
+const supervisorSchema = require("../models/supervisor")
 const {uploadFileToS3} = require("../utils/s3")
 
 module.exports.addUser = async(req,res)=>{
@@ -62,17 +64,31 @@ module.exports.getAllUsers = async(req,res)=>{
     })
 }
 module.exports.getUser = async(req,res)=>{
+    try{
+    let data;
+    if(req.user.role == "supervisor"){
+        console.log(req.user.role, req.user._id)
+
+        data = await supervisorSchema.findById(req.user.schemaId)
+    }
+    else if(req.user.role == "cleaner"){
+        data = await cleanerSchema.findById(req.user.schemaId)
+    }
+    else{
+        data = await userSchema.findById(req.user._id)
+    }
+
     
-    await userSchema.findById(req.user._id).then(data=>{
         return res.status(200).json({
             success:true,
             message:"user fetched successfully",
             data:data
         })
-    }).catch(error=>{
+    }
+    catch(error){
         return res.status(500).json({
             success:false,
             message:"Internal server error "+error
         })
-    })
+    }
 }

@@ -31,7 +31,8 @@ module.exports.addSupervisor = async(req,res)=>{
             role:"supervisor",
             state:req.body.state,
             city:req.body.city,
-            full_name:req.body.name
+            full_name:req.body.name,
+            schemaId:data._id
         })
         await user.save()
         return res.status(200).json({
@@ -127,13 +128,13 @@ module.exports.assignLoocafe = async(req,res)=>{
         const supervisor = await supervisorSchema.findById(sup)
         const loocafe = await loocafeSchema.findById(loocafeID)
         // console.log(loocafe)
-        // if(loocafe.supervisorID != undefined || loocafe.supervisorID != ""){
-        //     console.log(loocafe.supervisorID)
-        //     return res.status(400).json({
-        //         success:false,
-        //         message:"loocafe already assigned to a supervisor"
-        //     })
-        // }
+        if(loocafe.supervisorID != undefined){
+            console.log(loocafe.supervisorID)
+            return res.status(400).json({
+                success:false,
+                message:"loocafe already assigned to a supervisor"
+            })
+        }
         if(supervisor == null){
             return res.status(400).json({
                 success:false,
@@ -174,12 +175,17 @@ module.exports.assignLoocafe = async(req,res)=>{
 }
 module.exports.unassignLoocafe = async(req,res)=>{
     try{
-        loocafeID = ObjectId(req.body.loocafeID)
-        sup = ObjectId(req.params.id)
-        console.log(loocafeID,sup)
-        await supervisorSchema.findByIdAndUpdate(sup,{
-            $pull:{
-                loocafes:loocafeID
+        let loocafeId = ObjectId(req.body.loocafeID)
+        let sup = ObjectId(req.params.id)
+        console.log(loocafeId,sup)
+        // await supervisorSchema.findByIdAndUpdate(sup,{
+        //     $pull:{
+        //         loocafes:loocafeID
+        //     }
+        // })
+        await loocafeSchema.findByIdAndUpdate(loocafeId,{
+            $set:{
+                supervisorID:null
             }
         })
         return res.status(200).json({

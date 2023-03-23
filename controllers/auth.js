@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken")
 
 module.exports.login = async(req,res)=>{
     try{
-        const data = await userSchema.find({username:req.body.username,
+        const data = await userSchema.find({userId:req.body.username,
         password:req.body.password})
         if(data.length == 0){
             return res.status(401).json({
@@ -14,7 +14,8 @@ module.exports.login = async(req,res)=>{
         else{
             const token = jwt.sign(
                 { id: data[0]._id,
-                role: data[0].role },
+                role: data[0].role,
+                schemaId: data[0].schemaId },
                 process.env.JWT_TOKEN,
                 {
                   expiresIn: "10d",

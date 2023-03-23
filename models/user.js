@@ -17,7 +17,8 @@ const user = new Schema({
     role:{
         type:String,
         default:"user"
-    }
+    },
+    schemaId:mongoose.SchemaTypes.ObjectId
     
 })
 

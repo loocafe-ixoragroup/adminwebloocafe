@@ -46,7 +46,7 @@ module.exports.getAllLoocafes = async(req,res)=>{
 }
 module.exports.getSpecificLoocafe = async(req,res)=>{
 
-    await loocafeSchema.findById(ObjectID(req.params.id)).then(data=>{
+    await loocafeSchema.findById(ObjectId(req.params.id)).then(data=>{
         return res.status(200).json({
             success:true,
             message:"loocafe retrieved successfully",
