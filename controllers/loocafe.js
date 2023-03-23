@@ -255,7 +255,9 @@ module.exports.modifyFunctionalStatus = async(req,res)=>{
 }
 module.exports.loocafesBySupervisorId = async(req,res)=>{
     try{
-        const data = await loocafeSchema.findOne({supervisorID:ObjectId(req.body.supervisorID)})
+        let sup = ObjectId(req.body.supervisorID)
+        console.log(sup)
+        const data = await loocafeSchema.find({supervisorID:sup})
 
         return res.status(200).json({
             success:true,

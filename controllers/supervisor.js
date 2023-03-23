@@ -1,6 +1,7 @@
 const { DataSync } = require("aws-sdk")
 const { ObjectID, ObjectId } = require("bson")
 const supervisorSchema = require("../models/supervisor")
+const loocafeSchema = require("../models/loocafe")
 const userSchema = require("../models/user")
 const {uploadFileToS3} = require("../utils/s3")
 
@@ -120,10 +121,19 @@ module.exports.updateSupervisor = async(req,res)=>{
 }
 module.exports.assignLoocafe = async(req,res)=>{
     try{
-        loocafeID = ObjectId(req.body.loocafeID)
-        sup = ObjectId(req.params.id)
+        let loocafeID = ObjectId(req.body.loocafeID)
+        let sup = ObjectId(req.params.id)
         console.log(loocafeID,sup)
         const supervisor = await supervisorSchema.findById(sup)
+        const loocafe = await loocafeSchema.findById(loocafeID)
+        // console.log(loocafe)
+        // if(loocafe.supervisorID != undefined || loocafe.supervisorID != ""){
+        //     console.log(loocafe.supervisorID)
+        //     return res.status(400).json({
+        //         success:false,
+        //         message:"loocafe already assigned to a supervisor"
+        //     })
+        // }
         if(supervisor == null){
             return res.status(400).json({
                 success:false,
@@ -131,9 +141,15 @@ module.exports.assignLoocafe = async(req,res)=>{
             })
         }
         else if(!supervisor.loocafes.includes(loocafeID)){
+            console.log("entered")
             await supervisorSchema.findByIdAndUpdate(sup,{
                 $push:{
                     loocafes:loocafeID
+                }
+            })
+            await loocafeSchema.findByIdAndUpdate(loocafeID,{
+                $set:{
+                    supervisorID:sup
                 }
             })
         }

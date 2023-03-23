@@ -41,7 +41,10 @@ const loocafe = new Schema({
         amount:Number
     }],
     partnerID:mongoose.SchemaTypes.ObjectId,
-    supervisorID: mongoose.SchemaTypes.ObjectId,
+    supervisorID: {
+        type: mongoose.SchemaTypes.ObjectId,
+        default: String
+    },
     rentalID: mongoose.SchemaTypes.ObjectId,
     previousPartners:[mongoose.SchemaTypes.ObjectId],
     id:Number,
