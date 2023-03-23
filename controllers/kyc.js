@@ -16,13 +16,11 @@ try{
     const cleaner = new cleanerSchema({
         name:req.body.cleaner_name,
         phone:req.body.cleaner_phone,
-        relative_name:req.body.relative_name,
         email:req.body.email,
         alternate_phone:req.body.cleaner_alternate_phone,
         address:{
             street_address:req.body.street_address,
             city:req.body.cleaner_city,
-            pincode:req.body.cleaner_pincode,
             state:req.body.cleaner_state
         },
         dob:req.body.dob
@@ -51,7 +49,6 @@ try{
         tenant_name:req.body.tenant_name,
         phone:req.body.rental_phone,
         previous_tenant:req.body.previous_tenant,
-        unit_start_date:req.body.rental_start_date,
         electricity_unit_no:req.body.rental_electricity,
         water_bill_unit_no:req.body.rental_water,
         agreement_start:req.body.agreement_start,
@@ -72,7 +69,6 @@ try{
         },
         location:{
             address:req.body.loocafe_address,
-            pincode:req.body.pincode,
             state:req.body.state,
             city:req.body.city
         },
@@ -154,13 +150,11 @@ module.exports.updateKyc = async(req,res)=>{
         $set:{
             name:req.body.cleaner_name,
             phone:req.body.cleaner_phone,
-            relative_name:req.body.relative_name,
             email:req.body.email,
             alternate_phone:req.body.cleaner_alternate_phone,
             address:{
                 street_address:req.body.street_address,
                 city:req.body.cleaner_city,
-                pincode:req.body.cleaner_pincode,
                 state:req.body.cleaner_state
             },
             dob:req.body.dob
@@ -208,7 +202,6 @@ module.exports.updateKyc = async(req,res)=>{
             tenant_name:req.body.tenant_name,
             phone:req.body.rental_phone,
             previous_tenant:req.body.previous_tenant,
-            unit_start_date:req.body.rental_start_date,
             electricity_unit_no:req.body.rental_electricity,
             water_bill_unit_no:req.body.rental_water,
             agreement_start:req.body.agreement_start,
@@ -228,7 +221,6 @@ module.exports.updateKyc = async(req,res)=>{
             },
             location:{
                 address:req.body.loocafe_address,
-                pincode:req.body.pincode,
                 state:req.body.state,
                 city:req.body.city
             },

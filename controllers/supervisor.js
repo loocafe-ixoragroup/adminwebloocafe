@@ -121,12 +121,19 @@ module.exports.updateSupervisor = async(req,res)=>{
 module.exports.assignLoocafe = async(req,res)=>{
     try{
         loocafeID = ObjectId(req.body.loocafeID)
-        sup = ObjectID(req.params.id)
+        sup = ObjectId(req.params.id)
+        console.log(loocafeID,sup)
         const supervisor = await supervisorSchema.findById(sup)
-        if(!supervisor.loocafes.includes(loocafeID)){
+        if(supervisor == null){
+            return res.status(400).json({
+                success:false,
+                message:"supervisor doesn't exist"
+            })
+        }
+        else if(!supervisor.loocafes.includes(loocafeID)){
             await supervisorSchema.findByIdAndUpdate(sup,{
                 $push:{
-                    loocafes:ObjectId(loocafeID)
+                    loocafes:loocafeID
                 }
             })
         }
@@ -151,10 +158,12 @@ module.exports.assignLoocafe = async(req,res)=>{
 }
 module.exports.unassignLoocafe = async(req,res)=>{
     try{
-        loocafeID = ObjectId("63e65bf6833b7b4f6ce2d971")
-        await supervisorSchema.findByIdAndUpdate(ObjectId(req.params.id),{
+        loocafeID = ObjectId(req.body.loocafeID)
+        sup = ObjectId(req.params.id)
+        console.log(loocafeID,sup)
+        await supervisorSchema.findByIdAndUpdate(sup,{
             $pull:{
-                loocafes:ObjectId(loocafeID)
+                loocafes:loocafeID
             }
         })
         return res.status(200).json({

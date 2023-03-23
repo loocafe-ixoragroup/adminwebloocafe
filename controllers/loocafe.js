@@ -203,7 +203,7 @@ module.exports.searchLoocafeName = async(req,res)=>{
         let result = []
 
         const a = new Promise(async(resolve,reject)=>{
-            await loocafeSchema.find({name:{$regex:loocafeName}}).then(async(data)=>{
+            await loocafeSchema.find({name:{$regex:loocafeName,$options:"i"}}).then(async(data)=>{
             
                     for(let ele of data){
                         const rental = await rentalSchema.findById(ele.rentalID)
