@@ -14,6 +14,7 @@ import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllLoocafe, getLoocafeBySearch } from "../../features/LoocafeSlice";
+import { updateFunctionalStatus } from "../../apis/Api";
 const Order = () => {
   const navigate = useNavigate();
   const defaultState = useTrait("");
@@ -31,7 +32,16 @@ const Order = () => {
 
   const handleChange = (e) => {
     dispatch(getLoocafeBySearch({ loocafe: e.target.value }));
-    console.log(loocafe);
+    // console.log(loocafe);
+  };
+
+  const onChange = (e, id) => {
+    // setStatus(e.target.value);
+    const res = updateFunctionalStatus(e.target.value, id);
+    setTimeout(() => {
+      dispatch(getAllLoocafe());
+    }, 200);
+    console.log(res);
   };
 
   const onChangeState = (e) => {
@@ -107,7 +117,7 @@ const Order = () => {
                 <DropdownStatus
                   value={lc?.loocafe?.functional_status}
                   id={lc?.loocafe?._id}
-                  setStatus={setStatus}
+                  onChange={(e) => onChange(e, lc?.loocafe?._id)}
                 />
               </td>
 
