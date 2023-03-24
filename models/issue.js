@@ -8,6 +8,8 @@ const issue = new Schema({
     supervisorId:mongoose.SchemaTypes.ObjectId,
     description:String
     
+},{
+    timestamps:true
 })
 
 module.exports = mongoose.model("issue",issue)

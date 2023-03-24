@@ -17,7 +17,6 @@ try{
         name:req.body.cleaner_name,
         phone:req.body.cleaner_phone,
         email:req.body.email,
-        alternate_phone:req.body.cleaner_alternate_phone,
         address:{
             street_address:req.body.street_address,
             city:req.body.cleaner_city,
@@ -71,7 +70,8 @@ try{
         location:{
             address:req.body.loocafe_address,
             state:req.body.state,
-            city:req.body.city
+            city:req.body.city,
+            pincode:req.body.pincode
         },
         electricity_unit_no:req.body.electricity_unit_no,
         water_bill_unit_no:req.body.water_bill_unit_no,
@@ -152,7 +152,6 @@ module.exports.updateKyc = async(req,res)=>{
             name:req.body.cleaner_name,
             phone:req.body.cleaner_phone,
             email:req.body.email,
-            alternate_phone:req.body.cleaner_alternate_phone,
             address:{
                 street_address:req.body.street_address,
                 city:req.body.cleaner_city,
@@ -224,7 +223,9 @@ module.exports.updateKyc = async(req,res)=>{
             location:{
                 address:req.body.loocafe_address,
                 state:req.body.state,
-                city:req.body.city
+                city:req.body.city,
+                pincode:req.body.pincode
+
             },
             electricity_unit_no:req.body.electricity_unit_no,
             water_bill_unit_no:req.body.water_bill_unit_no,
