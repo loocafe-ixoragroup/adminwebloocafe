@@ -55,20 +55,6 @@ const addSupervisor = async (formData) => {
   }
 };
 
-const getKycData = async (id) => {
-  try {
-    const response = await axios({
-      method: "get",
-      url: `${BASE_URL}/loocafe/get-kyc-details/${id}`,
-      headers: { Authorization: `Bearer ${cookies.get("token")}` },
-    });
-    // const data = await response.data;
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const updateFunctionalStatus = async (status, id) => {
   try {
     const response = await axios({
@@ -115,7 +101,6 @@ export {
   LoginAdmin,
   addKycForm,
   addSupervisor,
-  getKycData,
   updateSupervisor,
   updateFunctionalStatus,
   assignLoocafe,
