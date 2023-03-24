@@ -97,8 +97,23 @@ const assignLoocafe = async (id, supervisorId) => {
   }
 };
 
+const updateKyc = async (data, id) => {
+  try {
+    const response = await axios({
+      method: "put",
+      data: data,
+      url: `${BASE_URL}/kyc/update-kyc/${id}`,
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    alert("Updated successfully");
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
 export {
   LoginAdmin,
+  updateKyc,
   addKycForm,
   addSupervisor,
   updateSupervisor,

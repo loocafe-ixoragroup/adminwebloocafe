@@ -11,16 +11,17 @@ import { useNavigate, useParams } from "react-router";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getKycData } from "../../features/KycSlice";
 // import { getKycData } from "../../apis/Api";
 
 const DownloadKycForm = () => {
   const navigate = useNavigate();
   const { loocafeId } = useParams();
-  const [tenant, setTenant] = useState([]);
-  const [partner, setPartner] = useState([]);
-  const [rental, setRental] = useState([]);
-  const [unit, setUnit] = useState([]);
+  const { tenant, rental, partner, unit, isLoading } = useSelector(
+    (state) => state.kyc
+  );
+  const dispatch = useDispatch();
   const cookies = new Cookies();
   const [loading, setLoading] = useState(false);
   const [supervisorname, setSupervisorname] = useState("");
@@ -28,28 +29,7 @@ const DownloadKycForm = () => {
   const { supervisor } = useSelector((state) => state.supervisor);
 
   useEffect(() => {
-    const getKycData = async (id) => {
-      setLoading(true);
-      try {
-        const response = await axios({
-          method: "get",
-          url: `${process.env.REACT_APP_BASE_URL}/loocafe/get-kyc-details/${id}`,
-          headers: { Authorization: `Bearer ${cookies.get("token")}` },
-        });
-        const data = await response.data;
-        setTenant(data.tenant[0]);
-        setRental(data.rental);
-        setPartner(data.partner);
-        setUnit(data.loocafe);
-
-        // console.log(supervisorname);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    // console.log("first");
-    getKycData(loocafeId);
+    dispatch(getKycData(loocafeId));
   }, []);
 
   const divRef = useRef();

@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { getAllSupervisor } from "../../features/SupervisorSlice";
 import { getKycData } from "../../features/KycSlice";
+import { updateKyc } from "../../apis/Api";
 const UpdateKycForm = () => {
   const { loocafeId } = useParams();
   const { tenant, rental, partner, unit, isLoading } = useSelector(
@@ -41,7 +42,6 @@ const UpdateKycForm = () => {
     rental_agreement: "",
   });
 
-  // console.log(typeof tenant?.pan);
   const [data, setData] = useState({
     cleaner_name: tenant?.name,
     cleaner_phone: tenant?.phone,
@@ -67,6 +67,7 @@ const UpdateKycForm = () => {
     loocafe_address: unit?.location?.address,
     state: unit?.location?.state,
     city: unit?.location?.city,
+    pincode: unit?.location?.pincode,
     electricity_unit_no: unit?.electricity_unit_no,
     water_bill_unit_no: unit?.water_bill_unit_no,
     agreement_start: rental?.agreement_start,
@@ -75,10 +76,11 @@ const UpdateKycForm = () => {
     supervisorID: unit?.supervisorID,
     timing_from: unit?.timing?.from,
     timing_to: unit?.timing?.to,
-    cleaner_updated: false,
+    cleaner_updated: "false",
   });
 
   useEffect(() => {
+    dispatch(getAllSupervisor());
     dispatch(getKycData(loocafeId));
   }, []);
 
@@ -89,15 +91,59 @@ const UpdateKycForm = () => {
   };
 
   const handleInputs = (e) => {
+    // console.log(e.target.value);
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
   };
 
+  const handleSave = () => {
+    const formData = new FormData();
+
+    const entries = Object.entries(data);
+
+    const formFiles = Object.entries(files).filter((entry) => entry[1] !== "");
+
+    entries.forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    formFiles.forEach((file) => {
+      formData.append(file[0], file[1], file[0]);
+    });
+    formData.append("partner_updated", "false");
+
+    Array.from(formData).forEach((form) => {
+      console.log(form);
+    });
+
+    updateKyc(formData, loocafeId);
+
+    setTimeout(() => {
+      navigate(-1);
+    }, 4000);
+  };
+
   const handleUpdate = () => {
-    console.log(data);
-    console.log(files);
+    const entries = Object.entries(data);
+    const formData = new FormData();
+
+    const formFiles = Object.entries(files).filter((entry) => entry[1] !== "");
+
+    entries.forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    formFiles.forEach((file) => {
+      formData.append(file[0], file[1], file[0]);
+    });
+    formData.append("partner_updated", "true");
+    updateKyc(formData, loocafeId);
+
+    setTimeout(() => {
+      navigate(-1);
+    }, 4000);
   };
 
   return (
@@ -414,9 +460,10 @@ const UpdateKycForm = () => {
             </div>
           </div>
           <div className="Kyc-update-Buttons">
-            <BlackButton name={"Save"} handleClick={handleUpdate} />
+            <BlackButton name={"Save"} handleClick={handleSave} />
+            {/* To save partner details and updating new one */}
+            <LightButton name={"Save and update"} handleClick={handleUpdate} />
             <LightButton name={"Back"} handleClick={() => navigate(-1)} />
-            <LightButton name={"Back"} />
           </div>
         </div>
       )}
