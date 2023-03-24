@@ -10,36 +10,28 @@ import { useNavigate, useParams } from "react-router";
 
 import Cookies from "universal-cookie";
 import axios from "axios";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { useDispatch, useSelector } from "react-redux";
+import { getKycData } from "../../features/KycSlice";
 // import { getKycData } from "../../apis/Api";
 
 const DownloadKycForm = () => {
   const navigate = useNavigate();
   const { loocafeId } = useParams();
-  const [tenant, setTenant] = useState([]);
-  const [partner, setPartner] = useState([]);
-  const [rental, setRental] = useState([]);
-  const [unit, setUnit] = useState([]);
+  const { tenant, rental, partner, unit, isLoading } = useSelector(
+    (state) => state.kyc
+  );
+  const dispatch = useDispatch();
   const cookies = new Cookies();
+  const [loading, setLoading] = useState(false);
+  const [supervisorname, setSupervisorname] = useState("");
+
+  const { supervisor } = useSelector((state) => state.supervisor);
 
   useEffect(() => {
-    const getKycData = async (id) => {
-      try {
-        const response = await axios({
-          method: "get",
-          url: `${process.env.REACT_APP_BASE_URL}/loocafe/get-kyc-details/${id}`,
-          headers: { Authorization: `Bearer ${cookies.get("token")}` },
-        });
-        const data = await response.data;
-        setTenant(data.tenant[0]);
-        setRental(data.rental);
-        setPartner(data.partner);
-        setUnit(data.loocafe);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getKycData(loocafeId);
+    dispatch(getKycData(loocafeId));
   }, []);
+
   const divRef = useRef();
 
   return (
@@ -60,151 +52,167 @@ const DownloadKycForm = () => {
         <img className="edit-img" src={IconEdit} alt="edit" />
         Edit
       </button>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <div className="main-download-kyc">
+          <div id="printable" ref={divRef}>
+            <div className="user-details-main">
+              <p>User Profile</p>
 
-      <div className="main-download-kyc">
-        <div id="printable" ref={divRef}>
-          <div className="user-details-main">
-            <p>User Profile</p>
-            <div className="circle">
-              <img></img>
-            </div>
-            <div className="form-fields">
-              <FormRow>
-                <FormComp label={"Name"} name={tenant?.name} />
-                <FormComp label={"Email"} name={tenant?.email} />
-                <FormComp label={"Date of Birth"} name={tenant?.dob} />
-                <FormComp label={"State"} name={tenant?.address?.state} />
-              </FormRow>
-              <FormRow>
-                <FormComp label={"Last Name"} name={" - "} />
-                <FormComp label={"Mobile no."} name={tenant?.phone} />
-                <FormComp
-                  label={"Street Address"}
-                  name={tenant?.address?.street_address}
+              <div className="circle">
+                <img
+                  src={`https://loocafe.s3.amazonaws.com/${tenant?.photo}`}
                 />
-                <FormComp label={"City"} name={tenant?.address?.city} />
-              </FormRow>
+              </div>
+              <div className="form-fields">
+                <FormRow>
+                  <FormComp label={"Name"} name={tenant?.name} />
+                  <FormComp label={"Email"} name={tenant?.email} />
+                  <FormComp label={"Date of Birth"} name={tenant?.dob} />
+                  <FormComp label={"State"} name={tenant?.address?.state} />
+                </FormRow>
+                <FormRow>
+                  <FormComp label={"Last Name"} name={" - "} />
+                  <FormComp label={"Mobile no."} name={tenant?.phone} />
+                  <FormComp
+                    label={"Street Address"}
+                    name={tenant?.address?.street_address}
+                  />
+                  <FormComp label={"City"} name={tenant?.address?.city} />
+                </FormRow>
+              </div>
             </div>
-          </div>
-          <div className="maintain-partner">
-            <p>LooCafe Maintaining Partner Details</p>
-            <div>
-              <FormContainer>
-                <FormComponents label={"First Name"} name={partner?.name} />
-                <FormComponents label={"Mobile No."} name={partner?.phone} />
-                <FormComponents label={"Last Name"} name={" -  "} />
-                <FormComponents
-                  label={"Mobile No."}
-                  name={partner?.alternate_phone}
-                />
-              </FormContainer>
+            <div className="maintain-partner">
+              <p>LooCafe Maintaining Partner Details</p>
+              <div>
+                <FormContainer>
+                  <FormComponents label={"First Name"} name={partner?.name} />
+                  <FormComponents label={"Mobile No."} name={partner?.phone} />
+                  <FormComponents label={"Last Name"} name={" -  "} />
+                  <FormComponents
+                    label={"Mobile No."}
+                    name={partner?.alternate_phone}
+                  />
+                </FormContainer>
+              </div>
             </div>
-          </div>
-          <div className="rental-details">
-            <p>LooCafe Rental Details</p>
+            <div className="rental-details">
+              <p>LooCafe Rental Details</p>
 
-            <div>
-              <FormContainer>
-                <FormComponents
-                  label={"Tenant Name"}
-                  name={rental?.tenant_name}
-                />
-                <FormComponents label={"Mobile No."} name={rental.phone} />
-                <FormComponents
-                  label={"Electricity No."}
-                  name={rental?.electricity_unit_no}
-                />
-                <FormComponents
-                  label={"Security Deposit "}
-                  name={rental?.security_deposit}
-                />
-                <FormComponents
-                  label={"Agreement Start Date"}
-                  name={rental?.agreement_start}
-                />
-                <FormComponents
-                  label={"Unit Start Date"}
-                  name={rental?.unit_start_date}
-                />
-                <FormComponents
-                  label={"Previous Tenant Name"}
-                  name={rental?.previous_tenant}
-                />
-                <FormComponents
-                  label={"Water Bill No."}
-                  name={rental?.water_bill_unit_no}
-                />
-                <FormComponents
-                  label={"Monthly Rent"}
-                  name={rental?.monthly_rent}
-                />
-                <FormComponents
-                  label={"Agreement End Date"}
-                  name={rental?.agreement_end}
-                />
-              </FormContainer>
+              <div>
+                <FormContainer>
+                  <FormComponents
+                    label={"Tenant Name"}
+                    name={rental?.tenant_name}
+                  />
+                  <FormComponents label={"Mobile No."} name={rental.phone} />
+                  <FormComponents
+                    label={"Electricity No."}
+                    name={rental?.electricity_unit_no}
+                  />
+                  <FormComponents
+                    label={"Security Deposit "}
+                    name={rental?.security_deposit}
+                  />
+                  <FormComponents
+                    label={"Agreement Start Date"}
+                    name={rental?.agreement_start}
+                  />
+                  <FormComponents
+                    label={"Unit Start Date"}
+                    name={rental?.unit_start_date}
+                  />
+                  <FormComponents
+                    label={"Previous Tenant Name"}
+                    name={rental?.previous_tenant}
+                  />
+                  <FormComponents
+                    label={"Water Bill No."}
+                    name={rental?.water_bill_unit_no}
+                  />
+                  <FormComponents
+                    label={"Monthly Rent"}
+                    name={rental?.monthly_rent}
+                  />
+                  <FormComponents
+                    label={"Agreement End Date"}
+                    name={rental?.agreement_end}
+                  />
+                </FormContainer>
+              </div>
+            </div>
+            <div className="unit-details">
+              <p>Loocafe Unit Details</p>
+              <div>
+                <FormContainer>
+                  <FormComponents label={"Unit Name"} name={unit?.name} />
+                  <FormComponents
+                    label={"State"}
+                    name={unit?.location?.state}
+                  />
+                  <FormComponents
+                    label={"Pincode"}
+                    name={unit?.location?.pincode}
+                  />
+                  <FormComponents
+                    label={"Water Bill No. "}
+                    name={unit?.water_bill_unit_no}
+                  />
+                  <FormComponents
+                    label={"Unit Address"}
+                    name={unit?.location?.address}
+                  />
+                  <FormComponents label={"City"} name={unit?.location?.city} />
+                  <FormComponents
+                    label={"Electricity Bill No."}
+                    name={unit?.electricity_unit_no}
+                  />
+                  <FormComponents label={"Type of Loocafe"} name={unit?.type} />
+                  <FormComponents
+                    label={"Latitude & Logitude"}
+                    name={
+                      unit?.coordinates?.latitude +
+                      " & " +
+                      unit?.coordinates?.longitude
+                    }
+                  />
+                  <FormComponents
+                    label={"Timing of Loocafe(From)"}
+                    name={unit?.timing?.from}
+                  />
+                  <FormComponents
+                    label={"Assigned Supervisor"}
+                    name={unit?.supervisorID}
+                  />
+                  <FormComponents
+                    label={"Timing of Loocafe(To)"}
+                    name={unit?.timing?.to}
+                  />
+                </FormContainer>
+              </div>
             </div>
           </div>
-          <div className="unit-details">
-            <p>Loocafe Unit Details</p>
+          <div className="uploaded-documents">
+            <p>Uploaded Documents</p>
             <div>
               <FormContainer>
-                <FormComponents label={"Unit Name"} name={unit?.name} />
-                <FormComponents label={"State"} name={unit?.location?.state} />
-                <FormComponents
-                  label={"Pincode"}
-                  name={unit?.location?.pincode}
+                <DownloadCard label={"Aadhar Card"} link={tenant?.aadhar} />
+                <DownloadCard label={"PAN Card"} link={tenant?.pan} />
+                <DownloadCard
+                  label={"Agreement Details"}
+                  link={rental?.agreement_file}
                 />
-                <FormComponents
-                  label={"Water Bill No. "}
-                  name={unit?.water_bill_unit_no}
+                <DownloadCard
+                  label={"Electricity Bill"}
+                  link={tenant?.electricity_bill}
                 />
-                <FormComponents
-                  label={"Unit Address"}
-                  name={unit?.location?.address}
-                />
-                <FormComponents label={"City"} name={unit?.location?.city} />
-                <FormComponents
-                  label={"Electricity Bill No."}
-                  name={unit?.electricity_unit_no}
-                />
-                <FormComponents label={"Type of Loocafe "} name={unit?.type} />
-                <FormComponents
-                  label={"Latitude & Logitude"}
-                  name={
-                    unit?.coordinates?.latitude +
-                    " & " +
-                    unit?.coordinates?.longitude
-                  }
-                />
-                <FormComponents
-                  label={"Timing of Loocafe(From)"}
-                  name={unit?.timing?.from}
-                />
-                <FormComponents
-                  label={"Assigned Supervisor"}
-                  name={"XXXX & XXXX"}
-                />
-                <FormComponents
-                  label={"Timing of Loocafe(To)"}
-                  name={unit?.timing?.to}
-                />
+                <DownloadCard label={"Cheque"} link={tenant?.cheque} />
               </FormContainer>
             </div>
           </div>
         </div>
-        <div className="uploaded-documents">
-          <p>Uploaded Documents</p>
-          <div>
-            <FormContainer>
-              <DownloadCard label={"Aadhar Card"} />
-              <DownloadCard label={"PAN Card"} />
-              <DownloadCard label={"Agreement Details"} />
-              <DownloadCard label={"Electricity Bill"} />
-            </FormContainer>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

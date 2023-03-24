@@ -55,20 +55,6 @@ const addSupervisor = async (formData) => {
   }
 };
 
-const getKycData = async (id) => {
-  try {
-    const response = await axios({
-      method: "get",
-      url: `${BASE_URL}/loocafe/get-kyc-details/${id}`,
-      headers: { Authorization: `Bearer ${cookies.get("token")}` },
-    });
-    // const data = await response.data;
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const updateFunctionalStatus = async (status, id) => {
   try {
     const response = await axios({
@@ -93,15 +79,44 @@ const updateSupervisor = async (data, id) => {
     });
     alert("Supervisor updated successfully");
   } catch (error) {
-    console.log(error);
+    alert(error.message);
+  }
+};
+
+const assignLoocafe = async (id, supervisorId) => {
+  try {
+    const res = await axios({
+      method: "put",
+      url: `${BASE_URL}/supervisor/assign-loocafe/${supervisorId}`,
+      data: { loocafeID: id },
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    alert(res.data.data.message);
+  } catch (error) {
+    alert(error?.response?.data?.message);
+  }
+};
+
+const updateKyc = async (data, id) => {
+  try {
+    const response = await axios({
+      method: "put",
+      data: data,
+      url: `${BASE_URL}/kyc/update-kyc/${id}`,
+      headers: { Authorization: `Bearer ${cookies.get("token")}` },
+    });
+    alert("Updated successfully");
+  } catch (error) {
+    alert(error.message);
   }
 };
 
 export {
   LoginAdmin,
+  updateKyc,
   addKycForm,
   addSupervisor,
-  getKycData,
   updateSupervisor,
   updateFunctionalStatus,
+  assignLoocafe,
 };

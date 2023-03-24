@@ -62,6 +62,12 @@ const schema = yup.object({
       }
       return false;
     }),
+  cheque: yup.mixed().test("file", "You need to provide a file", (value) => {
+    if (value.length > 0) {
+      return true;
+    }
+    return false;
+  }),
   cleaner_photo: yup
     .mixed()
     .test("file", "You need to provide a file", (value) => {
@@ -92,6 +98,7 @@ const Tenant = ({ setPage }) => {
       cleaner_state: data.cleaner_state,
       dob: data.dob,
       electricity_bill: data.electricity_bill,
+      cheque: data.cheque,
       cleaner_pan: data.cleaner_pan,
       cleaner_aadhar: data.cleaner_aadhar,
       cleaner_photo: data.cleaner_photo,
@@ -230,6 +237,13 @@ const Tenant = ({ setPage }) => {
             file={data.cleaner_aadhar}
             name={"cleaner_aadhar"}
             register={{ ...register("cleaner_aadhar") }}
+          />
+          <UploadInput
+            label={"Cheque"}
+            error={errors.cheque?.message}
+            file={data.cheque}
+            name={"cheque"}
+            register={{ ...register("cheque") }}
           />
         </div>
         <PhotoUpload
