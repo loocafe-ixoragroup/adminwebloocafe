@@ -106,7 +106,9 @@ const Order = () => {
           <th>Status</th>
           <th>Details</th>
         </tr>
-        {loocafe?.length > 0 ? (
+        {isloading ? (
+          <LoadingSpinner />
+        ) : loocafe?.length > 0 ? (
           loocafe?.map((lc, index) => (
             <tr key={lc?.loocafe?._id}>
               <td>{index + 1}</td>
@@ -129,11 +131,6 @@ const Order = () => {
               </td>
             </tr>
           ))
-        ) : isloading ? (
-          <>
-            {" "}
-            <LoadingSpinner />{" "}
-          </>
         ) : (
           <tr>
             <td></td>

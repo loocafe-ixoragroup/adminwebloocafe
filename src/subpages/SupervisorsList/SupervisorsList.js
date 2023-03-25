@@ -28,7 +28,7 @@ const SupervisorsList = () => {
 
   // console.log(loocafe =);
   const navigate = useNavigate();
-  const { supervisorId } = useParams();
+  const { supervisorId, isloading } = useParams();
   // console.log(typeof loocafe);
 
   const onClose = () => {
@@ -101,7 +101,7 @@ const SupervisorsList = () => {
         />
       </div> */}
       <div>
-        {loading ? (
+        {isloading ? (
           <LoadingSpinner />
         ) : loocafe.length !== 0 ? (
           <SupervisorCard loocafe={loocafe} />

@@ -107,7 +107,11 @@ const List = ({ setPage }) => {
           <th>Assigned Loocafes</th>
           <th>Supervisor Details</th>
         </tr>
-        {supervisor?.length > 0 ? (
+        {isloading ? (
+          <>
+            <LoadingSpinner />
+          </>
+        ) : supervisor?.length > 0 ? (
           supervisor.map((s) => (
             <tr key={s._id}>
               <td>{s.name}</td>
@@ -130,14 +134,13 @@ const List = ({ setPage }) => {
               </td>
             </tr>
           ))
-        ) : isloading ? (
-          <>
-            <LoadingSpinner />
-          </>
         ) : (
           <tr>
             <td></td>
-            <td> <h3>No Data to show</h3> </td>
+            <td>
+              {" "}
+              <h3>No Data to show</h3>{" "}
+            </td>
             <td></td>
           </tr>
         )}

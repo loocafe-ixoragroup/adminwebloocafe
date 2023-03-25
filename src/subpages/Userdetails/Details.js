@@ -3,6 +3,7 @@ import "./Details.css";
 import { BlackButton, StateCity } from "../../components/form-fields";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import * as yup from "yup";
 import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
@@ -75,7 +76,9 @@ const Details = () => {
           <th>Mail Id</th>
           <th>Contact No</th>
         </tr>
-        {users?.length > 0 ? (
+        {isloading ? (
+          <LoadingSpinner />
+        ) : users?.length > 0 ? (
           users?.map((user, index) => (
             <tr key={user._id}>
               <td>{index + 1}</td>
@@ -84,8 +87,6 @@ const Details = () => {
               <td>{user.phone ? user.phone : "-"}</td>
             </tr>
           ))
-        ) : isloading ? (
-          <>Loading...</>
         ) : (
           <tr>
             <td></td>

@@ -18,7 +18,7 @@ import { getKycData } from "../../features/KycSlice";
 const DownloadKycForm = () => {
   const navigate = useNavigate();
   const { loocafeId } = useParams();
-  const { tenant, rental, partner, unit, isLoading } = useSelector(
+  const { tenant, rental, partner, unit, isloading } = useSelector(
     (state) => state.kyc
   );
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ const DownloadKycForm = () => {
         <img className="edit-img" src={IconEdit} alt="edit" />
         Edit
       </button>
-      {loading ? (
+      {isloading ? (
         <LoadingSpinner />
       ) : (
         <div className="main-download-kyc">
