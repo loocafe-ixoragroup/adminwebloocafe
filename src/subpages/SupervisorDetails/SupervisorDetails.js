@@ -57,7 +57,13 @@ const SupervisorDetails = () => {
           <div className="profile-container">
             <div className="supervisor-profile">
               {/* <img className="edit" src={IconEdit}></img> */}
-              <img src={IconProfile}></img>
+              <img
+                src={
+                  supervisor.photo
+                    ? `https://loocafe.s3.amazonaws.com/${supervisor.photo}`
+                    : IconProfile
+                }
+              />
             </div>
             <div className="supervisor-profile-data">
               <FormComponents label={"Name"} name={supervisor?.name} />
