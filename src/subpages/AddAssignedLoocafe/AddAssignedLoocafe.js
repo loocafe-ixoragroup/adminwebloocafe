@@ -74,10 +74,17 @@ const AddAssignedLoocafe = ({ show, setShow, onClose }) => {
       >
         <h3>Add Assigned Loocafe</h3>
         {/* <div className="add-assigned-loocafe-sub"> */}
+        <div className="state-city-sub">
+          <StateCity
+            onChangeState={onChangeState}
+            onChangeCity={onChangeCity}
+            city={cities}
+            states={states}
+            defaultState={defaultState.get()}
+            defaultCity={defaultCity.get()}
+          />
+        </div>
         <div className="simple-inputs-sub">
-          <SimpleInput label={"LooCafe name"} value={unitName} />
-          {/* <SimpleInput label={"LooCafe Unit No"} /> */}
-
           <div className="select">
             <LabelComp name={"Loocafe Unit No."} error={""} />
             <select onChange={handleUnit} defaultValue="-">
@@ -89,17 +96,10 @@ const AddAssignedLoocafe = ({ show, setShow, onClose }) => {
               ))}
             </select>
           </div>
+          <SimpleInput label={"LooCafe name"} value={unitName} />
+          {/* <SimpleInput label={"LooCafe Unit No"} /> */}
         </div>
-        <div className="state-city-sub">
-          <StateCity
-            onChangeState={onChangeState}
-            onChangeCity={onChangeCity}
-            city={cities}
-            states={states}
-            defaultState={defaultState.get()}
-            defaultCity={defaultCity.get()}
-          />
-        </div>
+
         <div className="add-btn">
           <BlackButton name={"Add"} handleClick={handleAssign} />
         </div>
