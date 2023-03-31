@@ -13,6 +13,7 @@ import axios from "axios";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getKycData } from "../../features/KycSlice";
+import { getAllSupervisor } from "../../features/SupervisorSlice";
 // import { getKycData } from "../../apis/Api";
 
 const DownloadKycForm = () => {
@@ -29,8 +30,14 @@ const DownloadKycForm = () => {
   const { supervisor } = useSelector((state) => state.supervisor);
 
   useEffect(() => {
+    dispatch(getAllSupervisor());
     dispatch(getKycData(loocafeId));
   }, []);
+
+  useEffect(() => {
+    const sup = supervisor.filter((arr) => arr._id === unit?.supervisorID);
+    setSupervisorname(sup[0].name);
+  }, [supervisor]);
 
   const divRef = useRef();
 
@@ -183,7 +190,8 @@ const DownloadKycForm = () => {
                   />
                   <FormComponents
                     label={"Assigned Supervisor"}
-                    name={unit?.supervisorID}
+                    // name={unit?.supervisorID}
+                    name={supervisorname}
                   />
                   <FormComponents
                     label={"Timing of Loocafe(To)"}
