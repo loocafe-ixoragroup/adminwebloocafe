@@ -43,6 +43,7 @@ const DownloadKycForm = () => {
     setLoading(true);
     const sup = supervisor.filter((arr) => arr._id === unit?.supervisorID);
     supervisorname.set(sup[0]?.name);
+    console.log(sup);
     setLoading(false);
   }, [supervisor]);
 
