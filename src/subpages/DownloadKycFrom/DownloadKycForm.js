@@ -31,6 +31,9 @@ const DownloadKycForm = () => {
 
   useEffect(() => {
     dispatch(getAllSupervisor());
+  }, []);
+
+  useEffect(() => {
     dispatch(getKycData(loocafeId));
   }, []);
 
@@ -39,6 +42,7 @@ const DownloadKycForm = () => {
     setSupervisorname(sup[0]?.name);
   }, [supervisor]);
 
+  // console.log(supervisorname);
   const divRef = useRef();
 
   return (
