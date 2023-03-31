@@ -38,8 +38,10 @@ const DownloadKycForm = () => {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     const sup = supervisor.filter((arr) => arr._id === unit?.supervisorID);
     setSupervisorname(sup[0]?.name);
+    setLoading(false);
   }, [supervisor]);
 
   // console.log(supervisorname);
@@ -63,7 +65,7 @@ const DownloadKycForm = () => {
         <img className="edit-img" src={IconEdit} alt="edit" />
         Edit
       </button>
-      {isloading ? (
+      {isloading || loading ? (
         <LoadingSpinner />
       ) : (
         <div className="main-download-kyc">
