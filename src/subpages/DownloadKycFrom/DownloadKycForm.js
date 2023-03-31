@@ -45,7 +45,7 @@ const DownloadKycForm = () => {
     supervisorname.set(sup[0]?.name);
     console.log(sup);
     setLoading(false);
-  }, [supervisor]);
+  });
 
   // console.log(supervisorname);
   const divRef = useRef();
