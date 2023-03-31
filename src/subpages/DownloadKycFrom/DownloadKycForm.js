@@ -36,7 +36,7 @@ const DownloadKycForm = () => {
 
   useEffect(() => {
     const sup = supervisor.filter((arr) => arr._id === unit?.supervisorID);
-    setSupervisorname(sup[0].name);
+    setSupervisorname(sup[0]?.name);
   }, [supervisor]);
 
   const divRef = useRef();
