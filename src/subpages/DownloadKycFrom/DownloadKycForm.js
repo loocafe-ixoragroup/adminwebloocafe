@@ -14,6 +14,7 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getKycData } from "../../features/KycSlice";
 import { getAllSupervisor } from "../../features/SupervisorSlice";
+import { useTrait } from "../../hooks/useTrait";
 // import { getKycData } from "../../apis/Api";
 
 const DownloadKycForm = () => {
@@ -25,7 +26,8 @@ const DownloadKycForm = () => {
   const dispatch = useDispatch();
   const cookies = new Cookies();
   const [loading, setLoading] = useState(false);
-  const [supervisorname, setSupervisorname] = useState("");
+  // const [supervisorname, setSupervisorname] = useState("");
+  const supervisorname = useTrait("");
 
   const { supervisor } = useSelector((state) => state.supervisor);
 
@@ -40,7 +42,7 @@ const DownloadKycForm = () => {
   useEffect(() => {
     setLoading(true);
     const sup = supervisor.filter((arr) => arr._id === unit?.supervisorID);
-    setSupervisorname(sup[0]?.name);
+    supervisorname.set(sup[0]?.name);
     setLoading(false);
   }, [supervisor]);
 
@@ -197,7 +199,7 @@ const DownloadKycForm = () => {
                   <FormComponents
                     label={"Assigned Supervisor"}
                     // name={unit?.supervisorID}
-                    name={supervisorname}
+                    name={supervisorname.get()}
                   />
                   <FormComponents
                     label={"Timing of Loocafe(To)"}
