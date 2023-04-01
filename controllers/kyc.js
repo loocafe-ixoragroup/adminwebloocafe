@@ -35,13 +35,13 @@ try{
         schemaId:cleaner._id
     })
     await user.save()
-    const partner = new partnerSchema({
-        name:req.body.partner_name,
-        phone:req.body.partner_phone,
-        alternate_phone:req.body.partner_alternate_phone
-    })
+    // const partner = new partnerSchema({
+    //     name:req.body.partner_name,
+    //     phone:req.body.partner_phone,
+    //     alternate_phone:req.body.partner_alternate_phone
+    // })
 
-    await partner.save()
+    // await partner.save()
 
     const rental = new rentalSchema({
         security_deposit:Number(req.body.security_deposit),
@@ -80,21 +80,21 @@ try{
             from:req.body.timing_from,
             to:req.body.timing_to
         },
-        partnerID:partner._id,
+        
         rentalID:rental._id,
         functional_status:"Live"
     })
     await loocafe.save()
 
     cleaner.loocafe = loocafe._id
-    partner.loocafeID.push(loocafe._id)
+    // partner.loocafeID.push(loocafe._id)
     await supervisorSchema.findByIdAndUpdate(ObjectID(req.body.supervisorID),{
         $push:{
             loocafes:loocafe._id
         }
     })
     await cleaner.save()
-    await partner.save()
+    // await partner.save()
     req.files.forEach(async(file,index)=>{
 
         fileUploader(file,cleaner,rental)
@@ -171,30 +171,30 @@ module.exports.updateKyc = async(req,res)=>{
             })
             await user.save()
         }
-        let partner;
-        if(req.body.partner_updated === "true"){
-            partner = new partnerSchema({
-                name:req.body.partner_name,
-                phone:req.body.partner_phone,
-                alternate_phone:req.body.partner_alternate_phone
-            })
-            partner.loocafeID.push(loocafe._id)
-            await partner.save()
-            await loocafeSchema.findByIdAndUpdate(loocafe._id,{
-                $push:{
-                    previousPartners:loocafe.partnerID
-                }
-            })
-        }
-        else{
-            partner = await partnerSchema.findByIdAndUpdate(loocafe.partnerID,{
-                $set:{
-                    name:req.body.partner_name,
-                    phone:req.body.partner_phone,
-                    alternate_phone:req.body.partner_alternate_phone
-                }
-            })
-        }
+        // let partner;
+        // if(req.body.partner_updated === "true"){
+        //     partner = new partnerSchema({
+        //         name:req.body.partner_name,
+        //         phone:req.body.partner_phone,
+        //         alternate_phone:req.body.partner_alternate_phone
+        //     })
+        //     partner.loocafeID.push(loocafe._id)
+        //     await partner.save()
+        //     await loocafeSchema.findByIdAndUpdate(loocafe._id,{
+        //         $push:{
+        //             previousPartners:loocafe.partnerID
+        //         }
+        //     })
+        // }
+        // else{
+        //     partner = await partnerSchema.findByIdAndUpdate(loocafe.partnerID,{
+        //         $set:{
+        //             name:req.body.partner_name,
+        //             phone:req.body.partner_phone,
+        //             alternate_phone:req.body.partner_alternate_phone
+        //         }
+        //     })
+        // }
         
         const rental =  await rentalSchema.findByIdAndUpdate(loocafe.rentalID,{
             $set:{
@@ -234,7 +234,7 @@ module.exports.updateKyc = async(req,res)=>{
                 from:req.body.timing_from,
                 to:req.body.timing_to
             },
-            partnerID:partner._id,
+            
             rentalID:rental._id,
             functional_status:req.body.functional_status
         }},{new:true})
