@@ -232,7 +232,7 @@ const UpdateKycForm = () => {
                 </FormRow>
               </div>
             </div>
-            <div className="maintain-partner">
+            {/* <div className="maintain-partner">
               <p>LooCafe Maintaining Partner Details</p>
               <div>
                 <FormContainer>
@@ -261,7 +261,7 @@ const UpdateKycForm = () => {
                   />
                 </FormContainer>
               </div>
-            </div>
+            </div> */}
             <div className="rental-details">
               <p>LooCafe Rental Details</p>
 

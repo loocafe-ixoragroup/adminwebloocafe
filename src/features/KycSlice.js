@@ -17,7 +17,7 @@ export const getKycData = createAsyncThunk("kyc/getKycData", (id) => {
 
 const initialState = {
   tenant: [],
-  partner: [],
+  // partner: [],
   rental: [],
   unit: [],
   isloading: false,
@@ -36,7 +36,7 @@ const KycSlice = createSlice({
       state.isloading = false;
       state.tenant = action.payload.tenant[0];
       state.rental = action.payload.rental;
-      state.partner = action.payload.partner;
+      // state.partner = action.payload.partner;
       state.unit = action.payload.loocafe;
       state.error = "";
     });
@@ -44,7 +44,7 @@ const KycSlice = createSlice({
       state.isloading = false;
       state.tenant = [];
       state.rental = [];
-      state.partner = [];
+      // state.partner = [];
       state.unit = [];
       state.error = action.error.message;
     });
