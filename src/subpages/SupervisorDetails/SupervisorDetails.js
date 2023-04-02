@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./SupervisorDetails.css";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import FormRow from "../../components/form-fields/Form-Download-Components/FormRow";
 import FormComponents from "../../components/form-fields/Form-Download-Components/FormComponents";
 import FormContainer from "../../components/form-fields/Form-Download-Components/FormContainer";
@@ -15,9 +16,11 @@ const SupervisorDetails = () => {
   const navigate = useNavigate();
   const { supervisorId } = useParams();
   const [supervisor, setSupervisor] = useState([]);
+  const [isloading, setIsLoading] = useState(false);
   const divRef = useRef();
 
   useEffect(() => {
+    setIsLoading(true);
     const getSupervisor = async (id) => {
       try {
         const response = await axios({
@@ -30,6 +33,7 @@ const SupervisorDetails = () => {
       } catch (error) {
         console.log(error);
       }
+      setIsLoading(false);
     };
     getSupervisor(supervisorId);
     // console.log(supervisor);
@@ -42,38 +46,53 @@ const SupervisorDetails = () => {
         className="supervisor-edit-button"
         onClick={() => navigate(`/supervisor/edit-supervisor/${supervisorId}`)}
       >
-        <img className="edit-img" src={IconEdit}></img>Edit
+        <img className="edit-img" src={IconEdit} />
+        Edit
       </button>
-      <div ref={divRef}>
-        <div className="profile-container">
-          <div className="supervisor-profile">
-            {/* <img className="edit" src={IconEdit}></img> */}
-            <img src={IconProfile}></img>
-          </div>
-          <div className="supervisor-profile-data">
-            <FormComponents label={"Name"} name={supervisor?.name} />
+      {}
+      {isloading ? (
+        <LoadingSpinner />
+      ) : (
+        <div ref={divRef}>
+          <div className="profile-container">
+            <div className="supervisor-profile">
+              {/* <img className="edit" src={IconEdit}></img> */}
+              <img
+                src={
+                  supervisor.photo
+                    ? `https://loocafe.s3.amazonaws.com/${supervisor.photo}`
+                    : IconProfile
+                }
+              />
+            </div>
+            <div className="supervisor-profile-data">
+              <FormComponents label={"Name"} name={supervisor?.name} />
 
-            <FormComponents label={"Location"} name={supervisor?.state} />
+              <FormComponents label={"Location"} name={supervisor?.state} />
+            </div>
+          </div>
+          <div className="supervisor-details-container">
+            <FormContainer>
+              <FormComponents
+                label={"Mobile Number"}
+                name={supervisor?.phone}
+              />
+              <FormComponents
+                label={"Alternative Mobile Number"}
+                name={supervisor?.alternate_phone}
+              />
+            </FormContainer>
+            <FormContainer>
+              <FormComponents label={"State"} name={supervisor?.state} />
+              <FormComponents label={"City"} name={supervisor?.city} />
+            </FormContainer>
+            <FormContainer>
+              <FormComponents label={"User Id"} name={supervisor?.username} />
+              <FormComponents label={"Password"} name={supervisor?.password} />
+            </FormContainer>
           </div>
         </div>
-        <div className="supervisor-details-container">
-          <FormContainer>
-            <FormComponents label={"Mobile Number"} name={supervisor?.phone} />
-            <FormComponents
-              label={"Alternative Mobile Number"}
-              name={supervisor?.alternate_phone}
-            />
-          </FormContainer>
-          <FormContainer>
-            <FormComponents label={"State"} name={supervisor?.state} />
-            <FormComponents label={"City"} name={supervisor?.city} />
-          </FormContainer>
-          <FormContainer>
-            <FormComponents label={"User Id"} name={supervisor?.username} />
-            <FormComponents label={"Password"} name={supervisor?.password} />
-          </FormContainer>
-        </div>
-      </div>
+      )}
       <div className="Supervisor-page-buttons">
         <ReactToPrint
           trigger={() => <button className="download_btn">Download</button>}

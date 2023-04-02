@@ -13,6 +13,7 @@ import { City, State } from "country-state-city";
 import { useTrait } from "../../hooks/useTrait";
 import { useDispatch, useSelector } from "react-redux";
 import { trackRental } from "../../features/TrackRentalSlice";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const schema = yup.object({
   city: yup.string().required("Required!"),
@@ -104,7 +105,9 @@ const Track = () => {
           <th>Rent</th>
           <th>View</th>
         </tr>
-        {rentals?.length > 0 ? (
+        {isloading ? (
+          <LoadingSpinner />
+        ) : rentals?.length > 0 ? (
           rentals.map((r) => (
             <tr key={r._id}>
               <td>
@@ -124,8 +127,6 @@ const Track = () => {
               </td>
             </tr>
           ))
-        ) : isloading ? (
-          <>Loading....</>
         ) : (
           <tr>
             <td>No data to show</td>

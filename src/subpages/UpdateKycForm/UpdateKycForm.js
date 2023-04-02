@@ -24,7 +24,7 @@ import { getKycData } from "../../features/KycSlice";
 import { updateKyc } from "../../apis/Api";
 const UpdateKycForm = () => {
   const { loocafeId } = useParams();
-  const { tenant, rental, partner, unit, isLoading } = useSelector(
+  const { tenant, rental, partner, unit, isloading } = useSelector(
     (state) => state.kyc
   );
   const dispatch = useDispatch();
@@ -148,7 +148,7 @@ const UpdateKycForm = () => {
 
   return (
     <div>
-      {isLoading ? (
+      {isloading ? (
         <LoadingSpinner />
       ) : (
         <div className="main-download-kyc">

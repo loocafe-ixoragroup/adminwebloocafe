@@ -1,32 +1,32 @@
-.supervisor-details-main{
-    background-color: white;
-    align-items: center;
-    justify-content: center;
+.supervisor-details-main {
+  background-color: white;
+  align-items: center;
+  justify-content: center;
   margin: 2rem;
   padding: 2rem;
   border-radius: 1.25rem;
   box-shadow: rgba(129, 124, 124, 0.35) 0px 5px 10px;
 }
 .supervisor-details-main > h3 {
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 33px;
-    color: #252525;
-    text-align: center;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 33px;
+  color: #252525;
+  text-align: center;
 }
-.supervisor-edit-button{
-    width: 120px;
-    height: 3rem;
-    cursor: pointer;
-    background-color: white;
-    border: 1px solid #7B7B7B;
-    font-size: 18px;
-    border-radius: 1rem;
-    float: right;
+.supervisor-edit-button {
+  width: 120px;
+  height: 3rem;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #7b7b7b;
+  font-size: 18px;
+  border-radius: 1rem;
+  float: right;
 }
 
-.download_btn{
-    width: 200px;
+.download_btn {
+  width: 200px;
   height: 50px;
   outline: none;
   border: none;
@@ -34,35 +34,42 @@
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease-in;
-  background-color: #0060D3;
+  background-color: #0060d3;
   color: #fff;
   font-weight: 500;
 }
 
-.download_btn:hover{
+.download_btn:hover {
   background-color: #3188f2;
 }
 
-.profile-container{
-    display: flex;
-    gap:3rem;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+.profile-container {
+  display: flex;
+  gap: 3rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
-.supervisor-profile{
-    /* margin-left: 2rem; */
+.supervisor-profile {
+  height: 200px;
+  width: 200px;
 }
-.supervisor-details-container{
-    margin-top: 3rem;
+.supervisor-profile > img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
-.Supervisor-page-buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    gap: 3rem;
-    margin-top: 3rem;
+.supervisor-details-container {
+  margin-top: 3rem;
+}
+.Supervisor-page-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 3rem;
 }
