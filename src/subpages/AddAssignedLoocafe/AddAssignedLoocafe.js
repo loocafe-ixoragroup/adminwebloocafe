@@ -85,9 +85,6 @@ const AddAssignedLoocafe = ({ show, setShow, onClose }) => {
           />
         </div>
         <div className="simple-inputs-sub">
-          
-          {/* <SimpleInput label={"LooCafe Unit No"} /> */}
-
           <div className="select">
             <LabelComp name={"Loocafe Unit No."} error={""} />
             <select onChange={handleUnit} defaultValue="-">
@@ -100,7 +97,9 @@ const AddAssignedLoocafe = ({ show, setShow, onClose }) => {
             </select>
           </div>
           <SimpleInput label={"LooCafe name"} value={unitName} />
+          {/* <SimpleInput label={"LooCafe Unit No"} /> */}
         </div>
+
         <div className="add-btn">
           <BlackButton name={"Add"} handleClick={handleAssign} />
         </div>

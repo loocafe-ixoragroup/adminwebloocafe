@@ -10,7 +10,7 @@ const KYC = () => {
   // const [values, setValues] = useState({});
   const components = [
     <Tenant setPage={setPage} />,
-    <Maintain setPage={setPage} />,
+    // <Maintain setPage={setPage} />,
     <Rental setPage={setPage} />,
     <Unit setPage={setPage} />,
   ];

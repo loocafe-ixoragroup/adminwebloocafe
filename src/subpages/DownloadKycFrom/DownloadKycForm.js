@@ -13,6 +13,8 @@ import axios from "axios";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getKycData } from "../../features/KycSlice";
+import { getAllSupervisor } from "../../features/SupervisorSlice";
+import { useTrait } from "../../hooks/useTrait";
 // import { getKycData } from "../../apis/Api";
 
 const DownloadKycForm = () => {
@@ -24,14 +26,28 @@ const DownloadKycForm = () => {
   const dispatch = useDispatch();
   const cookies = new Cookies();
   const [loading, setLoading] = useState(false);
-  const [supervisorname, setSupervisorname] = useState("");
+  // const [supervisorname, setSupervisorname] = useState("");
+  const supervisorname = useTrait("");
 
   const { supervisor } = useSelector((state) => state.supervisor);
+
+  useEffect(() => {
+    dispatch(getAllSupervisor());
+  }, []);
 
   useEffect(() => {
     dispatch(getKycData(loocafeId));
   }, []);
 
+  useEffect(() => {
+    setLoading(true);
+    const sup = supervisor.filter((arr) => arr._id === unit?.supervisorID);
+    supervisorname.set(sup[0]?.name);
+    // console.log(sup);
+    setLoading(false);
+  });
+
+  // console.log(supervisorname);
   const divRef = useRef();
 
   return (
@@ -52,7 +68,7 @@ const DownloadKycForm = () => {
         <img className="edit-img" src={IconEdit} alt="edit" />
         Edit
       </button>
-      {isloading ? (
+      {isloading || loading ? (
         <LoadingSpinner />
       ) : (
         <div className="main-download-kyc">
@@ -83,7 +99,7 @@ const DownloadKycForm = () => {
                 </FormRow>
               </div>
             </div>
-            <div className="maintain-partner">
+            {/* <div className="maintain-partner">
               <p>LooCafe Maintaining Partner Details</p>
               <div>
                 <FormContainer>
@@ -96,7 +112,7 @@ const DownloadKycForm = () => {
                   />
                 </FormContainer>
               </div>
-            </div>
+            </div> */}
             <div className="rental-details">
               <p>LooCafe Rental Details</p>
 
@@ -183,7 +199,8 @@ const DownloadKycForm = () => {
                   />
                   <FormComponents
                     label={"Assigned Supervisor"}
-                    name={unit?.supervisorID}
+                    // name={unit?.supervisorID}
+                    name={supervisorname.get()}
                   />
                   <FormComponents
                     label={"Timing of Loocafe(To)"}
