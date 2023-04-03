@@ -82,7 +82,7 @@ try{
         },
         
         rentalID:rental._id,
-        functional_status:"Live"
+        functional_status:"live"
     })
     await loocafe.save()
 
