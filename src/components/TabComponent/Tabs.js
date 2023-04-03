@@ -5,7 +5,7 @@ import {
   getAllLoocafe,
   getFunctionalLoocafe,
 } from "../../features/LoocafeSlice";
-const Tabs = ({ state, city }) => {
+const Tabs = () => {
   const [activeTab, setActiveTab] = useState("all");
   const dispatch = useDispatch();
   // console.log(state, city);
@@ -16,11 +16,7 @@ const Tabs = ({ state, city }) => {
     if (functional_status === "all") {
       dispatch(getAllLoocafe());
     } else {
-      if (state && city) {
-        dispatch(getFunctionalLoocafe({ state, city, functional_status }));
-      } else {
-        dispatch(getFunctionalLoocafe({ functional_status }));
-      }
+      dispatch(getFunctionalLoocafe({ functional_status }));
     }
   };
   // const handleLive = () => {
