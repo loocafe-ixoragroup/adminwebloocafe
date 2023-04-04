@@ -102,6 +102,7 @@ const Order = () => {
           <th>Name</th>
           <th>Address</th>
           <th>Date</th>
+          <th>Reminder</th>
           <th>Price</th>
           <th>Status</th>
           <th>Details</th>
@@ -115,6 +116,7 @@ const Order = () => {
               <td>{lc?.loocafe?.name}</td>
               <td>{lc?.loocafe?.location.address}</td>
               <td>{lc?.unit_start_date}</td>
+              <td><div className="reminder-circle" /></td>
               <td>₹{lc?.monthly_rent}</td>
               <td>
                 <DropdownStatus

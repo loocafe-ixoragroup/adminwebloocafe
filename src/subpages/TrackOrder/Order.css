@@ -15,6 +15,17 @@
 .Order_main  > p{
     margin-left: 3%;
 }
+
+.reminder-circle{
+  background-color: red;
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  position: absolute;
+  margin-left: 2.5rem;
+  margin-top: -0.6rem;
+}
+
 /* .track-main-top-bar{
   display: flex;
   flex-direction: row;
@@ -38,7 +49,7 @@
   margin-left: -2rem;
 }
 .order_table{
-    width: 90%;
+    width: 95%;
     margin: 2%;
 }
 .Track-order-statecity{
