@@ -462,7 +462,7 @@ const UpdateKycForm = () => {
           <div className="Kyc-update-Buttons">
             <BlackButton name={"Save"} handleClick={handleSave} />
             {/* To save partner details and updating new one */}
-            <LightButton name={"Save and update"} handleClick={handleUpdate} />
+            {/* <LightButton name={"Save and update"} handleClick={handleUpdate} /> */}
             <LightButton name={"Back"} handleClick={() => navigate(-1)} />
           </div>
         </div>

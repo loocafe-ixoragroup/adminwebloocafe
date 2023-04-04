@@ -79,7 +79,7 @@ const Order = () => {
       </div> */}
       <div className="track-main-top-bar">
         <div>
-          <Tabs state={defaultState.get()} city={defaultCity.get()} />
+          <Tabs />
         </div>
         <div className="search-field">
           <input
