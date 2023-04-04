@@ -217,7 +217,7 @@ const Tenant = ({ setPage }) => {
             />
           </div>
           <UploadInput
-            label={"Electricity Bill"}
+            label={"Address Proof"}
             error={errors.electricity_bill?.message}
             name={"electricity_bill"}
             file={data.electricity_bill}

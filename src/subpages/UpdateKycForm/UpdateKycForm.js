@@ -444,7 +444,7 @@ const UpdateKycForm = () => {
                 />
                 <FileCard
                   name="electricity_bill"
-                  label={"Electricity Bill"}
+                  label={"Address Proof"}
                   link={tenant?.electricity_bill}
                   onChange={handleFile}
                   file={files.electricity_bill}

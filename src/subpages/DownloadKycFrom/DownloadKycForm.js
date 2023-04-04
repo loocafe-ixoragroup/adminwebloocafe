@@ -221,7 +221,7 @@ const DownloadKycForm = () => {
                   link={rental?.agreement_file}
                 />
                 <DownloadCard
-                  label={"Electricity Bill"}
+                  label={"Address Proof"}
                   link={tenant?.electricity_bill}
                 />
                 <DownloadCard label={"Cheque"} link={tenant?.cheque} />
