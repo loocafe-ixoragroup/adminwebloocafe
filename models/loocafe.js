@@ -40,6 +40,10 @@ const loocafe = new Schema({
         date:String,
         amount:Number
     }],
+    remark:{
+        type:String,
+        default:""
+    },
     partnerID:mongoose.SchemaTypes.ObjectId,
     supervisorID: {
         type: mongoose.SchemaTypes.ObjectId,

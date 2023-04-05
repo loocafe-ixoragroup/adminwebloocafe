@@ -181,9 +181,14 @@ module.exports.getUnitNo = async(req,res)=>{
 }
 module.exports.trackLoocafe = async(req,res)=>{
     try{
-        const data = await loocafeSchema.find({name:req.body.name,
+        let data = await loocafeSchema.find({name:req.body.name,
         functional_status:req.body.functional_status})
-
+        const rental = await rentalSchema.findById(data[0].rentalID)
+        if(rental != undefined){
+            data.push({agreement_start_date:rental.agreement_start,
+                agreement_end_date:rental.agreement_end})
+        }
+       
         return res.status(200).json({
             success:true,
             message:"retrieved loocafe",

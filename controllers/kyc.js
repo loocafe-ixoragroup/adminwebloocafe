@@ -82,7 +82,8 @@ try{
         },
         
         rentalID:rental._id,
-        functional_status:"live"
+        functional_status:"live",
+        remark:req.body.remark
     })
     await loocafe.save()
 
@@ -236,7 +237,8 @@ module.exports.updateKyc = async(req,res)=>{
             },
             
             rentalID:rental._id,
-            functional_status:req.body.functional_status
+            functional_status:req.body.functional_status,
+            remark:req.body.remark
         }},{new:true})
 
        
