@@ -40,6 +40,7 @@ const schema = yup.object({
   supervisorID: yup.string().required("Required"),
   timing_from: yup.string().required("Required"),
   timing_to: yup.string().required("Required"),
+  remark: yup.string(),
 });
 
 const Unit = ({ setPage }) => {
@@ -75,6 +76,7 @@ const Unit = ({ setPage }) => {
       supervisorID: data.supervisorID,
       timing_from: data.timing_from,
       timing_to: data.timing_to,
+      remark: data.remark,
     },
     mode: "all",
     resolver: yupResolver(schema),
@@ -141,6 +143,13 @@ const Unit = ({ setPage }) => {
         name={"pincode"}
         error={errors.pincode?.message}
         register={{ ...register("pincode") }}
+      />
+      <SimpleInput
+        label={"Remarks"}
+        type={"text"}
+        name={"remark"}
+        error={errors.remark?.message}
+        register={{ ...register("remark") }}
       />
       <div className="flexDiv">
         <SimpleInput

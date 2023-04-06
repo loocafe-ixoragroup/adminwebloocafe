@@ -179,6 +179,10 @@ const DownloadKycForm = () => {
                     label={"Unit Address"}
                     name={unit?.location?.address}
                   />
+                  <FormComponents
+                    label={"Remarks"}
+                    name={unit.remark ? unit.remark : "-"}
+                  />
                   <FormComponents label={"City"} name={unit?.location?.city} />
                   <FormComponents
                     label={"Electricity Bill No."}

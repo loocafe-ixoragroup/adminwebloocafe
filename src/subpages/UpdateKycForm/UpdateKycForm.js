@@ -68,6 +68,7 @@ const UpdateKycForm = () => {
     state: unit?.location?.state,
     city: unit?.location?.city,
     pincode: unit?.location?.pincode,
+    remark: unit?.remark,
     electricity_unit_no: unit?.electricity_unit_no,
     water_bill_unit_no: unit?.water_bill_unit_no,
     agreement_start: rental?.agreement_start,
@@ -115,7 +116,7 @@ const UpdateKycForm = () => {
     formData.append("partner_updated", "false");
 
     Array.from(formData).forEach((form) => {
-      console.log(form);
+      // console.log(form);
     });
 
     updateKyc(formData, loocafeId);
@@ -125,26 +126,26 @@ const UpdateKycForm = () => {
     }, 4000);
   };
 
-  const handleUpdate = () => {
-    const entries = Object.entries(data);
-    const formData = new FormData();
+  // const handleUpdate = () => {
+  //   const entries = Object.entries(data);
+  //   const formData = new FormData();
 
-    const formFiles = Object.entries(files).filter((entry) => entry[1] !== "");
+  //   const formFiles = Object.entries(files).filter((entry) => entry[1] !== "");
 
-    entries.forEach(([key, value]) => {
-      formData.append(key, value);
-    });
+  //   entries.forEach(([key, value]) => {
+  //     formData.append(key, value);
+  //   });
 
-    formFiles.forEach((file) => {
-      formData.append(file[0], file[1], file[0]);
-    });
-    formData.append("partner_updated", "true");
-    updateKyc(formData, loocafeId);
+  //   formFiles.forEach((file) => {
+  //     formData.append(file[0], file[1], file[0]);
+  //   });
+  //   formData.append("partner_updated", "true");
+  //   updateKyc(formData, loocafeId);
 
-    setTimeout(() => {
-      navigate(-1);
-    }, 4000);
-  };
+  //   setTimeout(() => {
+  //     navigate(-1);
+  //   }, 4000);
+  // };
 
   return (
     <div>
@@ -363,6 +364,12 @@ const UpdateKycForm = () => {
                     name={"loocafe_address"}
                     onChange={handleInputs}
                     editDetails={unit?.location?.address}
+                  />
+                  <UpdateFormComponents
+                    label={"Remarks"}
+                    name={"remark"}
+                    onChange={handleInputs}
+                    editDetails={unit?.remark}
                   />
                   <UpdateFormComponents
                     label={"City"}

@@ -13,7 +13,19 @@ export const getAllLoocafe = createAsyncThunk("loocafe/getAllLoocafe", () => {
     method: "get",
     url: `${BASE_URL}/loocafe/get-loocafe-details`,
     headers: { Authorization: `Bearer ${cookies.get("token")}` },
-  }).then((res) => res.data.data);
+  }).then((res) => {
+    const arr = Promise.all(
+      res.data.data.map(async (r) => {
+        const today = new Date();
+        const endDate = new Date(r.agreement_end_date);
+        const diff = parseInt(
+          (endDate.getTime() - today.getTime()) / (1000 * 3600 * 24) + 1
+        );
+        return { ...r, ...r["days_left"], ["days_left"]: diff };
+      })
+    );
+    return arr;
+  });
 });
 
 //get all loocafes by functional status
@@ -26,7 +38,19 @@ export const getFunctionalLoocafe = createAsyncThunk(
       url: `${BASE_URL}/loocafe/get-functional-loocafe`,
       data: data,
       headers: { Authorization: `Bearer ${cookies.get("token")}` },
-    }).then((res) => res.data.data);
+    }).then((res) => {
+      const arr = Promise.all(
+        res.data.data.map(async (r) => {
+          const today = new Date();
+          const endDate = new Date(r.agreement_end_date);
+          const diff = parseInt(
+            (endDate.getTime() - today.getTime()) / (1000 * 3600 * 24) + 1
+          );
+          return { ...r, ...r["days_left"], ["days_left"]: diff };
+        })
+      );
+      return arr;
+    });
   }
 );
 
@@ -38,7 +62,19 @@ export const getLoocafeBySearch = createAsyncThunk(
       url: `${BASE_URL}/loocafe/search-loocafe`,
       data: data,
       headers: { Authorization: `Bearer ${cookies.get("token")}` },
-    }).then((res) => res.data.data);
+    }).then((res) => {
+      const arr = Promise.all(
+        res.data.data.map(async (r) => {
+          const today = new Date();
+          const endDate = new Date(r.agreement_end_date);
+          const diff = parseInt(
+            (endDate.getTime() - today.getTime()) / (1000 * 3600 * 24) + 1
+          );
+          return { ...r, ...r["days_left"], ["days_left"]: diff };
+        })
+      );
+      return arr;
+    });
   }
 );
 

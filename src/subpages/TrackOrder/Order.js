@@ -31,6 +31,15 @@ const Order = () => {
     dispatch(getAllLoocafe());
   }, []);
 
+  const getBackground = (days) => {
+    // console.log(days);
+    if (days <= 0) return "black";
+    else if (days <= 30) return "red";
+    else if (days <= 60) return "#ffef00";
+    else if (days <= 80) return "blue";
+    else return "green";
+  };
+
   const handleChange = (e) => {
     dispatch(getLoocafeBySearch({ loocafe: e.target.value }));
     // console.log(loocafe);
@@ -115,8 +124,15 @@ const Order = () => {
               <td>{index + 1}</td>
               <td>{lc?.loocafe?.name}</td>
               <td>{lc?.loocafe?.location.address}</td>
-              <td>{lc?.unit_start_date}</td>
-              <td><div className="reminder-circle" /></td>
+              <td>{lc?.agreement_start_date}</td>
+              <td>
+                <div
+                  className="reminder-circle"
+                  style={{
+                    backgroundColor: getBackground(lc?.days_left),
+                  }}
+                />
+              </td>
               <td>₹{lc?.monthly_rent}</td>
               <td>
                 <DropdownStatus
