@@ -72,7 +72,9 @@ module.exports.getLoocafeDetails = async(req,res)=>{
                         const rental = await rentalSchema.findById(ele.rentalID)
                         
                         result.push({loocafe:ele,monthly_rent:rental.monthly_rent,
-                            unit_start_date:rental.unit_start_date})
+                            unit_start_date:rental.unit_start_date,
+                            agreement_start_date:rental.agreement_start,
+                            agreement_end_date:rental.agreement_end})
                         // console.log(ele)
                     }
                     resolve(result)
@@ -116,7 +118,9 @@ module.exports.getFunctionalLoocafes = async(req,res)=>{
                     arr.push({
                         loocafe:loocafe,
                         monthly_rent:rental.monthly_rent,
-                        unit_start_date:rental.unit_start_date
+                        unit_start_date:rental.unit_start_date,
+                        agreement_start_date:rental.agreement_start,
+                        agreement_end_date:rental.agreement_end
                     })
                 }
                 
@@ -214,7 +218,9 @@ module.exports.searchLoocafeName = async(req,res)=>{
                         const rental = await rentalSchema.findById(ele.rentalID)
                         
                         result.push({loocafe:ele,monthly_rent:rental.monthly_rent,
-                            unit_start_date:rental.unit_start_date})
+                            unit_start_date:rental.unit_start_date,
+                            agreement_start_date:rental.agreement_start,
+                            agreement_end_date:rental.agreement_end})
                         // console.log(ele)
                     }
                     resolve(result)
