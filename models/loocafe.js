@@ -8,6 +8,7 @@ const loocafe = new Schema({
         latitude:String,
         longitude:String
     },
+    category:String,
     location:{
         city:String,
         address:String,

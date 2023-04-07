@@ -21,7 +21,8 @@ const rental = new Schema({
         default:"Pending"
     },
     state:String,
-    city:String
+    city:String,
+    first_six_months_rent:Number
 })
 
 module.exports = mongoose.model("rental",rental)

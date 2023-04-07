@@ -55,7 +55,8 @@ try{
         agreement_end:req.body.agreement_end,
         unit_start_date:req.body.unit_start_date,
         city:req.body.city,
-        state:req.body.state
+        state:req.body.state,
+        first_six_months_rent:Number(first_six_months_rent)
     })
     await rental.save()
     cleaner.rental = rental._id
@@ -63,6 +64,7 @@ try{
     const loocafe = new loocafeSchema({
         name:req.body.loocafe_name,
         type:req.body.loocafe_type,
+        category:req.body.category,
         coordinates:{
             latitude:req.body.latitude,
             longitude:req.body.longitude
@@ -210,13 +212,15 @@ module.exports.updateKyc = async(req,res)=>{
             agreement_end:req.body.agreement_end,
             unit_start_date:req.body.unit_start_date,
             city:req.body.city,
-            state:req.body.state
+            state:req.body.state,
+            first_six_months_rent:Number(req.body.first_six_months_rent)
         }},{new:true})
 
         await loocafeSchema.findByIdAndUpdate(ObjectId(req.params.id),{
             $set:{
             name:req.body.loocafe_name,
             type:req.body.loocafe_type,
+            category:req.body.category,
             coordinates:{
                 latitude:req.body.latitude,
                 longitude:req.body.longitude
