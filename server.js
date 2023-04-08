@@ -41,7 +41,9 @@ app.use("/api/supervisor",cors(corsOptionsDelegate),require("./routes/supervisor
 app.use("/api/user",cors(corsOptionsDelegate),require("./routes/user"))
 app.use("/api/rental",cors(corsOptionsDelegate),require("./routes/rental"))
 app.use("/api/issue",cors(corsOptionsDelegate),require("./routes/issue"))
-
+app.get("/",cors(corsOptionsDelegate),(req,res)=>{
+  res.send("working")
+})
 
 const PORT = process.env.PORT || 8000
 const {updateRentalStatus} = require("./controllers/rental");
