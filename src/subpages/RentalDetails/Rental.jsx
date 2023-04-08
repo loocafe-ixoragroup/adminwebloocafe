@@ -25,6 +25,10 @@ const schema = yup.object({
   rental_start_date: yup.string().required("Required!"),
   rental_electricity: yup.string().required("Required!"),
   rental_water: yup.string().required("Required!"),
+  first_six_months_rent: yup
+    .number("Rent must be a number")
+    .positive("Rent must be a positive value")
+    .required("Required!"),
   monthly_rent: yup
     .number("Rent must be a number")
     .positive("Rent must be a positive value")
@@ -151,6 +155,13 @@ const Rental = ({ setPage }) => {
         name={"security_deposit"}
         register={{ ...register("security_deposit") }}
         error={errors.security_deposit?.message}
+      />
+      <SimpleInput
+        label={"Rent (1-6 Months)"}
+        type={"number"}
+        name={"first_six_months_rent"}
+        register={{ ...register("first_six_months_rent") }}
+        error={errors.first_six_months_rent?.message}
       />
       <SimpleInput
         label={"Monthly rent"}

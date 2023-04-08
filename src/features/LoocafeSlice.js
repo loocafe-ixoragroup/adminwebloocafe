@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-const BASE_URL = "https://loocafe.herokuapp.com/api";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const cookies = new Cookies();
 
 //ACTIONS

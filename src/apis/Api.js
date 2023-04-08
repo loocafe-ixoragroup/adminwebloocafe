@@ -34,6 +34,7 @@ const addKycForm = async (formData) => {
     window.location.replace("/dashboard");
   } catch (error) {
     alert(error.message);
+
     window.location.replace("/kyc");
   }
 };

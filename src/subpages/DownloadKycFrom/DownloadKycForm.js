@@ -152,6 +152,10 @@ const DownloadKycForm = () => {
                     name={rental?.monthly_rent}
                   />
                   <FormComponents
+                    label={"Rent (1-6Months)"}
+                    name={rental?.first_six_months_rent}
+                  />
+                  <FormComponents
                     label={"Agreement End Date"}
                     name={rental?.agreement_end}
                   />
@@ -183,6 +187,7 @@ const DownloadKycForm = () => {
                     label={"Remarks"}
                     name={unit.remark ? unit.remark : "-"}
                   />
+                  <FormComponents label={"Category"} name={unit?.category} />
                   <FormComponents label={"City"} name={unit?.location?.city} />
                   <FormComponents
                     label={"Electricity Bill No."}

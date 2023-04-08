@@ -26,7 +26,7 @@ const Confirm = ({ show, onClose }) => {
         formData.append(fileList[0], file, file.name);
       });
     });
-
+    console.log(typeof formData.get("first_six_months_rent"));
     addKycForm(formData);
     onClose();
   };

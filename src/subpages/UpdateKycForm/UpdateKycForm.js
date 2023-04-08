@@ -69,6 +69,8 @@ const UpdateKycForm = () => {
     city: unit?.location?.city,
     pincode: unit?.location?.pincode,
     remark: unit?.remark,
+    category: unit?.category,
+    first_six_months_rent: rental?.first_six_months_rent,
     electricity_unit_no: unit?.electricity_unit_no,
     water_bill_unit_no: unit?.water_bill_unit_no,
     agreement_start: rental?.agreement_start,
@@ -317,6 +319,12 @@ const UpdateKycForm = () => {
                     editDetails={rental?.water_bill_unit_no}
                   />
                   <UpdateFormComponents
+                    label={"Rent (1-6 Months)"}
+                    name={"first_six_months_rent"}
+                    onChange={handleInputs}
+                    editDetails={rental?.first_six_months_rent}
+                  />
+                  <UpdateFormComponents
                     label={"Monthly Rent"}
                     name={"monthly_rent"}
                     onChange={handleInputs}
@@ -370,6 +378,12 @@ const UpdateKycForm = () => {
                     name={"remark"}
                     onChange={handleInputs}
                     editDetails={unit?.remark}
+                  />
+                  <UpdateFormComponents
+                    label={"category"}
+                    name={"category"}
+                    onChange={handleInputs}
+                    editDetails={unit?.category}
                   />
                   <UpdateFormComponents
                     label={"City"}

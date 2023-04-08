@@ -41,6 +41,7 @@ const schema = yup.object({
   timing_from: yup.string().required("Required"),
   timing_to: yup.string().required("Required"),
   remark: yup.string(),
+  category: yup.string().required(),
 });
 
 const Unit = ({ setPage }) => {
@@ -150,6 +151,13 @@ const Unit = ({ setPage }) => {
         name={"remark"}
         error={errors.remark?.message}
         register={{ ...register("remark") }}
+      />
+      <SimpleInput
+        label={"Category"}
+        type={"text"}
+        name={"category"}
+        error={errors.category?.message}
+        register={{ ...register("category") }}
       />
       <div className="flexDiv">
         <SimpleInput
