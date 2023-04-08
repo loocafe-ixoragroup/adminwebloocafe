@@ -56,7 +56,7 @@ try{
         unit_start_date:req.body.unit_start_date,
         city:req.body.city,
         state:req.body.state,
-        first_six_months_rent:Number(first_six_months_rent)
+        first_six_months_rent:Number(req.body.first_six_months_rent)
     })
     await rental.save()
     cleaner.rental = rental._id
