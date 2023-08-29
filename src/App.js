@@ -10,7 +10,7 @@ function App() {
   const [width, height] = useWindowSize();
   const cookies = new Cookies();
   const isLoggedIn = cookies.get("token") ? true : false;
-
+console.log("process.env.REACT_APP_BASE_URL");
   return <>{isLoggedIn ? <PrivateRoutes /> : <PublicRoutes />}</>;
 }
 

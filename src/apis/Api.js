@@ -7,9 +7,10 @@ const cookies = new Cookies();
 
 const LoginAdmin = async ({ email, password }) => {
   try {
+    console.log(email,password,BASE_URL)
     const data = await axios.post(`${BASE_URL}/auth/login`, {
       username: email,
-      password,
+      password: password
     });
     cookies.set("token", data.data.token, { path: "/" });
     window.location.replace("/dashboard");
